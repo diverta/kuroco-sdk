@@ -37,7 +37,7 @@ Or execute `kuroco init` to generate it step by step.
 #### :question: Where the SDK key is exposed?
 
 The `sdk_key` is exposed at management screen.  
-![tokenExposed](dev_doc/tokenExposed.png)
+![token](./.github/docs/assets/token.png)
 
 ---
 
@@ -63,10 +63,11 @@ kuroco generate
 
 ### Generates TS/JS sourcecodes
 
-`kuroco generate` can provides TypeScript/JavaScript sourcecodes refered to the openapi definition in Kuroco also you can use your any apps.
+`kuroco generate` can provides TypeScript/JavaScript sourcecodes refered to the openapi definition in Kuroco also you can use your any apps.  
+you can select which type you needed with `-l or --language` option (default TypeScript).
 
 ```
-kuroco generate
+kuroco generate -l javascript
 ```
 
 #### Authentication handler
