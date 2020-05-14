@@ -1,0 +1,144 @@
+/* istanbul ignore file */
+/* tslint:disable */
+/* eslint-disable */
+/* prettier-ignore */
+
+{{#if imports}}
+    {{#each imports}}
+        import { {{{this}}} } from '../models/{{{this}}}';
+    {{/each}}
+{{/if}}
+import { ApiError, catchGenericError } from '../core/ApiError';
+import { request as __request } from '../core/request';
+import { OpenAPI } from '../core/OpenAPI';
+import { Auth } from '../core/Auth';
+
+export class {{{name}}} {
+{{#each operations}}
+    /**
+    {{#if deprecated}}
+        * @deprecated
+    {{/if}}
+    {{#if summary}}
+        * {{{summary}}}
+    {{/if}}
+    {{#if description}}
+        * {{{description}}}
+    {{/if}}
+    {{#if parameters}}
+        {{#each parameters}}
+            * @param {{{name}}} {{{description}}}
+        {{/each}}
+    {{/if}}
+    {{#each results}}
+        * @result {{{type}}} {{{description}}}
+    {{/each}}
+    * @throws ApiError
+    */
+    public static async {{{name}}}(requestParam: {{../name}}.{{name}}Request): Promise<{{>result}}> {
+
+        const request = async () =>
+            await __request({
+                method: '{{{method}}}',
+                path: `{{{path}}}`,
+                {{#if parametersCookie~}}
+                    cookies: {
+                    {{#each parametersCookie}}
+                        '{{{prop}}}': requestParam.{{{name}}},
+                    {{/each}}
+                    },
+                {{/if}}
+                {{#if parametersHeader~}}
+                    headers: {
+                    {{#each parametersHeader}}
+                        '{{{prop}}}': requestParam.{{{name}}},
+                    {{/each}}
+                    },
+                {{/if}}
+                {{#if parametersQuery~}}
+                    query: {
+                    {{#each parametersQuery}}
+                        '{{{prop}}}': requestParam.{{{name}}},
+                    {{/each}}
+                    },
+                {{/if}}
+                {{#if parametersForm~}}
+                    formData: {
+                    {{#each parametersForm}}
+                        '{{{prop}}}': requestParam.{{{name}}},
+                    {{/each}}
+                    },
+                {{/if}}
+                {{#if parametersBody~}}
+                    body: requestParam.{{{parametersBody.name}}},
+                {{/if}}
+                {{#if responseHeader~}}
+                    responseHeader: '{{{responseHeader}}}',
+                {{/if}}
+                });
+                {{#if errors}}
+                    if (!result.ok) {
+                    switch (result.status) {
+                    {{#each errors}}
+                        case {{{code}}}: throw new ApiError(result, `{{{description}}}`);
+                    {{/each}}
+                    }
+                    }
+                {{/if}}
+
+        const security = {
+            {{#each security}}
+            {{#each this}}
+            '{{@key}}': OpenAPI.SECURITY['{{@key}}'],
+            {{/each}}
+            {{/each}}
+        };
+        const shouldHookToken = Object.values(security).find((v: any) => v.type === 'apiKey');
+
+        const result = await request().then(result => {
+            if (shouldHookToken && result.status === 401) {
+                return Auth.loginWithStoredToken({ requestBody: {} }).then(async () => await request());
+            }
+            return result;
+        });
+
+        catchGenericError(result);
+        return result.body;
+        }
+{{/each}}
+}
+
+export namespace {{{name}}} {
+{{#each operations}}
+    export interface {{{name}}}Request {
+    {{#each parameters}}
+    {{/each}}
+    {{>parameters}}
+    };
+    export type {{{name}}}Response = {{>result}};
+{{/each}}
+}
+
+{{#if exportApiInformations}}
+export const infos = [
+{{#each operations}}
+    {
+    path: '{{{path}}}',
+    httpMethod: '{{{method}}}',
+    class: {{{../name}}},
+    className: '{{{../name}}}',
+    method: {{{../name}}}.{{{name}}},
+    methodName: '{{{name}}}',
+    auth: {{#if type}}'{{type}}'{{else}}null{{/if}},
+    description: `
+        export interface {{{name}}}Request {
+        {{#each parameters}}
+        {{/each}}
+        {{>parameters}}
+        };
+        export type {{{name}}}Response = {{>result}};
+    `,
+    },
+{{/each}}
+];
+{{/if}}
