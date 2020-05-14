@@ -6,7 +6,6 @@ junit.xml
 .DS_Store
 .tmp
 .idea
-.vscode
 *.iml
 dist
 archive
