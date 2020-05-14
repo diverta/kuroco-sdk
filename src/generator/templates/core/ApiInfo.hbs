@@ -1,0 +1,34 @@
+/* istanbul ignore file */
+/* tslint:disable */
+/* eslint-disable */
+/* prettier-ignore */
+
+{{#each services}}
+import { {{name}} } from '../services/{{name}}';
+{{/each}}
+
+{{#if exportApiInformations}}
+{{#each services}}
+    import { infos as {{name}}Info } from '../services/{{name}}';
+{{/each}}
+
+export const ApiInfos = [
+{{#each services}}
+    ...{{name}}Info,
+{{/each}}
+];
+{{/if}}
+
+export const SpecialOperationInfo = {
+    {{#each specialOperation}}
+        {{@key}}: {{#if this}}{
+            path: '{{{path}}}',
+            httpMethod: '{{{method}}}',
+            class: {{{class}}},
+            className: '{{{className}}}',
+            method: {{{method}}},
+            methodName: '{{{methodName}}}',
+            auth: {{#if type}}'{{type}}'{{else}}null{{/if}},
+            }{{else}}null{{/if}},        
+    {{/each}}
+}
