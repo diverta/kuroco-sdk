@@ -10,6 +10,8 @@ This repo is really influented by [openapi-typescript-codegen](https://github.co
 
 ## Installation
 
+TODO: to fix this section when published.
+
 -   install into global as a executable bin:  
     `npm i -g @kuroco/cli && kuroco -v`
 
