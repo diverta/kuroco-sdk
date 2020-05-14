@@ -12,6 +12,8 @@ import { writeClientSettings } from './writeClientSettings';
 import { writeApiInfo } from './writeApiInfo';
 
 function copySupportFile(filePath: string, outputPath: string): void {
+    // TODO: add-hock fixing. to prevent runtime error on running actual index.js & test,
+    // because those have different base path.
     const fromJS = path.resolve(__dirname, `../../../src/generator/templates/${filePath}`);
     const fromTS = path.resolve(__dirname, `../templates/${filePath}`);
     const p = fs.existsSync(fromJS) ? fromJS : fromTS;

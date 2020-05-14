@@ -114,6 +114,9 @@ export function getModel(openApi: OpenApi, definition: OpenApiSchema, isDefiniti
         }
     }
 
+    // TODO: add-hock fixing. to support anyOf & oneOf with primitive types.
+    // the originally source couldn't handle above case but $ref type could do.
+    // this should be able to manage both types.
     if (definition.anyOf && definition.anyOf.length) {
         model.export = 'generic';
         const compositionItems = definition.anyOf
@@ -155,6 +158,9 @@ export function getModel(openApi: OpenApi, definition: OpenApiSchema, isDefiniti
         return model;
     }
 
+    // TODO: add-hock fixing. to support anyOf & oneOf with primitive types.
+    // the originally source couldn't handle above case but $ref type could do.
+    // this should be able to manage both types.
     if (definition.oneOf && definition.oneOf.length) {
         model.export = 'generic';
         const compositionItems = definition.oneOf

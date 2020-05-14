@@ -16,6 +16,8 @@ const commandName = Object.keys(pkg.bin)[0];
 
 program.version(pkg.version);
 
+// TODO: should export 'finished message' in each functions done, like 'the process xxx was succeeded!'
+
 function applyGenerate() {
     const defaultInputPath = path.resolve(process.cwd(), 'openapi.json');
     const defaultOutputPath = path.resolve(process.cwd(), 'generated');
@@ -47,6 +49,7 @@ function applyGenerate() {
             console.log(`  $ ${commandName} generate -I openapi.json --exportApiInformations`);
         });
 
+    // TODO: should mv to external file to reduce complexibilities.
     function getSpecifedLanguage(languageArg = '') {
         let possiblyLanguagePattern = [
             { lang: 'ts', token: 'typescript' },
@@ -58,6 +61,7 @@ function applyGenerate() {
         return matched ? matched.lang : 'ts';
     }
 
+    // TODO: should mv to external file to reduce complexibilities.
     function generateJsFiles(output) {
         const paths = {
             output: path.resolve(output),
