@@ -4,7 +4,7 @@
 
 ### :heart: Acknowledge
 
-This repo is really influented by [openapi-typescript-codegen](https://github.com/ferdikoomen/openapi-typescript-codegen) really thanks to the author [Ferdi Koomen](https://github.com/ferdikoomen).
+This repo is really influented by [openapi-typescript-codegen](https://github.com/ferdikoomen/openapi-typescript-codegen) thanks to the author [Ferdi Koomen](https://github.com/ferdikoomen) a lot!.
 
 ---
 
