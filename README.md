@@ -89,6 +89,26 @@ Auth.login({ requestBody: { email: 'test@example.com', password: 'PASSWORD' } })
 `Auth.login()` in above executes login -> token in order if the system is applied to use Tokens,  
 on the other hand executes only login if not.
 
+##### apply a handler at unauthorized error occured
+
+You can regist your own handler for unauthorizations in advance.  
+The Auth module can resolve about auth automatically,  
+if the response is error for expired when you execute any of requests of services in generated source,  
+it will get new token and then retry.   
+However, that retrying still throw unauthorized error sometimes,  
+You may need your own handler like as to route to login page as routing-guard for this case.
+
+```typescript
+import { Auth } from './generated/core/Auth';
+/**
+ * Auth.onErrorHandler: (result: Result) => Result = result => result
+ */
+Auth.onErrorHandler = result => {
+    this.router.goto('/login');
+    return result;
+};
+```
+
 #### Generates API informations
 
 We provides a way to generate details of each endpoints for investigating all endpoints like e2e testing.  

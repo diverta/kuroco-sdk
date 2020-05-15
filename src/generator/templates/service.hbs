@@ -83,27 +83,30 @@ export class {{{name}}} {
                         case {{{code}}}: throw new ApiError(result, `{{{description}}}`);
                     {{/each}}
                     }
-                    }
-                {{/if}}
+                }
+            {{/if}}
 
-        const security = {
+            const security = {
             {{#each security}}
-            {{#each this}}
-            '{{@key}}': OpenAPI.SECURITY['{{@key}}'],
+                {{#each this}}
+                    '{{@key}}': OpenAPI.SECURITY['{{@key}}'],
+                {{/each}}
             {{/each}}
-            {{/each}}
-        };
-        const shouldHookToken = Object.values(security).find((v: any) => v.type === 'apiKey');
+            };
+            const shouldHookToken = Object.values(security).find((v: any) => v.type === 'apiKey');
 
-        const result = await request().then(result => {
-            if (shouldHookToken && result.status === 401) {
-                return Auth.loginWithStoredToken({ requestBody: {} }).then(async () => await request());
+            let result = await request();
+            if (shouldHookToken && !result.ok && result.status === 401) {
+                if (Auth.getRefreshToken() === '') {
+                    console.info('no refresh token in your local storage');
+                    Auth.onErrorHandler(result);
+                    return result;
+                }
+                await Auth.createToken({ requestBody: {} });
+                result = await request();
             }
-            return result;
-        });
-
-        catchGenericError(result);
-        return result.body;
+            catchGenericError(result);
+            return result.body;
         }
 {{/each}}
 }

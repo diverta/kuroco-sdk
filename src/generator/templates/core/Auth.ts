@@ -1,6 +1,7 @@
 /* tslint:disable */
 // @ts-ignore-start
 import { SpecialOperationInfo } from './ApiInfo';
+import { Result } from './Result';
 // @ts-ignore-end
 
 export class Auth {
@@ -19,16 +20,9 @@ export class Auth {
             return Promise.reject(errors);
         }
 
-        return await Auth.createToken({ requestBody: { grant_token } });
-    }
+        await Auth.createToken({ requestBody: { grant_token } });
 
-    public static async loginWithStoredToken(param: Parameters<typeof Auth.createToken>[0]) {
-        const refreshToken = Auth.getRefreshToken();
-        if (refreshToken === '') {
-            await null;
-            return Promise.reject('no refresh token.');
-        }
-        return await Auth.createToken(param);
+        return res.member_id as number;
     }
 
     public static async logout(param: Parameters<typeof SpecialOperationInfo.logout.method>[0]) {
@@ -80,6 +74,7 @@ export class Auth {
 }
 
 export namespace Auth {
+    export let onErrorHandler: (result: Result) => Result = result => result;
     export enum TokenKeys {
         accessToken = 'accessToken',
         refreshToken = 'refreshToken',
