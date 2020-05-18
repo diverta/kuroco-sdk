@@ -121,7 +121,13 @@ export function getModel(openApi: OpenApi, definition: OpenApiSchema, isDefiniti
         model.export = 'generic';
         const compositionItems = definition.anyOf
             .map(d => {
-                return d.anyOf ? ((d.anyOf.map(a => getModel(openApi, a)).flat() as Model[]).flat() as Model[]) : [getModel(openApi, d)];
+                if (d.oneOf) {
+                    return (d.oneOf.map(a => getModel(openApi, a)).flat() as Model[]).flat() as Model[];
+                }
+                if (d.anyOf) {
+                    return (d.anyOf.map(a => getModel(openApi, a)).flat() as Model[]).flat() as Model[];
+                }
+                return [getModel(openApi, d)];
             })
             .flat();
         const composition = compositionItems
@@ -132,7 +138,7 @@ export function getModel(openApi: OpenApi, definition: OpenApiSchema, isDefiniti
                 if (t.properties.length > 0) {
                     return t.properties.length === 1 ? t.properties.map(p => `{ ${p.name}: ${getType(p.type).type} }`) : `{ ${t.properties.map(p => `${p.name}: ${getType(p.type).type} `)} }`;
                 }
-                return;
+                return t.type;
             })
             .join(' | ');
         model.type = composition;
@@ -162,7 +168,13 @@ export function getModel(openApi: OpenApi, definition: OpenApiSchema, isDefiniti
         model.export = 'generic';
         const compositionItems = definition.oneOf
             .map(d => {
-                return d.oneOf ? ((d.oneOf.map(a => getModel(openApi, a)).flat() as Model[]).flat() as Model[]) : [getModel(openApi, d)];
+                if (d.oneOf) {
+                    return ((d.oneOf.map(a => getModel(openApi, a)).flat() as Model[]).flat() as Model[]);
+                }
+                if (d.anyOf) {
+                    return (d.anyOf.map(a => getModel(openApi, a)).flat() as Model[]).flat() as Model[];
+                }
+                return [getModel(openApi, d)];
             })
             .flat();
         const composition = compositionItems
@@ -173,9 +185,12 @@ export function getModel(openApi: OpenApi, definition: OpenApiSchema, isDefiniti
                 if (t.properties.length > 0) {
                     return t.properties.length === 1 ? t.properties.map(p => `{ ${p.name}: ${getType(p.type).type} }`) : `{ ${t.properties.map(p => `${p.name}: ${getType(p.type).type} `)} }`;
                 }
-                return;
+                return t.type;
             })
             .join(' | ');
+        if ((composition) === '') {
+            console.log(compositionItems)
+        }
         model.type = composition;
         model.base = composition;
         const iter = compositionItems.reduce((prev, cur) => {
