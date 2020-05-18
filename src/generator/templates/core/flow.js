@@ -1,3 +1,8 @@
+/* istanbul ignore file */
+/* tslint:disable */
+/* eslint-disable */
+/* prettier-ignore */
+
 /**
  * @license MIT
  */
