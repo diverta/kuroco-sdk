@@ -26,11 +26,11 @@ export async function writeRcmsFilesWithFetch({ host, sdkKey, output, write = tr
         throw Error(`Could not find directory : ${output}`);
     }
 
-    const h = (() => {
-        const h = host.trim();
-        return h[h.length - 1] === '/' ? h.substr(0, h.length - 1) : h;
-    })();
-    const res = await API.requestOpenAPI(h, sdkKey);
+    const res = await API.requestOpenAPI(host, sdkKey);
+    if (!res.ok && res.status === 401) {
+        throw Error('the server responsed as unautorized, please check your SDK key.')
+    }
+
     const openapi = (await res.json()).openapi_data;
 
     // hooks validation to openapi.json, this throw an Error whrn occurs invalidations.
