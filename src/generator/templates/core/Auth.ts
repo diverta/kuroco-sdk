@@ -2,6 +2,7 @@
 // @ts-ignore-start
 import { SpecialOperationInfo } from './ApiInfo';
 import { Result } from './Result';
+import { OpenAPI } from './OpenAPI';
 // @ts-ignore-end
 
 export class Auth {
@@ -20,7 +21,10 @@ export class Auth {
             return Promise.reject(errors);
         }
 
-        await Auth.createToken({ requestBody: { grant_token } });
+
+        if (OpenAPI.SECURITY['Token-Auth']) {
+            await Auth.createToken({ requestBody: { grant_token } });
+        }
 
         return res.member_id as number;
     }
