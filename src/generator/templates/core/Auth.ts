@@ -55,16 +55,19 @@ export class Auth {
     public static async retryRequest(requestFn: () => Promise<Result>, result: Result) {
         // no token stored
         if (Auth.getRefreshToken() === '') {
+            Auth.deleteTokens();
             await Auth.onErrorHandler(result);
             throw new ApiError(result, ApiError.Message.UNAUTHORIZED);
         }
         // handle on error to get refreshed token
         await Auth.createToken({ requestBody: { refresh_token: Auth.getRefreshToken() } }).catch(async () => {
+            Auth.deleteTokens();
             await Auth.onErrorHandler(result);
             throw new ApiError(result, ApiError.Message.UNAUTHORIZED);
         });
         // retry with refreshed token
         result = await requestFn().catch(async () => {
+            Auth.deleteTokens();
             await Auth.onErrorHandler(result);
             throw new ApiError(result, ApiError.Message.UNAUTHORIZED);
         });
@@ -93,6 +96,10 @@ export class Auth {
         localStorage.removeItem(Auth.TokenKeys.accessToken);
     }
     public static deleteRefreshToken() {
+        localStorage.removeItem(Auth.TokenKeys.refreshToken);
+    }
+    public static deleteTokens() {
+        localStorage.removeItem(Auth.TokenKeys.accessToken);
         localStorage.removeItem(Auth.TokenKeys.refreshToken);
     }
 }
