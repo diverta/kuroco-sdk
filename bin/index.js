@@ -46,7 +46,7 @@ function applyGenerate() {
             console.log('Examples:');
             console.log('');
             console.log(`  $ ${commandName} generate --input openapi.json`);
-            console.log(`  $ ${commandName} generate -I openapi.json --exportApiInformations`);
+            console.log(`  $ ${commandName} generate -i openapi.json --exportApiInformations`);
         });
 
     // TODO: should mv to external file to reduce complexibilities.
