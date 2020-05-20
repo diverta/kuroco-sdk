@@ -12,7 +12,6 @@ import { getQueryString } from './getQueryString';
 import { RequestOptions } from './RequestOptions';
 import { requestUsingFetch } from './requestUsingFetch';
 import { Result } from './Result';
-import { Auth } from './Auth';
 
 /**
  * Create the request.
@@ -36,14 +35,6 @@ export async function request(options: Readonly<RequestOptions>): Promise<Result
         method: options.method,
         credentials: 'same-origin',
     };
-
-    // Loads security configurations for whether to apply handling authentications features.
-    // @TODO: fix to retrieve type.
-    Object.values(OpenAPI.SECURITY).forEach((security: any) => {
-        if (security.in === 'header') {
-            headers.append(security.name, `${Auth.getAccessToken()}`);
-        }
-    });
 
     // Add the query parameters (if defined).
     if (options.query) {

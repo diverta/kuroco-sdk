@@ -3,6 +3,7 @@
 import { SpecialOperationInfo } from './ApiInfo';
 import { Result } from './Result';
 import { OpenAPI } from './OpenAPI';
+import { ApiError } from './ApiError';
 // @ts-ignore-end
 
 export class Auth {
@@ -20,7 +21,6 @@ export class Auth {
         if (errors && Array.isArray(errors) && errors.length > 0) {
             return Promise.reject(errors);
         }
-
 
         if (OpenAPI.SECURITY['Token-Auth']) {
             await Auth.createToken({ requestBody: { grant_token } });
@@ -52,6 +52,26 @@ export class Auth {
         return res;
     }
 
+    public static async retryRequest(requestFn: () => Promise<Result>, result: Result) {
+        // no token stored
+        if (Auth.getRefreshToken() === '') {
+            await Auth.onErrorHandler(result);
+            throw new ApiError(result, ApiError.Message.UNAUTHORIZED);
+        }
+        // handle on error to get refreshed token
+        await Auth.createToken({ requestBody: { refresh_token: Auth.getRefreshToken() } }).catch(async () => {
+            await Auth.onErrorHandler(result);
+            throw new ApiError(result, ApiError.Message.UNAUTHORIZED);
+        });
+        // retry with refreshed token
+        result = await requestFn().catch(async () => {
+            await Auth.onErrorHandler(result);
+            throw new ApiError(result, ApiError.Message.UNAUTHORIZED);
+        });
+
+        return result;
+    }
+
     /** get */
     public static getAccessToken() {
         return localStorage.getItem(Auth.TokenKeys.accessToken) || '';
@@ -78,7 +98,7 @@ export class Auth {
 }
 
 export namespace Auth {
-    export let onErrorHandler: (result: Result) => Result = result => result;
+    export let onErrorHandler: (result: Result) => Promise<void> = result => Promise.reject();
     export enum TokenKeys {
         accessToken = 'accessToken',
         refreshToken = 'refreshToken',

@@ -37,8 +37,19 @@ export class {{{name}}} {
     */
     public static async {{{name}}}(requestParam: {{../name}}.{{name}}Request): Promise<{{>result}}> {
 
+        const shouldHookToken =
+            Object.keys({
+                {{#each security}}
+                    {{#each this}}
+                        '{{@key}}': OpenAPI.SECURITY['{{@key}}'],
+                    {{/each}}
+                {{/each}}
+            }).length > 0;
+        const headers = shouldHookToken ? {[(OpenAPI.SECURITY['Token-Auth'] as any).name]: `${Auth.getAccessToken()}`} : {};
+
         const request = async () =>
             await __request({
+                headers,
                 method: '{{{method}}}',
                 path: `{{{path}}}`,
                 {{#if parametersCookie~}}
@@ -86,32 +97,10 @@ export class {{{name}}} {
                 }
             {{/if}}
 
-            const security = {
-            {{#each security}}
-                {{#each this}}
-                    '{{@key}}': OpenAPI.SECURITY['{{@key}}'],
-                {{/each}}
-            {{/each}}
-            };
-            const shouldHookToken = Object.values(security).find((v: any) => v.type === 'apiKey');
-
             let result = await request();
 
             if (shouldHookToken && !result.ok && result.status === 401) {
-                // no token stored
-                if (Auth.getRefreshToken() === '') {
-                    console.info('no refresh token in your local storage');
-                    Auth.onErrorHandler(result);
-                    throw new ApiError(result, ApiError.Message.UNAUTHORIZED);
-                }
-                // handle on error to get refreshed token
-                await Auth.createToken({ requestBody: {} }).catch(() => {
-                    console.info('it failed that retrying to get token from stored refresh token');
-                    Auth.onErrorHandler(result);
-                    throw new ApiError(result, ApiError.Message.UNAUTHORIZED);
-                });
-                // retry with refreshed token
-                result = await request();
+                result = await Auth.retryRequest(request, result);
             }
 
             catchGenericError(result);
