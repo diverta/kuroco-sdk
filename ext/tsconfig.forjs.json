@@ -10,7 +10,6 @@
         "declaration": true,
         "declarationMap": true,
         "sourceMap": false,
-        "declarationDir": "./dist",
         "removeComments": false,
         "strict": true,
         "esModuleInterop": true,
