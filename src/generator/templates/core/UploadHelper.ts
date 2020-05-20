@@ -1,3 +1,8 @@
+// @ts-nocheck
+/* istanbul ignore file */
+/* tslint:disable */
+/* eslint-disable */
+
 const Flow = require('./flow.js');
 import { Flow as IFlow, FlowFile as IFlowFile, FlowChunk as IFlowChunk } from 'flowjs';
 type IExtendedFlow = IFlow & {
