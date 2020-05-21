@@ -45,11 +45,10 @@ export class {{{name}}} {
                     {{/each}}
                 {{/each}}
             }).length > 0;
-        const headers = shouldHookToken ? {[(OpenAPI.SECURITY['Token-Auth'] as any).name]: `${Auth.getAccessToken()}`} : {};
 
         const request = async () =>
             await __request({
-                headers,
+                headers: shouldHookToken ? {[(OpenAPI.SECURITY['Token-Auth'] as any).name]: `${Auth.getAccessToken()}`} : {},
                 method: '{{{method}}}',
                 path: `{{{path}}}`,
                 {{#if parametersCookie~}}

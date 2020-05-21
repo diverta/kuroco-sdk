@@ -49,8 +49,12 @@ export class Auth {
         if (OpenAPI.SECURITY['Token-Auth']) {
             const res = await SpecialOperationInfo.token.method(param);
             const { access_token, refresh_token } = res;
-            access_token ? Auth.setAccessToken(access_token) : undefined;
-            refresh_token ? Auth.setRefreshToken(refresh_token) : undefined;
+            if (access_token) {
+                Auth.setAccessToken(access_token);
+            }
+            if (refresh_token) {
+                Auth.setRefreshToken(refresh_token);
+            }
 
             return res;
         }
@@ -61,12 +65,6 @@ export class Auth {
     }
 
     public static async retryRequest(requestFn: () => Promise<Result>, result: Result) {
-        // no token stored
-        if (Auth.getRefreshToken() === '') {
-            Auth.deleteTokens();
-            await Auth.onErrorHandler(result);
-            throw new ApiError(result, ApiError.Message.UNAUTHORIZED);
-        }
         // handle on error to get refreshed token
         await Auth.createToken({ requestBody: { refresh_token: Auth.getRefreshToken() } }).catch(async () => {
             Auth.deleteTokens();
