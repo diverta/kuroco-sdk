@@ -21,6 +21,7 @@ export interface Templates {
     service: Handlebars.TemplateDelegate;
     settings: Handlebars.TemplateDelegate;
     apiInfo: Handlebars.TemplateDelegate;
+    auth: Handlebars.TemplateDelegate;
 }
 
 /**
@@ -37,6 +38,7 @@ export function readHandlebarsTemplates(): Templates {
         service: readHandlebarsTemplate(resolveTemplate('service.hbs')),
         settings: readHandlebarsTemplate(resolveTemplate('core/OpenAPI.hbs')),
         apiInfo: readHandlebarsTemplate(resolveTemplate('core/ApiInfo.hbs')),
+        auth: readHandlebarsTemplate(resolveTemplate('core/Auth.hbs')),
     };
 
     const partials = [

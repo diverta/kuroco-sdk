@@ -10,6 +10,7 @@ import { writeClientSchemas } from './writeClientSchemas';
 import { writeClientServices } from './writeClientServices';
 import { writeClientSettings } from './writeClientSettings';
 import { writeApiInfo } from './writeApiInfo';
+import { writeAuth } from './writeAuth';
 
 function copySupportFile(filePath: string, outputPath: string): void {
     // TODO: add-hock fixing. to prevent runtime error on running actual index.js & test,
@@ -39,7 +40,6 @@ export function writeClient(client: Client, templates: Templates, output: string
 
     mkdirp.sync(outputPathCore);
     copySupportFile('core/ApiError.ts', outputPath);
-    copySupportFile('core/Auth.ts', outputPath);
     copySupportFile('core/getFormData.ts', outputPath);
     copySupportFile('core/getQueryString.ts', outputPath);
     copySupportFile('core/isSuccess.ts', outputPath);
@@ -53,6 +53,7 @@ export function writeClient(client: Client, templates: Templates, output: string
 
     mkdirp.sync(outputPathServices);
     writeApiInfo(client.services, templates, outputPathCore, exportApiInformations);
+    writeAuth(client.services, templates, outputPathCore);
     writeClientSettings(client, templates, outputPathCore);
     writeClientServices(client.services, templates, outputPathServices, exportApiInformations);
 

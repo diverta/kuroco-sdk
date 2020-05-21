@@ -1,0 +1,134 @@
+/* tslint:disable */
+// @ts-ignore-start
+import { SpecialOperationInfo } from './ApiInfo';
+import { Result } from './Result';
+import { OpenAPI } from './OpenAPI';
+import { ApiError } from './ApiError';
+// @ts-ignore-end
+
+export class Auth {
+    public static async login(param: {{#if login}}Parameters<typeof SpecialOperationInfo.login.method>[0]{{else}}any{{/if}}) {
+        Auth.deleteAccessToken();
+        Auth.deleteRefreshToken();
+
+        {{#if login}}
+        if (!SpecialOperationInfo.login) {
+            return Promise.resolve();
+        }
+
+        const res = await SpecialOperationInfo.login.method(param);
+        const { grant_token, errors } = res;
+
+        if (errors && Array.isArray(errors) && errors.length > 0) {
+            return Promise.reject(errors);
+        }
+
+        await Auth.createToken({ requestBody: { grant_token } });
+
+        return res.member_id as number;
+        {{else}}
+        return await Auth.createToken({ requestBody: {} })
+        {{/if}}
+    }
+
+    public static async logout(param: {{#if logout}}Parameters<typeof SpecialOperationInfo.logout.method>[0]{{else}}any{{/if}}) {
+        {{#if logout}}
+        return await SpecialOperationInfo.logout.method(param).finally(() => {
+            Auth.deleteAccessToken();
+            Auth.deleteRefreshToken();
+        });
+        {{else}}
+        Auth.deleteAccessToken();
+        Auth.deleteRefreshToken();
+        return Promise.resolve();
+        {{/if}}
+    }
+
+    public static async createToken(param: {{#if token}}Parameters<typeof SpecialOperationInfo.token.method>[0]{{else}}any{{/if}}) {
+        {{#if token}}
+        if (OpenAPI.SECURITY['Token-Auth']) {
+            const res = await SpecialOperationInfo.token.method(param);
+            const { access_token, refresh_token } = res;
+            access_token ? Auth.setAccessToken(access_token) : undefined;
+            refresh_token ? Auth.setRefreshToken(refresh_token) : undefined;
+
+            return res;
+        }
+        return Promise.resolve();
+        {{else}}
+        return Promise.resolve();
+        {{/if}}
+    }
+
+    public static async retryRequest(requestFn: () => Promise<Result>, result: Result) {
+        // no token stored
+        if (Auth.getRefreshToken() === '') {
+            Auth.deleteTokens();
+            await Auth.onErrorHandler(result);
+            throw new ApiError(result, ApiError.Message.UNAUTHORIZED);
+        }
+        // handle on error to get refreshed token
+        await Auth.createToken({ requestBody: { refresh_token: Auth.getRefreshToken() } }).catch(async () => {
+            Auth.deleteTokens();
+            await Auth.onErrorHandler(result);
+            throw new ApiError(result, ApiError.Message.UNAUTHORIZED);
+        });
+        // retry with refreshed token
+        result = await requestFn().catch(async () => {
+            Auth.deleteTokens();
+            await Auth.onErrorHandler(result);
+            throw new ApiError(result, ApiError.Message.UNAUTHORIZED);
+        });
+
+        return result;
+    }
+
+    /** get */
+    public static getAccessToken() {
+        return localStorage.getItem(Auth.TokenKeys.accessToken) || '';
+    }
+    public static getRefreshToken() {
+        return localStorage.getItem(Auth.TokenKeys.refreshToken) || '';
+    }
+
+    /** set */
+    public static setAccessToken(token: string) {
+        localStorage.setItem(Auth.TokenKeys.accessToken, token);
+    }
+    public static setRefreshToken(token: string) {
+        localStorage.setItem(Auth.TokenKeys.refreshToken, token);
+    }
+
+    /** delete */
+    public static deleteAccessToken() {
+        localStorage.removeItem(Auth.TokenKeys.accessToken);
+    }
+    public static deleteRefreshToken() {
+        localStorage.removeItem(Auth.TokenKeys.refreshToken);
+    }
+    public static deleteTokens() {
+        localStorage.removeItem(Auth.TokenKeys.accessToken);
+        localStorage.removeItem(Auth.TokenKeys.refreshToken);
+    }
+}
+
+export namespace Auth {
+    export let onErrorHandler: (result: Result) => Promise<void> = result => Promise.reject();
+    export enum TokenKeys {
+        accessToken = 'accessToken',
+        refreshToken = 'refreshToken',
+    }
+}
+
+export interface LoginResponse {
+    grant_token: string;
+    status: number;
+    info: any;
+    messages: string[];
+    errors: string[];
+}
+
+export interface TokenResponse {
+    access_token: string;
+    refresh_token: string;
+}
