@@ -3,9 +3,13 @@ import * as fs from 'fs-extra';
 import { default as SwaggerParser } from 'swagger-parser';
 import * as API from './api';
 
+export interface Config {
+    sdk_key: string;
+    api_url: string;
+}
+
 export interface Options {
-    host: string;
-    sdkKey: string;
+    config: Config;
     output: string;
     write: boolean;
 }
@@ -19,17 +23,19 @@ export async function pull(options: Options) {
     }
 }
 
-export async function writeRcmsFilesWithFetch({ host, sdkKey, output, write = true }: Options) {
+export async function writeRcmsFilesWithFetch({ config, output, write = true }: Options) {
     const parser = new SwaggerParser();
 
     if (!fs.existsSync(path.dirname(output))) {
         throw Error(`Could not find directory : ${output}`);
     }
 
-    const res = await API.requestOpenAPI(host, sdkKey);
+    const res = await API.requestOpenAPI(config.api_url, config.sdk_key);
     if (!res.ok && res.status === 401) {
         throw Error('the server responsed as unautorized, please check your SDK key.')
     }
+
+    // console.log(await API.requestManifest(config.api_url));
 
     const openapi = (await res.json()).openapi_data;
 

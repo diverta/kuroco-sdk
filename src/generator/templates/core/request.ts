@@ -27,13 +27,14 @@ export async function request(options: Readonly<RequestOptions>): Promise<Result
     const headers = new Headers({
         ...options.headers,
         Accept: 'application/json',
+        'content-type': 'application/json',
     });
 
     // Create request settings
     const request: RequestInit = {
         headers,
         method: options.method,
-        credentials: 'same-origin',
+        credentials: 'include',
     };
 
     // Add the query parameters (if defined).
@@ -50,11 +51,11 @@ export async function request(options: Readonly<RequestOptions>): Promise<Result
         if (options.body instanceof Blob) {
             request.body = options.body;
             if (options.body.type) {
-                headers.append('Content-Type', options.body.type);
+                headers.set('Content-Type', options.body.type);
             }
         } else {
             request.body = JSON.stringify(options.body);
-            headers.append('Content-Type', 'application/json');
+            headers.set('Content-Type', 'application/json');
         }
     }
 

@@ -5,8 +5,8 @@
  **/
 {
     "compilerOptions": {
-        "target": "ES5",
-        "module": "es2015",
+        "target": "esnext",
+        "module": "commonjs",
         "declaration": true,
         "declarationMap": true,
         "sourceMap": false,
@@ -22,7 +22,7 @@
         "noImplicitThis": false,
         "allowJs": true,
         "checkJs": false,
-        "lib": ["es2017", "dom", "esnext.array"]
+        "lib": ["dom"]
     },
     "exclude": ["node_modules", "dist", "mv.ts"],
 

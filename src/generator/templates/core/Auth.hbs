@@ -55,7 +55,6 @@ export class Auth {
             if (refresh_token) {
                 Auth.setRefreshToken(refresh_token);
             }
-
             return res;
         }
         return Promise.resolve();
@@ -65,6 +64,12 @@ export class Auth {
     }
 
     public static async retryRequest(requestFn: () => Promise<Result>, result: Result) {
+        // throws error when refresh_token is empty
+        if (!Auth.getRefreshToken()) {
+            Auth.deleteTokens();
+            await Auth.onErrorHandler(result);
+            throw new ApiError(result, ApiError.Message.UNAUTHORIZED);
+        }
         // handle on error to get refreshed token
         await Auth.createToken({ requestBody: { refresh_token: Auth.getRefreshToken() } }).catch(async () => {
             Auth.deleteTokens();
@@ -83,10 +88,12 @@ export class Auth {
 
     /** get */
     public static getAccessToken() {
-        return localStorage.getItem(Auth.TokenKeys.accessToken) || '';
+        const token = localStorage.getItem(Auth.TokenKeys.accessToken);
+        return !!token ? token : '';
     }
     public static getRefreshToken() {
-        return localStorage.getItem(Auth.TokenKeys.refreshToken) || '';
+        const token = localStorage.getItem(Auth.TokenKeys.refreshToken);
+        return !!token ? token : '';
     }
 
     /** set */

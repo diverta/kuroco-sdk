@@ -31,13 +31,22 @@ function applyGenerate() {
         .description('generates javascript/typescript sourcecodes.')
         .action((cmd, options) => {
             if (OpenAPI) {
-                OpenAPI.generate({
-                    ...options,
-                });
-
-                // executes tsc to generate JS from TS, then remake output dir.
-                if (getSpecifedLanguage(options.language) === 'js') {
-                    generateJsFiles(options.output);
+                switch (getSpecifedLanguage(options.language)) {
+                    case 'ts':
+                        OpenAPI.generate({
+                            ...options,
+                        });
+                        break;
+                    case 'js':
+                        const tmpDir = path.resolve(require('os').tmpdir(), `${new Date().getTime()}`);
+                        mkdirp.sync(tmpDir)
+                        OpenAPI.generate({
+                            ...options,
+                            output: tmpDir,
+                        });
+                        // executes tsc to generate JS from TS, then remake output dir.
+                        generateJsFiles(options.output, tmpDir);
+                        break;
                 }
             }
         })
@@ -62,10 +71,9 @@ function applyGenerate() {
     }
 
     // TODO: should mv to external file to reduce complexibilities.
-    function generateJsFiles(output) {
+    function generateJsFiles(output, tsDir) {
         const paths = {
             output: path.resolve(output),
-            tmpDir: path.resolve(require('os').tmpdir(), `${new Date().getTime()}`),
             tsconfigJs: path.resolve(__dirname, '..', 'ext', 'tsconfig.forjs.json'),
             tsconfigJsWithIncludes: path.resolve(__dirname, '..', 'ext', 'tsconfig.forjs.includes.json'),
         };
@@ -74,22 +82,20 @@ function applyGenerate() {
             fs.writeFileSync(
                 paths.tsconfigJsWithIncludes,
                 JSON.stringify({
-                    include: [`${paths.output}/**/*.ts`],
+                    include: [`${tsDir}/**/*.ts`],
                 }),
                 { overwrite: true }
             );
         }
 
         function write(paths, buildCmd) {
-            mkdirp.sync(paths.tmpDir);
-            childProcess.spawnSync(buildCmd, { cwd: process.cwd(), shell: true, stdio: 'inherit' });
             rimraf.sync(paths.output);
             mkdirp.sync(paths.output);
-            fs.moveSync(paths.tmpDir, output, { overwrite: true });
+            childProcess.spawnSync(buildCmd, { cwd: process.cwd(), shell: true, stdio: 'inherit' });
         }
 
         writeTsconfigJsWithInjectIncludes(paths);
-        const buildCmd = `npx tsc -p ${paths.tsconfigJs} --outDir ${paths.tmpDir}`;
+        const buildCmd = `npx tsc -p ${paths.tsconfigJs} --outDir ${paths.output}`;
         write(paths, buildCmd);
     }
 }
@@ -115,8 +121,7 @@ function applyPull() {
             }
             if (OpenAPI) {
                 OpenAPI.pull({
-                    sdkKey: config.sdk_key,
-                    host: config.api_url,
+                    config,
                     ...options,
                 });
             }
