@@ -17,6 +17,7 @@ export interface Options {
 export async function pull(options: Options) {
     try {
         await writeRcmsFilesWithFetch(options);
+        await overwriteConfigurationFile(options);
     } catch (e) {
         console.error(e);
         process.exit(1);
@@ -24,8 +25,6 @@ export async function pull(options: Options) {
 }
 
 export async function writeRcmsFilesWithFetch({ config, output, write = true }: Options) {
-    const parser = new SwaggerParser();
-
     if (!fs.existsSync(path.dirname(output))) {
         throw Error(`Could not find directory : ${output}`);
     }
@@ -34,13 +33,9 @@ export async function writeRcmsFilesWithFetch({ config, output, write = true }: 
     if (!res.ok && res.status === 401) {
         throw Error('the server responsed as unautorized, please check your SDK key.')
     }
-
-    // console.log(await API.requestManifest(config.api_url));
-
     const openapi = (await res.json()).openapi_data;
-
     // hooks validation to openapi.json, this throw an Error whrn occurs invalidations.
-    parser.bundle(openapi);
+    new SwaggerParser().bundle(openapi);
 
     if (write) {
         fs.writeJSONSync(output, openapi, {
@@ -49,4 +44,18 @@ export async function writeRcmsFilesWithFetch({ config, output, write = true }: 
             flag: 'w',
         });
     }
+}
+
+export async function overwriteConfigurationFile({ config, write = true }: Options) {
+    const manifest = await API.requestManifest(config.api_url);
+    const configuration = {
+        ...config,
+        ...manifest,
+    };
+    const output = path.resolve(process.cwd(), 'kuroco.config.json');
+    fs.writeJSONSync(output, configuration, {
+        spaces: '\t',
+        encoding: 'UTF-8',
+        flag: 'w',
+    });
 }
