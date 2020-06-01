@@ -154,7 +154,12 @@
 					"200": {
 						"description": ""
 					}
-				}
+				},
+				"security": [
+					{
+						"Token-Auth": []
+					}
+				]
 			}
 		},
 		"/rcms-api/1/auth/token": {
@@ -289,6 +294,11 @@
 						"description": ""
 					}
 				},
+				"security": [
+					{
+						"Token-Auth": []
+					}
+				],
 				"requestBody": {
 					"required": true,
 					"description": "",
@@ -421,6 +431,11 @@
 						"description": ""
 					}
 				},
+				"security": [
+					{
+						"Token-Auth": []
+					}
+				],
 				"requestBody": {
 					"required": true,
 					"description": "",
@@ -513,7 +528,12 @@
 					"200": {
 						"description": ""
 					}
-				}
+				},
+				"security": [
+					{
+						"Token-Auth": []
+					}
+				]
 			}
 		},
 		"/rcms-api/1/topics1/{topics_id}": {
@@ -580,7 +600,12 @@
 					"404": {
 						"description": ""
 					}
-				}
+				},
+				"security": [
+					{
+						"Token-Auth": []
+					}
+				]
 			}
 		},
 		"/rcms-api/1/topics1": {
@@ -925,7 +950,12 @@
 					"404": {
 						"description": ""
 					}
-				}
+				},
+				"security": [
+					{
+						"Token-Auth": []
+					}
+				]
 			}
 		},
 		"/rcms-api/1/topics1/insert": {
@@ -980,6 +1010,11 @@
 						"description": ""
 					}
 				},
+				"security": [
+					{
+						"Token-Auth": []
+					}
+				],
 				"requestBody": {
 					"required": true,
 					"description": "",
@@ -1176,7 +1211,7 @@
 												"additionalProperties": false
 											}
 										],
-										"example": "2020-05-25"
+										"example": "2020-05-26"
 									},
 									"ext_col_08": {
 										"description": "DateTime",
@@ -1208,7 +1243,7 @@
 												"additionalProperties": false
 											}
 										],
-										"example": "2020-05-25 14:20 +0900"
+										"example": "2020-05-26 15:56 +0900"
 									},
 									"ext_col_05": {
 										"description": "Tdfk",
@@ -5473,6 +5508,11 @@
 						"description": ""
 					}
 				},
+				"security": [
+					{
+						"Token-Auth": []
+					}
+				],
 				"requestBody": {
 					"required": true,
 					"description": "",
@@ -5669,7 +5709,7 @@
 												"additionalProperties": false
 											}
 										],
-										"example": "2020-05-25"
+										"example": "2020-05-26"
 									},
 									"ext_col_08": {
 										"description": "DateTime",
@@ -5701,7 +5741,7 @@
 												"additionalProperties": false
 											}
 										],
-										"example": "2020-05-25 14:20 +0900"
+										"example": "2020-05-26 15:56 +0900"
 									},
 									"ext_col_05": {
 										"description": "Tdfk",
@@ -9962,7 +10002,12 @@
 					"200": {
 						"description": ""
 					}
-				}
+				},
+				"security": [
+					{
+						"Token-Auth": []
+					}
+				]
 			}
 		},
 		"/rcms-api/1/topics/multiple": {
@@ -10307,7 +10352,12 @@
 					"404": {
 						"description": ""
 					}
-				}
+				},
+				"security": [
+					{
+						"Token-Auth": []
+					}
+				]
 			}
 		},
 		"/rcms-api/1/topics/multiple/{topics_id}": {
@@ -10374,7 +10424,12 @@
 					"404": {
 						"description": ""
 					}
-				}
+				},
+				"security": [
+					{
+						"Token-Auth": []
+					}
+				]
 			}
 		},
 		"/rcms-api/1/topics/multiple/insert": {
@@ -10429,6 +10484,11 @@
 						"description": ""
 					}
 				},
+				"security": [
+					{
+						"Token-Auth": []
+					}
+				],
 				"requestBody": {
 					"required": true,
 					"description": "",
@@ -10655,7 +10715,7 @@
 													"additionalProperties": false
 												}
 											],
-											"example": "2020-05-25"
+											"example": "2020-05-26"
 										},
 										"description": "Date",
 										"default": [],
@@ -10694,7 +10754,7 @@
 													"additionalProperties": false
 												}
 											],
-											"example": "2020-05-25 14:20 +0900"
+											"example": "2020-05-26 15:56 +0900"
 										},
 										"description": "DateTime",
 										"default": [],
@@ -15027,6 +15087,11 @@
 						"description": ""
 					}
 				},
+				"security": [
+					{
+						"Token-Auth": []
+					}
+				],
 				"requestBody": {
 					"required": true,
 					"description": "",
@@ -15253,7 +15318,7 @@
 													"additionalProperties": false
 												}
 											],
-											"example": "2020-05-25"
+											"example": "2020-05-26"
 										},
 										"description": "Date",
 										"default": [],
@@ -15292,7 +15357,7 @@
 													"additionalProperties": false
 												}
 											],
-											"example": "2020-05-25 14:20 +0900"
+											"example": "2020-05-26 15:56 +0900"
 										},
 										"description": "DateTime",
 										"default": [],
@@ -19723,7 +19788,12 @@
 					"200": {
 						"description": ""
 					}
-				}
+				},
+				"security": [
+					{
+						"Token-Auth": []
+					}
+				]
 			}
 		},
 		"/rcms-api/1/members/{member_id}": {
@@ -19787,7 +19857,12 @@
 					"200": {
 						"description": ""
 					}
-				}
+				},
+				"security": [
+					{
+						"Token-Auth": []
+					}
+				]
 			}
 		},
 		"/rcms-api/1/members/insert": {
@@ -19842,6 +19917,11 @@
 						"description": ""
 					}
 				},
+				"security": [
+					{
+						"Token-Auth": []
+					}
+				],
 				"requestBody": {
 					"required": true,
 					"description": "",
@@ -20082,7 +20162,7 @@
 												"format": "date"
 											}
 										],
-										"example": "2020-05-25"
+										"example": "2020-05-26"
 									},
 									"relation": {
 										"type": "integer",
@@ -20209,6 +20289,11 @@
 						"description": ""
 					}
 				},
+				"security": [
+					{
+						"Token-Auth": []
+					}
+				],
 				"requestBody": {
 					"required": true,
 					"description": "",
@@ -20456,7 +20541,7 @@
 												"format": "date"
 											}
 										],
-										"example": "2020-05-25"
+										"example": "2020-05-26"
 									},
 									"relation": {
 										"type": "integer",
@@ -20598,6 +20683,11 @@
 						"description": ""
 					}
 				},
+				"security": [
+					{
+						"Token-Auth": []
+					}
+				],
 				"requestBody": {
 					"required": true,
 					"description": "",
@@ -20676,6 +20766,11 @@
 						"description": ""
 					}
 				},
+				"security": [
+					{
+						"Token-Auth": []
+					}
+				],
 				"requestBody": {
 					"required": true,
 					"description": "",
@@ -20916,7 +21011,7 @@
 												"format": "date"
 											}
 										],
-										"example": "2020-05-25"
+										"example": "2020-05-26"
 									},
 									"relation": {
 										"type": "integer",
@@ -21052,6 +21147,11 @@
 						"description": ""
 					}
 				},
+				"security": [
+					{
+						"Token-Auth": []
+					}
+				],
 				"requestBody": {
 					"required": true,
 					"description": "",
@@ -21218,7 +21318,12 @@
 					"200": {
 						"description": ""
 					}
-				}
+				},
+				"security": [
+					{
+						"Token-Auth": []
+					}
+				]
 			}
 		},
 		"/rcms-api/1/topics/comments/insert": {
@@ -21273,6 +21378,11 @@
 						"description": ""
 					}
 				},
+				"security": [
+					{
+						"Token-Auth": []
+					}
+				],
 				"requestBody": {
 					"required": true,
 					"description": "",
@@ -21389,6 +21499,11 @@
 						"description": ""
 					}
 				},
+				"security": [
+					{
+						"Token-Auth": []
+					}
+				],
 				"requestBody": {
 					"required": true,
 					"description": "",
@@ -21511,6 +21626,11 @@
 						"description": ""
 					}
 				},
+				"security": [
+					{
+						"Token-Auth": []
+					}
+				],
 				"requestBody": {
 					"required": true,
 					"description": "",
@@ -21687,7 +21807,12 @@
 					"200": {
 						"description": ""
 					}
-				}
+				},
+				"security": [
+					{
+						"Token-Auth": []
+					}
+				]
 			}
 		},
 		"/rcms-api/1/favorites/insert": {
@@ -21742,6 +21867,11 @@
 						"description": ""
 					}
 				},
+				"security": [
+					{
+						"Token-Auth": []
+					}
+				],
 				"requestBody": {
 					"required": true,
 					"description": "",
@@ -21831,6 +21961,11 @@
 						"description": ""
 					}
 				},
+				"security": [
+					{
+						"Token-Auth": []
+					}
+				],
 				"requestBody": {
 					"required": true,
 					"description": "",
@@ -21922,7 +22057,12 @@
 					"404": {
 						"description": ""
 					}
-				}
+				},
+				"security": [
+					{
+						"Token-Auth": []
+					}
+				]
 			}
 		},
 		"/rcms-api/1/inquiry/forms/{inquiry_id}": {
@@ -21989,7 +22129,12 @@
 					"404": {
 						"description": ""
 					}
-				}
+				},
+				"security": [
+					{
+						"Token-Auth": []
+					}
+				]
 			}
 		},
 		"/rcms-api/1/inquiry1/messages": {
@@ -22058,7 +22203,12 @@
 					"404": {
 						"description": ""
 					}
-				}
+				},
+				"security": [
+					{
+						"Token-Auth": []
+					}
+				]
 			}
 		},
 		"/rcms-api/1/inquiry1/messages/send": {
@@ -22116,6 +22266,11 @@
 						"description": ""
 					}
 				},
+				"security": [
+					{
+						"Token-Auth": []
+					}
+				],
 				"requestBody": {
 					"required": true,
 					"description": "",
@@ -22352,7 +22507,7 @@
 												}
 											}
 										],
-										"example": "2020-05-25 14:20 +0900",
+										"example": "2020-05-26 15:56 +0900",
 										"description": "DateTime"
 									},
 									"ext_07": {
@@ -22548,7 +22703,7 @@
 												}
 											}
 										],
-										"example": "2020-05-25",
+										"example": "2020-05-26",
 										"description": "Date"
 									},
 									"validate_only": {
@@ -22638,6 +22793,11 @@
 						"description": ""
 					}
 				},
+				"security": [
+					{
+						"Token-Auth": []
+					}
+				],
 				"requestBody": {
 					"required": true,
 					"description": "",
@@ -22874,7 +23034,7 @@
 												}
 											}
 										],
-										"example": "2020-05-25 14:20 +0900",
+										"example": "2020-05-26 15:56 +0900",
 										"description": "DateTime"
 									},
 									"ext_07": {
@@ -23070,7 +23230,7 @@
 												}
 											}
 										],
-										"example": "2020-05-25",
+										"example": "2020-05-26",
 										"description": "Date"
 									},
 									"validate_only": {
@@ -23147,6 +23307,11 @@
 						"description": ""
 					}
 				},
+				"security": [
+					{
+						"Token-Auth": []
+					}
+				],
 				"requestBody": {
 					"required": false,
 					"description": "",
@@ -23309,7 +23474,12 @@
 					"404": {
 						"description": ""
 					}
-				}
+				},
+				"security": [
+					{
+						"Token-Auth": []
+					}
+				]
 			}
 		},
 		"/rcms-api/1/tags/insert": {
@@ -23364,6 +23534,11 @@
 						"description": ""
 					}
 				},
+				"security": [
+					{
+						"Token-Auth": []
+					}
+				],
 				"requestBody": {
 					"required": true,
 					"description": "",
@@ -23535,7 +23710,12 @@
 					"200": {
 						"description": ""
 					}
-				}
+				},
+				"security": [
+					{
+						"Token-Auth": []
+					}
+				]
 			}
 		},
 		"/rcms-api/1/tables/simple": {
@@ -23669,7 +23849,12 @@
 					"200": {
 						"description": ""
 					}
-				}
+				},
+				"security": [
+					{
+						"Token-Auth": []
+					}
+				]
 			}
 		},
 		"/rcms-api/1/tables/matrix": {
@@ -23779,7 +23964,12 @@
 					"200": {
 						"description": ""
 					}
-				}
+				},
+				"security": [
+					{
+						"Token-Auth": []
+					}
+				]
 			}
 		},
 		"/rcms-api/1/tables/date": {
@@ -23889,7 +24079,12 @@
 					"200": {
 						"description": ""
 					}
-				}
+				},
+				"security": [
+					{
+						"Token-Auth": []
+					}
+				]
 			}
 		},
 		"/rcms-api/1/tables/checksheet": {
@@ -23999,7 +24194,12 @@
 					"200": {
 						"description": ""
 					}
-				}
+				},
+				"security": [
+					{
+						"Token-Auth": []
+					}
+				]
 			}
 		},
 		"/rcms-api/1/tables/invalid": {
@@ -24109,7 +24309,12 @@
 					"200": {
 						"description": ""
 					}
-				}
+				},
+				"security": [
+					{
+						"Token-Auth": []
+					}
+				]
 			}
 		},
 		"/rcms-api/1/tables/simple/key1-value2": {
@@ -24211,7 +24416,12 @@
 					"200": {
 						"description": ""
 					}
-				}
+				},
+				"security": [
+					{
+						"Token-Auth": []
+					}
+				]
 			}
 		},
 		"/rcms-api/1/batch": {
@@ -24268,7 +24478,12 @@
 					"202": {
 						"description": ""
 					}
-				}
+				},
+				"security": [
+					{
+						"Token-Auth": []
+					}
+				]
 			}
 		},
 		"/rcms-api/1/apis": {
@@ -24322,7 +24537,12 @@
 					"200": {
 						"description": ""
 					}
-				}
+				},
+				"security": [
+					{
+						"Token-Auth": []
+					}
+				]
 			}
 		},
 		"/rcms-api/1/openapi": {
@@ -24388,7 +24608,12 @@
 					"200": {
 						"description": ""
 					}
-				}
+				},
+				"security": [
+					{
+						"Token-Auth": []
+					}
+				]
 			}
 		},
 		"/rcms-api/1/request": {
@@ -24445,7 +24670,12 @@
 					"202": {
 						"description": ""
 					}
-				}
+				},
+				"security": [
+					{
+						"Token-Auth": []
+					}
+				]
 			}
 		},
 		"/rcms-api/1/manifest/gcs": {
@@ -24499,11 +24729,22 @@
 					"200": {
 						"description": ""
 					}
-				}
+				},
+				"security": [
+					{
+						"Token-Auth": []
+					}
+				]
 			}
 		}
 	},
 	"components": {
-		"securitySchemes": {}
+		"securitySchemes": {
+			"Token-Auth": {
+				"type": "apiKey",
+				"in": "header",
+				"name": "X-RCMS-API-ACCESS-TOKEN"
+			}
+		}
 	}
 }

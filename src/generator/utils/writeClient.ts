@@ -50,6 +50,7 @@ export function writeClient(client: Client, templates: Templates, output: string
     copySupportFile('core/Result.ts', outputPath);
     copySupportFile('core/UploadHelper.ts', outputPath);
     copySupportFile('core/flow.js', outputPath);
+    copySupportFile('core/firebase.ts', outputPath);
 
     mkdirp.sync(outputPathServices);
     writeApiInfo(client.services, templates, outputPathCore, exportApiInformations);
