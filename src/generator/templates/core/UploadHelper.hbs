@@ -1,0 +1,35 @@
+import * as firebase from 'firebase/app';
+import { Auth } from './Auth';
+
+const firebaseConfig = {
+    {{#each firebaseConfig}}
+        '{{@key}}': '{{this}}',
+    {{/each}}
+};
+
+export class UploadHelper {
+    public static async upload() {
+        await fetch('{{server}}/rcms-api/1/firebase_token', {
+            {{#if security}}
+            headers: {
+            {{#each security}}
+                '{{name}}': `${Auth.getAccessToken()}`
+            {{/each}}
+            }
+            {{/if}}
+        })
+            .then(res => res.json())
+            .then(async ({ token }) => {
+                try {
+                    firebase.initializeApp(firebaseConfig);
+                    await firebase.auth().signInWithCustomToken(token);
+                    const storage = firebase.storage();
+                    const ref = storage.ref('/files/temp');
+                    const url = await ref.child('1589879961388_252_closepng__rcms_gcs_upload_chunk_number__0').getDownloadURL();
+                    console.log('URL', url);
+                } catch (err) {
+                    console.error(err);
+                }
+            });
+    }
+}

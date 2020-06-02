@@ -11,8 +11,14 @@ const mkdirp = require('mkdirp');
 const pkg = require('../package.json');
 
 const OpenAPI = require(path.resolve(__dirname, '../dist/index.js')).default;
-
 const commandName = Object.keys(pkg.bin)[0];
+
+const {
+    loadKurocoConfig,
+    getSpecifedLanguage,
+    generateJsFiles,
+    loadFirebaseConfigurations
+} = require('./utils');
 
 program.version(pkg.version);
 
@@ -35,13 +41,15 @@ function applyGenerate() {
                     case 'ts':
                         OpenAPI.generate({
                             ...options,
+                            config: loadKurocoConfig(),
                         });
                         break;
                     case 'js':
                         const tmpDir = path.resolve(require('os').tmpdir(), `${new Date().getTime()}`);
-                        mkdirp.sync(tmpDir)
+                        mkdirp.sync(tmpDir);
                         OpenAPI.generate({
                             ...options,
+                            config: loadKurocoConfig(),
                             output: tmpDir,
                         });
                         // executes tsc to generate JS from TS, then remake output dir.
@@ -57,72 +65,20 @@ function applyGenerate() {
             console.log(`  $ ${commandName} generate --input openapi.json`);
             console.log(`  $ ${commandName} generate -i openapi.json --exportApiInformations`);
         });
-
-    // TODO: should mv to external file to reduce complexibilities.
-    function getSpecifedLanguage(languageArg = '') {
-        let possiblyLanguagePattern = [
-            { lang: 'ts', token: 'typescript' },
-            { lang: 'ts', token: 'ts' },
-            { lang: 'js', token: 'javascript' },
-            { lang: 'js', token: 'js' },
-        ];
-        const matched = possiblyLanguagePattern.find(({ lang, token }) => languageArg.toUpperCase() === token.toUpperCase());
-        return matched ? matched.lang : 'ts';
-    }
-
-    // TODO: should mv to external file to reduce complexibilities.
-    function generateJsFiles(output, tsDir) {
-        const paths = {
-            output: path.resolve(output),
-            tsconfigJs: path.resolve(__dirname, '..', 'ext', 'tsconfig.forjs.json'),
-            tsconfigJsWithIncludes: path.resolve(__dirname, '..', 'ext', 'tsconfig.forjs.includes.json'),
-        };
-
-        function writeTsconfigJsWithInjectIncludes(paths) {
-            fs.writeFileSync(
-                paths.tsconfigJsWithIncludes,
-                JSON.stringify({
-                    include: [`${tsDir}/**/*.ts`],
-                }),
-                { overwrite: true }
-            );
-        }
-
-        function write(paths, buildCmd) {
-            rimraf.sync(paths.output);
-            mkdirp.sync(paths.output);
-            childProcess.spawnSync(buildCmd, { cwd: process.cwd(), shell: true, stdio: 'inherit' });
-        }
-
-        writeTsconfigJsWithInjectIncludes(paths);
-        const buildCmd = `npx tsc -p ${paths.tsconfigJs} --outDir ${paths.output}`;
-        write(paths, buildCmd);
-    }
 }
 
 function applyPull() {
-    const defaultInputPath = path.resolve(process.cwd(), 'kuroco.config.json');
     const defaultOutputPath = path.resolve(process.cwd(), 'openapi.json');
     program
         .command('pull [options]')
         .description('pulls openapi.json from the server.')
-        .option('-i, --input <value>', 'Input configuration file path', defaultInputPath)
         .option('-o, --output <value>', 'Output path', defaultOutputPath)
         .option('--write <value>', 'Export files (for developper option)', true)
         .action((cmd, options) => {
-            let config;
-            try {
-                const file = fs.readFileSync(options.input, { encoding: 'utf8' });
-                config = JSON.parse(file);
-            } catch (e) {
-                console.error(`a configuration file '${options.input}' you specified is not found or broken.`);
-                console.error(`please run '${commandName} init' first, or define the file by yourself instead.`);
-                process.exit(1);
-            }
             if (OpenAPI) {
                 OpenAPI.pull({
-                    config,
                     ...options,
+                    config: loadKurocoConfig(),
                 });
             }
         })
@@ -142,8 +98,6 @@ function applyInit() {
         .action((cmd, options) => {
             if (OpenAPI) {
                 OpenAPI.init({
-                    sdkKey: 'ef57d2cb6636fa4701fc8b62a2efde54',
-                    host: 'https://kuroco-dev.r-cms.jp',
                     ...options,
                 });
             }

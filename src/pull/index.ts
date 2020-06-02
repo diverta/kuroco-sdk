@@ -2,14 +2,10 @@ import path from 'path';
 import * as fs from 'fs-extra';
 import { default as SwaggerParser } from 'swagger-parser';
 import * as API from './api';
-
-export interface Config {
-    sdk_key: string;
-    api_url: string;
-}
+import { KurocoConfig } from '..';
 
 export interface Options {
-    config: Config;
+    config: KurocoConfig;
     output: string;
     write: boolean;
 }

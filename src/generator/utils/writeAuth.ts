@@ -9,7 +9,6 @@ import { Templates } from './readHandlebarsTemplates';
  * @param services Array of Services to write.
  * @param templates The loaded handlebar templates.
  * @param outputPath Directory to write the generated files to.
- * @param exportApiInformations Generate API informations.
  */
 export function writeAuth(services: Service[], templates: Templates, outputPath: string): void {
     const file = path.resolve(outputPath, `Auth.ts`);

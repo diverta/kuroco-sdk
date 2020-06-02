@@ -11,6 +11,8 @@ import { writeClientServices } from './writeClientServices';
 import { writeClientSettings } from './writeClientSettings';
 import { writeApiInfo } from './writeApiInfo';
 import { writeAuth } from './writeAuth';
+import { writeUploadHelper } from './writeUploadHelper';
+import { KurocoConfig } from '../..';
 
 function copySupportFile(filePath: string, outputPath: string): void {
     // TODO: add-hock fixing. to prevent runtime error on running actual index.js & test,
@@ -27,7 +29,7 @@ function copySupportFile(filePath: string, outputPath: string): void {
  * @param templates Templates wrapper with all loaded Handlebars templates.
  * @param output Directory to write the generated files to.
  */
-export function writeClient(client: Client, templates: Templates, output: string, exportApiInformations: boolean = false): void {
+export function writeClient(client: Client, templates: Templates, output: string, exportApiInformations: boolean = false, kurocoConfig: KurocoConfig): void {
     const outputPath = path.resolve(process.cwd(), output);
     const outputPathCore = path.resolve(outputPath, 'core');
     const outputPathModels = path.resolve(outputPath, 'models');
@@ -43,19 +45,18 @@ export function writeClient(client: Client, templates: Templates, output: string
     copySupportFile('core/getFormData.ts', outputPath);
     copySupportFile('core/getQueryString.ts', outputPath);
     copySupportFile('core/isSuccess.ts', outputPath);
-    copySupportFile('core/OpenAPI.hbs', outputPath);
     copySupportFile('core/request.ts', outputPath);
     copySupportFile('core/RequestOptions.ts', outputPath);
     copySupportFile('core/requestUsingFetch.ts', outputPath);
     copySupportFile('core/Result.ts', outputPath);
-    copySupportFile('core/UploadHelper.ts', outputPath);
     copySupportFile('core/flow.js', outputPath);
-    copySupportFile('core/firebase.ts', outputPath);
 
-    mkdirp.sync(outputPathServices);
     writeApiInfo(client.services, templates, outputPathCore, exportApiInformations);
     writeAuth(client.services, templates, outputPathCore);
     writeClientSettings(client, templates, outputPathCore);
+    writeUploadHelper(client, kurocoConfig, templates, outputPathCore);
+
+    mkdirp.sync(outputPathServices);
     writeClientServices(client.services, templates, outputPathServices, exportApiInformations);
 
     mkdirp.sync(outputPathSchemas);

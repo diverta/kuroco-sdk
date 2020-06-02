@@ -4,12 +4,14 @@ import { isString } from './utils/isString';
 import { postProcessClient } from './utils/postProcessClient';
 import { readHandlebarsTemplates } from './utils/readHandlebarsTemplates';
 import { writeClient } from './utils/writeClient';
+import { KurocoConfig } from '..';
 
 export interface Options {
     input: string | Record<string, any>;
     output: string;
     write?: boolean;
     exportApiInformations?: boolean;
+    config: KurocoConfig;
 }
 
 /**
@@ -20,7 +22,7 @@ export interface Options {
  * @param output The relative location of the output directory.
  * @param write Write the files to disk (true or false).
  */
-export function generate({ input, output, write = true, exportApiInformations = false }: Options): void {
+export function generate({ input, output, write = true, exportApiInformations = false, config }: Options): void {
     try {
         // Load the specification, load the handlebar templates for the given language
         const openApi = isString(input) ? getOpenApiSpec(input) : input;
@@ -29,7 +31,7 @@ export function generate({ input, output, write = true, exportApiInformations = 
         const client = parseV3(openApi);
         const clientFinal = postProcessClient(client);
         if (write) {
-            writeClient(clientFinal, templates, output, exportApiInformations);
+            writeClient(clientFinal, templates, output, exportApiInformations, config);
         }
     } catch (e) {
         console.error(e);

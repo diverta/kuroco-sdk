@@ -1211,7 +1211,7 @@
 												"additionalProperties": false
 											}
 										],
-										"example": "2020-05-26"
+										"example": "2020-06-02"
 									},
 									"ext_col_08": {
 										"description": "DateTime",
@@ -1243,7 +1243,7 @@
 												"additionalProperties": false
 											}
 										],
-										"example": "2020-05-26 15:56 +0900"
+										"example": "2020-06-02 14:59 +0900"
 									},
 									"ext_col_05": {
 										"description": "Tdfk",
@@ -5709,7 +5709,7 @@
 												"additionalProperties": false
 											}
 										],
-										"example": "2020-05-26"
+										"example": "2020-06-02"
 									},
 									"ext_col_08": {
 										"description": "DateTime",
@@ -5741,7 +5741,7 @@
 												"additionalProperties": false
 											}
 										],
-										"example": "2020-05-26 15:56 +0900"
+										"example": "2020-06-02 14:59 +0900"
 									},
 									"ext_col_05": {
 										"description": "Tdfk",
@@ -10715,7 +10715,7 @@
 													"additionalProperties": false
 												}
 											],
-											"example": "2020-05-26"
+											"example": "2020-06-02"
 										},
 										"description": "Date",
 										"default": [],
@@ -10754,7 +10754,7 @@
 													"additionalProperties": false
 												}
 											],
-											"example": "2020-05-26 15:56 +0900"
+											"example": "2020-06-02 14:59 +0900"
 										},
 										"description": "DateTime",
 										"default": [],
@@ -15318,7 +15318,7 @@
 													"additionalProperties": false
 												}
 											],
-											"example": "2020-05-26"
+											"example": "2020-06-02"
 										},
 										"description": "Date",
 										"default": [],
@@ -15357,7 +15357,7 @@
 													"additionalProperties": false
 												}
 											],
-											"example": "2020-05-26 15:56 +0900"
+											"example": "2020-06-02 14:59 +0900"
 										},
 										"description": "DateTime",
 										"default": [],
@@ -20162,7 +20162,7 @@
 												"format": "date"
 											}
 										],
-										"example": "2020-05-26"
+										"example": "2020-06-02"
 									},
 									"relation": {
 										"type": "integer",
@@ -20541,7 +20541,7 @@
 												"format": "date"
 											}
 										],
-										"example": "2020-05-26"
+										"example": "2020-06-02"
 									},
 									"relation": {
 										"type": "integer",
@@ -21011,7 +21011,7 @@
 												"format": "date"
 											}
 										],
-										"example": "2020-05-26"
+										"example": "2020-06-02"
 									},
 									"relation": {
 										"type": "integer",
@@ -22507,7 +22507,7 @@
 												}
 											}
 										],
-										"example": "2020-05-26 15:56 +0900",
+										"example": "2020-06-02 14:59 +0900",
 										"description": "DateTime"
 									},
 									"ext_07": {
@@ -22703,7 +22703,7 @@
 												}
 											}
 										],
-										"example": "2020-05-26",
+										"example": "2020-06-02",
 										"description": "Date"
 									},
 									"validate_only": {
@@ -23034,7 +23034,7 @@
 												}
 											}
 										],
-										"example": "2020-05-26 15:56 +0900",
+										"example": "2020-06-02 14:59 +0900",
 										"description": "DateTime"
 									},
 									"ext_07": {
@@ -23230,7 +23230,7 @@
 												}
 											}
 										],
-										"example": "2020-05-26",
+										"example": "2020-06-02",
 										"description": "Date"
 									},
 									"validate_only": {
@@ -24668,65 +24668,6 @@
 						"description": ""
 					},
 					"202": {
-						"description": ""
-					}
-				},
-				"security": [
-					{
-						"Token-Auth": []
-					}
-				]
-			}
-		},
-		"/rcms-api/1/manifest/gcs": {
-			"summary": "rcms_api:1:Manifest:gcs_info",
-			"description": "Operations Desc",
-			"get": {
-				"tags": [
-					null
-				],
-				"summary": "",
-				"description": "\n### **Manifest::gcs_info (v1)**\n\n",
-				"parameters": [
-					{
-						"name": "_output_format",
-						"schema": {
-							"type": "string",
-							"format": ""
-						},
-						"in": "query",
-						"required": false,
-						"style": "form",
-						"explode": true,
-						"description": "Format (json|xml|csv)"
-					},
-					{
-						"name": "_lang",
-						"schema": {
-							"type": "string",
-							"format": ""
-						},
-						"in": "query",
-						"required": false,
-						"style": "form",
-						"explode": true,
-						"description": "Language"
-					},
-					{
-						"name": "_charset",
-						"schema": {
-							"type": "string",
-							"format": ""
-						},
-						"in": "query",
-						"required": false,
-						"style": "form",
-						"explode": true,
-						"description": "Charset"
-					}
-				],
-				"responses": {
-					"200": {
 						"description": ""
 					}
 				},
