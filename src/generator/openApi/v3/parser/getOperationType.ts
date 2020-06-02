@@ -7,7 +7,7 @@ import { Dictionary } from '../../../utils/types';
  * @param pathSummary
  * @note here 'pathSummary' is not 'summary' in operation, should be set from path object.
  */
-export function getOperationType(pathSummary: string = ''): 'LOGIN' | 'LOGOUT' | 'TOKEN' | null {
+export function getOperationType(pathSummary: string = ''): 'LOGIN' | 'LOGOUT' | 'TOKEN' | 'FIREBASE_TOKEN' | null {
     if (pathSummary === '') {
         return null;
     }
@@ -23,6 +23,9 @@ export function getOperationType(pathSummary: string = ''): 'LOGIN' | 'LOGOUT' |
     }
     if (isMatchAll('login:1:Login:token')) {
         return 'TOKEN';
+    }
+    if (isMatchAll('login:1:Login:firebaseToken')) {
+        return 'FIREBASE_TOKEN';
     }
 
     return null;

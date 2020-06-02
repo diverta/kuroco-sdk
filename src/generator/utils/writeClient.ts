@@ -11,7 +11,7 @@ import { writeClientServices } from './writeClientServices';
 import { writeClientSettings } from './writeClientSettings';
 import { writeApiInfo } from './writeApiInfo';
 import { writeAuth } from './writeAuth';
-import { writeUploadHelper } from './writeUploadHelper';
+import { writeUploader } from './writeUploader';
 import { KurocoConfig } from '../..';
 
 function copySupportFile(filePath: string, outputPath: string): void {
@@ -54,7 +54,7 @@ export function writeClient(client: Client, templates: Templates, output: string
     writeApiInfo(client.services, templates, outputPathCore, exportApiInformations);
     writeAuth(client.services, templates, outputPathCore);
     writeClientSettings(client, templates, outputPathCore);
-    writeUploadHelper(client, kurocoConfig, templates, outputPathCore);
+    writeUploader(client, kurocoConfig, templates, outputPathCore);
 
     mkdirp.sync(outputPathServices);
     writeClientServices(client.services, templates, outputPathServices, exportApiInformations);
