@@ -16,4 +16,4 @@ generated
 
 test*.json
 kuroco.*.json
-ext/tsconfig.forjs.includes.json
+tsconfig.forjs.json

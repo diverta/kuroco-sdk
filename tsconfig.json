@@ -1,9 +1,8 @@
 {
     "compileOnSave": false,
-
     "compilerOptions": {
         "outDir": "./dist",
-        "target": "esnext",
+        "target": "es6",
         "module": "commonjs",
         "moduleResolution": "node",
         "lib": ["esnext", "dom"],
@@ -26,8 +25,6 @@
         "emitDecoratorMetadata": true,
         "forceConsistentCasingInFileNames": true
     },
-
     "include": ["./src/index.ts"],
-
     "exclude": ["node_modules"]
 }

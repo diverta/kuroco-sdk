@@ -1,5 +1,8 @@
 const fs = require('fs-extra');
 const path = require('path');
+const childProcess = require('child_process');
+const rimraf = require('rimraf');
+const mkdirp = require('mkdirp');
 
 const configurationFilePath = path.resolve(process.cwd(), 'kuroco.config.json');
 
@@ -30,31 +33,31 @@ module.exports = {
 
     /** generate JS file. */
     generateJsFiles: (output, tsDir) => {
-        const paths = {
-            output: path.resolve(output),
-            tsconfigJs: path.resolve(__dirname, '..', 'ext', 'tsconfig.forjs.json'),
-            tsconfigJsWithIncludes: path.resolve(__dirname, '..', 'ext', 'tsconfig.forjs.includes.json'),
-        };
+        const tsconfigForJs = path.resolve(__dirname, '..', 'tsconfig.forjs.json');
 
-        function writeTsconfigJsWithInjectIncludes(paths) {
+        function writeTsconfigForJs(tsconfigForJs, tsDir) {
+            rimraf.sync(tsconfigForJs);
             fs.writeFileSync(
-                paths.tsconfigJsWithIncludes,
+                tsconfigForJs,
                 JSON.stringify({
+                    extends: './tsconfig.json',
                     include: [`${tsDir}/**/*.ts`],
                 }),
-                { overwrite: true }
             );
         }
-
-        function write(paths, buildCmd) {
-            rimraf.sync(paths.output);
-            mkdirp.sync(paths.output);
+        function write(tsconfigForJs, output) {
+            rimraf.sync(output);
+            mkdirp.sync(output);
+            const buildCmd = `npx tsc -p ${tsconfigForJs} --outDir ${output}`;
             childProcess.spawnSync(buildCmd, { cwd: process.cwd(), shell: true, stdio: 'inherit' });
         }
+        function removeTsdDir(tsDir) {
+            rimraf.sync(tsDir);
+        }
 
-        writeTsconfigJsWithInjectIncludes(paths);
-        const buildCmd = `npx tsc -p ${paths.tsconfigJs} --outDir ${paths.output}`;
-        write(paths, buildCmd);
+        writeTsconfigForJs(tsconfigForJs, tsDir);
+        write(tsconfigForJs, output);
+        removeTsdDir(tsDir);
     },
 
     /** load firebase configuration inside of kuroco config. */

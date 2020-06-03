@@ -2,11 +2,8 @@
 
 'use strict';
 
-const fs = require('fs-extra');
 const path = require('path');
-const childProcess = require('child_process');
 const program = require('commander');
-const rimraf = require('rimraf');
 const mkdirp = require('mkdirp');
 const pkg = require('../package.json');
 
@@ -45,8 +42,9 @@ function applyGenerate() {
                         });
                         break;
                     case 'js':
-                        const tmpDir = path.resolve(require('os').tmpdir(), `${new Date().getTime()}`);
+                        const tmpDir = path.resolve(__dirname, '..', '.tmp');
                         mkdirp.sync(tmpDir);
+                        // executes toward tmpDir tentatively.
                         OpenAPI.generate({
                             ...options,
                             config: loadKurocoConfig(),

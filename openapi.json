@@ -12,6 +12,65 @@
 		}
 	],
 	"paths": {
+				"/rcms-api/1/firebase_token": {
+			"summary": "login:1:Login:firebaseToken",
+			"description": "Operations Desc",
+			"get": {
+				"tags": [
+					"Authentication"
+				],
+				"summary": "",
+				"description": "\n### **Login::firebaseToken (v1)**\n\n",
+				"parameters": [
+					{
+						"name": "_output_format",
+						"schema": {
+							"type": "string",
+							"format": ""
+						},
+						"in": "query",
+						"required": false,
+						"style": "form",
+						"explode": true,
+						"description": "Format (json|xml|csv)"
+					},
+					{
+						"name": "_lang",
+						"schema": {
+							"type": "string",
+							"format": ""
+						},
+						"in": "query",
+						"required": false,
+						"style": "form",
+						"explode": true,
+						"description": "Language"
+					},
+					{
+						"name": "_charset",
+						"schema": {
+							"type": "string",
+							"format": ""
+						},
+						"in": "query",
+						"required": false,
+						"style": "form",
+						"explode": true,
+						"description": "Charset"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": ""
+					}
+				},
+				"security": [
+					{
+						"Token-Auth": []
+					}
+				]
+			}
+		},
 		"/rcms-api/1/auth/login": {
 			"summary": "login:1:Login:login_challenge",
 			"description": "Operations Desc",
