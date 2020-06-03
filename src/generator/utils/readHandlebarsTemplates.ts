@@ -40,7 +40,7 @@ export function readHandlebarsTemplates(): Templates {
         settings: readHandlebarsTemplate(resolveTemplate('core/OpenAPI.hbs')),
         apiInfo: readHandlebarsTemplate(resolveTemplate('core/ApiInfo.hbs')),
         auth: readHandlebarsTemplate(resolveTemplate('core/Auth.hbs')),
-        uploadHelper: readHandlebarsTemplate(resolveTemplate('core/UploadHelper.hbs')),
+        uploadHelper: readHandlebarsTemplate(resolveTemplate('core/Uploader.hbs')),
     };
 
     const partials = [
