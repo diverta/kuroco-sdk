@@ -14,8 +14,11 @@ const {
     loadKurocoConfig,
     getSpecifedLanguage,
     generateJsFiles,
-    loadFirebaseConfigurations
+    loadFirebaseConfigurations,
 } = require('./utils');
+const {
+    installDependencies,
+} = require('./deps');
 
 program.version(pkg.version);
 
@@ -34,6 +37,9 @@ function applyGenerate() {
         .description('generates javascript/typescript sourcecodes.')
         .action((cmd, options) => {
             if (OpenAPI) {
+
+                installDependencies(process.cwd(), 'firebase');
+
                 switch (getSpecifedLanguage(options.language)) {
                     case 'ts':
                         OpenAPI.generate({
