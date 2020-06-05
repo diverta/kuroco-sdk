@@ -4,6 +4,7 @@
 /* prettier-ignore */
 
 interface Config {
+    SAML_URL: string;
     BASE: string;
     VERSION: string;
     TOKEN: string;
@@ -11,6 +12,7 @@ interface Config {
 }
 
 export const OpenAPI: Config = {
+    SAML_URL: '{{{samlUrl}}}',
     BASE: '{{{server}}}',
     VERSION: '{{{version}}}',
     TOKEN: '',

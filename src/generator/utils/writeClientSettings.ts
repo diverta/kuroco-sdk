@@ -14,6 +14,7 @@ export function writeClientSettings(client: Client, templates: Templates, output
     fs.writeFileSync(
         path.resolve(outputPath, 'OpenAPI.ts'),
         templates.settings({
+            samlUrl: `${client.server}/direct/login/saml_login/?spid=1`,
             server: client.server,
             version: client.version,
             security: client.security,
