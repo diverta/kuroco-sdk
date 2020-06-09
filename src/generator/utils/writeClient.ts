@@ -49,7 +49,6 @@ export function writeClient(client: Client, templates: Templates, output: string
     copySupportFile('core/RequestOptions.ts', outputPath);
     copySupportFile('core/requestUsingFetch.ts', outputPath);
     copySupportFile('core/Result.ts', outputPath);
-    copySupportFile('core/flow.js', outputPath);
 
     writeApiInfo(client.services, templates, outputPathCore, exportApiInformations);
     writeAuth(client.services, templates, outputPathCore);
