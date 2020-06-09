@@ -48,7 +48,7 @@ module.exports = {
         function write(tsconfigForJs, output) {
             rimraf.sync(output);
             mkdirp.sync(output);
-            const buildCmd = `npx tsc -p ${tsconfigForJs} --outDir ${output}`;
+            const buildCmd = `npx -p typescript tsc -p ${tsconfigForJs} --outDir ${output}`;
             childProcess.spawnSync(buildCmd, { cwd: process.cwd(), shell: true, stdio: 'inherit' });
         }
         function removeTsdDir(tsDir) {
