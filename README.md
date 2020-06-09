@@ -72,6 +72,10 @@ you can select which type you needed with `-l or --language` option (default Typ
 kuroco generate -l javascript
 ```
 
+> Please mention if your project is using TypeScript and you generate where outside of src in your project,  
+> declare that directory path at typeRoots property in `tsconfig.json`.
+> `"typeRoots": ["./generated"],`
+
 #### Authentication handler
 
 If you need to handle about Authentication configured in Kuroco in advance,  
