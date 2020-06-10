@@ -34,7 +34,7 @@ function applyGenerate() {
         .option('-o, --output <value>', 'Output directory', defaultOutputPath)
         .option('-l, --language <value>', 'Language either TypeScript or JavaScript', 'TypeScript')
         .option('--lib', 'Output as library (exporting package.json)', false)
-        .option('--umd', 'Output as UMD module (JavaScript only)', false)
+        .option('--standalone', 'Output as executable file on browser (JavaScript only)', false)
         .option('--exportApiInformations', 'Generate API informatinos', false)
         .option('--write', 'Export files (for developper option)', true)
         .description('generates javascript/typescript sourcecodes.')

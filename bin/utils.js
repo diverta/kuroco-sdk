@@ -33,31 +33,29 @@ module.exports = {
 
     /** generate JS file. */
     generateJsFiles: (option, tsDir) => {
-        const tsconfigForJs = path.resolve(__dirname, 'tsconfig.forjs.json');
+        function write({ output, standalone }, tsDir) {
+            const outputDir = path.resolve(process.cwd(), output);
+            const outputFile = path.resolve(outputDir, 'index.js');
+            const entry = path.resolve(tsDir, 'index.ts');
+            const webpackconfig = path.resolve(__dirname, 'webpack.config.forjs.js');
+            const tsconfig = path.resolve(__dirname, 'tsconfig.forjs.json');
+            
+            rimraf.sync(outputDir);
+            mkdirp.sync(outputDir);
 
-        function apply({ umd }) {
-            const module = umd ? 'umd' : 'commonjs';
-
-            const conf = fs.readJSONSync(tsconfigForJs);
-            conf.compilerOptions = {
-                ...conf.compilerOptions,
-                module,
-            }
-            fs.writeJsonSync(tsconfigForJs, conf, { spaces: 4 })
-        }
-        function write({ output }, tsconfigForJs) {
-            rimraf.sync(output);
-            mkdirp.sync(output);
-            const buildCmd = `npx -p typescript tsc -p ${tsconfigForJs} --outDir ${output}`;
-            childProcess.spawnSync(buildCmd, { cwd: process.cwd(), shell: true, stdio: 'inherit' });
-        }
-        function removeTsdDir(tsDir) {
-            rimraf.sync(tsDir);
+            const tscCmd = `npx -p typescript tsc -p ${tsconfig} --outDir ${outputDir}`;
+            const webpackCmd = `npx webpack-cli \
+                --config ${webpackconfig} \
+                --entry ${entry} \
+                --output ${outputFile} \
+                --silent`;
+            const cmd = standalone ? webpackCmd : tscCmd;
+            
+            childProcess.spawnSync(cmd, { cwd: path.resolve(__dirname), shell: true, stdio: 'inherit' });
         }
 
-        apply(option);
-        write(option, tsconfigForJs);
-        removeTsdDir(tsDir);
+        write(option, tsDir);
+        rimraf.sync(tsDir);
     },
 
     /** provide package.json for lib use. */
