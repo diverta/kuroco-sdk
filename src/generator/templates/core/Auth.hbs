@@ -4,23 +4,33 @@
 /* prettier-ignore */
 
 // @ts-ignore-start
-import { SpecialOperationInfo } from './ApiInfo';
 import { Result } from './Result';
 import { OpenAPI } from './OpenAPI';
 import { ApiError } from './ApiError';
+import { LocalStorage } from './LocalStorage';
 // @ts-ignore-end
 
-export class Auth {
-    public static async login(param: {{#if login}}Parameters<typeof SpecialOperationInfo.login.method>[0]{{else}}any{{/if}}) {
-        Auth.deleteAccessToken();
-        Auth.deleteRefreshToken();
+{{#each importer}}
+import { {{{this}}} } from '../services/{{{this}}}';
+{{/each}}
 
-        {{#if login}}
-        if (!SpecialOperationInfo.login) {
+export const SpecialOperations = {
+    {{#each operations}}
+    {{{@key}}}: {{#if this}}{{{this.method}}}{{else}}null{{/if}},
+    {{/each}}
+}
+
+export class Auth {
+    public static async login(param: {{#if operations.login}}Parameters<typeof SpecialOperations.login>[0]{{else}}any{{/if}}) {
+        LocalStorage.deleteAccessToken();
+        LocalStorage.deleteRefreshToken();
+
+        {{#if operations.login}}
+        if (!SpecialOperations.login) {
             return Promise.resolve();
         }
 
-        const res = await SpecialOperationInfo.login.method(param);
+        const res = await SpecialOperations.login(param);
         const { grant_token, errors } = res;
 
         if (errors && Array.isArray(errors) && errors.length > 0) {
@@ -35,29 +45,29 @@ export class Auth {
         {{/if}}
     }
 
-    public static async logout(param: {{#if logout}}Parameters<typeof SpecialOperationInfo.logout.method>[0]{{else}}any{{/if}}) {
-        {{#if logout}}
-        return await SpecialOperationInfo.logout.method(param).finally(() => {
-            Auth.deleteAccessToken();
-            Auth.deleteRefreshToken();
+    public static async logout(param: {{#if operations.logout}}Parameters<typeof SpecialOperations.logout>[0]{{else}}any{{/if}}) {
+        {{#if operations.logout}}
+        return await SpecialOperations.logout(param).finally(() => {
+            LocalStorage.deleteAccessToken();
+            LocalStorage.deleteRefreshToken();
         });
         {{else}}
-        Auth.deleteAccessToken();
-        Auth.deleteRefreshToken();
+        LocalStorage.deleteAccessToken();
+        LocalStorage.deleteRefreshToken();
         return Promise.resolve();
         {{/if}}
     }
 
-    public static async createToken(param: {{#if token}}Parameters<typeof SpecialOperationInfo.token.method>[0]{{else}}any{{/if}}) {
-        {{#if token}}
+    public static async createToken(param: {{#if operations.token}}Parameters<typeof SpecialOperations.token>[0]{{else}}any{{/if}}) {
+        {{#if operations.token}}
         if (OpenAPI.SECURITY['Token-Auth']) {
-            const res = await SpecialOperationInfo.token.method(param);
+            const res = await SpecialOperations.token(param);
             const { access_token, refresh_token } = res;
             if (access_token) {
-                Auth.setAccessToken(access_token);
+                LocalStorage.setAccessToken(access_token);
             }
             if (refresh_token) {
-                Auth.setRefreshToken(refresh_token);
+                LocalStorage.setRefreshToken(refresh_token);
             }
             return res;
         }
@@ -69,64 +79,30 @@ export class Auth {
 
     public static async retryRequest(requestFn: () => Promise<Result>, result: Result) {
         // throws error when refresh_token is empty
-        if (!Auth.getRefreshToken()) {
-            Auth.deleteTokens();
+        if (!LocalStorage.getRefreshToken()) {
+            LocalStorage.deleteTokens();
             await Auth.onErrorHandler(result);
             throw new ApiError(result, ApiError.Message.UNAUTHORIZED);
         }
         // handle on error to get refreshed token
-        await Auth.createToken({ requestBody: { refresh_token: Auth.getRefreshToken() } }).catch(async () => {
-            Auth.deleteTokens();
+        await Auth.createToken({ requestBody: { refresh_token: LocalStorage.getRefreshToken() } }).catch(async () => {
+            LocalStorage.deleteTokens();
             await Auth.onErrorHandler(result);
             throw new ApiError(result, ApiError.Message.UNAUTHORIZED);
         });
         // retry with refreshed token
         result = await requestFn().catch(async () => {
-            Auth.deleteTokens();
+            LocalStorage.deleteTokens();
             await Auth.onErrorHandler(result);
             throw new ApiError(result, ApiError.Message.UNAUTHORIZED);
         });
 
         return result;
     }
-
-    /** get */
-    public static getAccessToken() {
-        const token = localStorage.getItem(Auth.TokenKeys.accessToken);
-        return !!token ? token : '';
-    }
-    public static getRefreshToken() {
-        const token = localStorage.getItem(Auth.TokenKeys.refreshToken);
-        return !!token ? token : '';
-    }
-
-    /** set */
-    public static setAccessToken(token: string) {
-        localStorage.setItem(Auth.TokenKeys.accessToken, token);
-    }
-    public static setRefreshToken(token: string) {
-        localStorage.setItem(Auth.TokenKeys.refreshToken, token);
-    }
-
-    /** delete */
-    public static deleteAccessToken() {
-        localStorage.removeItem(Auth.TokenKeys.accessToken);
-    }
-    public static deleteRefreshToken() {
-        localStorage.removeItem(Auth.TokenKeys.refreshToken);
-    }
-    public static deleteTokens() {
-        localStorage.removeItem(Auth.TokenKeys.accessToken);
-        localStorage.removeItem(Auth.TokenKeys.refreshToken);
-    }
 }
 
 export namespace Auth {
     export let onErrorHandler: (result: Result) => Promise<void> = result => Promise.reject();
-    export enum TokenKeys {
-        accessToken = 'accessToken',
-        refreshToken = 'refreshToken',
-    }
 }
 
 export interface LoginResponse {

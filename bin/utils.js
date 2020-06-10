@@ -33,18 +33,8 @@ module.exports = {
 
     /** generate JS file. */
     generateJsFiles: (output, tsDir) => {
-        const tsconfigForJs = path.resolve(__dirname, '..', 'tsconfig.forjs.json');
+        const tsconfigForJs = path.resolve(__dirname, 'tsconfig.forjs.json');
 
-        function writeTsconfigForJs(tsconfigForJs, tsDir) {
-            rimraf.sync(tsconfigForJs);
-            fs.writeFileSync(
-                tsconfigForJs,
-                JSON.stringify({
-                    extends: './tsconfig.json',
-                    include: [`${tsDir}/**/*.ts`],
-                }),
-            );
-        }
         function write(tsconfigForJs, output) {
             rimraf.sync(output);
             mkdirp.sync(output);
@@ -55,7 +45,6 @@ module.exports = {
             rimraf.sync(tsDir);
         }
 
-        writeTsconfigForJs(tsconfigForJs, tsDir);
         write(tsconfigForJs, output);
         removeTsdDir(tsDir);
     },

@@ -11,7 +11,7 @@
 import { ApiError, catchGenericError } from '../core/ApiError';
 import { request as __request } from '../core/request';
 import { OpenAPI } from '../core/OpenAPI';
-import { Auth } from '../core/Auth';
+import { LocalStorage } from '../core/LocalStorage';
 
 export class {{{name}}} {
 {{#each operations}}
@@ -48,7 +48,7 @@ export class {{{name}}} {
 
         const request = async () =>
             await __request({
-                headers: shouldHookToken ? {[(OpenAPI.SECURITY['Token-Auth'] as any).name]: `${Auth.getAccessToken()}`} : {},
+                headers: shouldHookToken ? {[(OpenAPI.SECURITY['Token-Auth'] as any).name]: `${LocalStorage.getAccessToken()}`} : {},
                 method: '{{{method}}}',
                 path: `{{{path}}}`,
                 {{#if parametersCookie~}}
@@ -99,7 +99,7 @@ export class {{{name}}} {
             let result = await request();
 
             if (shouldHookToken && !result.ok && result.status === 401) {
-                result = await Auth.retryRequest(request, result);
+                result = await import('../core/Auth').then(({ Auth }) => Auth.retryRequest(request, result));
             }
 
             catchGenericError(result);

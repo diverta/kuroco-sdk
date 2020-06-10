@@ -14,36 +14,16 @@ import { Operation } from '../client/interfaces/Operation';
  * @param exportApiInformations Generate API informations.
  */
 export function writeApiInfo(services: Service[], templates: Templates, outputPath: string, exportApiInformations = false): void {
-    const file = path.resolve(outputPath, `ApiInfo.ts`);
 
-    function pickSpecialOperation(type: string): any | null {
-        const service = services.find(s => s.operations.some(o => o.type === type));
-        if (!service) {
-            return null;
-        }
-
-        const operation = service.operations.find(o => o.type === type);
-        if (!operation) {
-            return null;
-        }
-
-        return {
-            ...operation,
-            class: service.name,
-            className: service.name,
-            method: `${service.name}.${operation.name}`,
-            methodName: operation.name,
-        };
+    if (!exportApiInformations) {
+        return;
     }
 
+    const file = path.resolve(outputPath, `ApiInfo.ts`);
     const templateResult = templates.apiInfo({
         exportApiInformations,
         services,
-        specialOperation: {
-            login: pickSpecialOperation('LOGIN'),
-            logout: pickSpecialOperation('LOGOUT'),
-            token: pickSpecialOperation('TOKEN'),
-        },
     });
+
     fs.writeFileSync(file, format(templateResult));
 }

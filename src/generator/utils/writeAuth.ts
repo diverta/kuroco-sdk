@@ -33,10 +33,21 @@ export function writeAuth(services: Service[], templates: Templates, outputPath:
         };
     }
 
-    const templateResult = templates.auth({
+    const operations = {
         login: pickSpecialOperation('LOGIN'),
         logout: pickSpecialOperation('LOGOUT'),
         token: pickSpecialOperation('TOKEN'),
+    };
+
+    let importer = Object.values(operations)
+        .filter(v => v !== null)
+        .map(v => v.class);
+    const uniq = (array: any[]) => ([...new Set(array)]);
+    importer = uniq(importer);
+
+    const templateResult = templates.auth({
+        importer,
+        operations,
     });
     fs.writeFileSync(file, format(templateResult));
 }
