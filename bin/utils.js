@@ -49,6 +49,11 @@ module.exports = {
         removeTsdDir(tsDir);
     },
 
+    /** provide package.json for lib use. */
+    providePackageJson: (output) => {
+        fs.copyFileSync(path.resolve(__dirname, 'package.lib.json'), path.resolve(output, 'package.json'));
+    },
+
     /** load firebase configuration inside of kuroco config. */
     loadFirebaseConfigurations: () => {
         path.resolve(process.cwd(), 'kuroco.config.json');

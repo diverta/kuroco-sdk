@@ -14,6 +14,7 @@ const {
     loadKurocoConfig,
     getSpecifedLanguage,
     generateJsFiles,
+    providePackageJson,
     loadFirebaseConfigurations,
 } = require('./utils');
 const {
@@ -32,6 +33,7 @@ function applyGenerate() {
         .option('-i, --input <value>', 'Path to swagger specification', defaultInputPath)
         .option('-o, --output <value>', 'Output directory', defaultOutputPath)
         .option('-l, --language <value>', 'Language either TypeScript or JavaScript', 'TypeScript')
+        .option('--lib', 'Output as library (exporting package.json)', false)
         .option('--exportApiInformations', 'Generate API informatinos', false)
         .option('--write', 'Export files (for developper option)', true)
         .description('generates javascript/typescript sourcecodes.')
@@ -59,6 +61,9 @@ function applyGenerate() {
                         // executes tsc to generate JS from TS, then remake output dir.
                         generateJsFiles(options.output, tmpDir);
                         break;
+                }
+                if (options.lib) {
+                    providePackageJson(options.output)
                 }
             }
         })

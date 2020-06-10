@@ -1,0 +1,9 @@
+{
+  "name": "kuroco",
+  "version": "1.0.0",
+  "description": "auto generated library by Kuroco",
+  "main": "index.js",
+  "author": "",
+  "license": "UNLICENSED",
+  "private": true
+}
