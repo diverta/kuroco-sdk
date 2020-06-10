@@ -32,10 +32,20 @@ module.exports = {
     },
 
     /** generate JS file. */
-    generateJsFiles: (output, tsDir) => {
+    generateJsFiles: (option, tsDir) => {
         const tsconfigForJs = path.resolve(__dirname, 'tsconfig.forjs.json');
 
-        function write(tsconfigForJs, output) {
+        function apply({ umd }) {
+            const module = umd ? 'umd' : 'commonjs';
+
+            const conf = fs.readJSONSync(tsconfigForJs);
+            conf.compilerOptions = {
+                ...conf.compilerOptions,
+                module,
+            }
+            fs.writeJsonSync(tsconfigForJs, conf, { spaces: 4 })
+        }
+        function write({ output }, tsconfigForJs) {
             rimraf.sync(output);
             mkdirp.sync(output);
             const buildCmd = `npx -p typescript tsc -p ${tsconfigForJs} --outDir ${output}`;
@@ -45,7 +55,8 @@ module.exports = {
             rimraf.sync(tsDir);
         }
 
-        write(tsconfigForJs, output);
+        apply(option);
+        write(option, tsconfigForJs);
         removeTsdDir(tsDir);
     },
 

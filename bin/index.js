@@ -34,6 +34,7 @@ function applyGenerate() {
         .option('-o, --output <value>', 'Output directory', defaultOutputPath)
         .option('-l, --language <value>', 'Language either TypeScript or JavaScript', 'TypeScript')
         .option('--lib', 'Output as library (exporting package.json)', false)
+        .option('--umd', 'Output as UMD module (JavaScript only)', false)
         .option('--exportApiInformations', 'Generate API informatinos', false)
         .option('--write', 'Export files (for developper option)', true)
         .description('generates javascript/typescript sourcecodes.')
@@ -59,7 +60,7 @@ function applyGenerate() {
                             output: tmpDir,
                         });
                         // executes tsc to generate JS from TS, then remake output dir.
-                        generateJsFiles(options.output, tmpDir);
+                        generateJsFiles(options, tmpDir);
                         break;
                 }
                 if (options.lib) {
