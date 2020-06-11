@@ -76,6 +76,65 @@ kuroco generate -l javascript
 > declare that directory path at typeRoots property in `tsconfig.json`.
 > `"typeRoots": ["./generated"],`
 
+### How to use in your code
+
+If you using npm and it's pre-processing, we recommend to use them with ESModule import way.  
+you can use them that just importing them.  
+```typescript
+import { Auth, TopicsService } from "kuroco";
+
+/** get Topics datas with login */
+async function getTopicsList() {
+  await Auth.login({
+    requestBody: { email: 'test', password: 'qwer1234' },
+  })
+  return await TopicsService.getTopicsServiceRcmsApi1Topics1({});
+}
+```
+
+And also, there are 2 ways how to install generated codes,  
+1. run `kuroco generate --lib -o outputDir` and `install outputDir --save`,  
+   import them by `import Kuroco from 'kuroco'` in your code.
+2. run `kuroco generate -o in/your/src/outputDir`  
+   and just import them by `import Kuroco from 'in/your/src/outputDir'` in your code.
+The former is specifying to export it's own `package.json` into the output dir,  
+therefore you can use them with local files installing with npm.  
+The latter is just exporting sourcecodes as commonjs modules.
+
+Or, if your codes are **NOT** based on NPM and using it's pre-processors (for example using jQuery on CDN and plain JavaScripts),  
+we also prepare an option that have generated codes be executable on browser,  
+it is bundled as `index.js`.  
+The option is `--standalone`, you use `kuroco generate --language javascript --standalone`.  
+After that, just load generated codes in the header section of HTML.  
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <script src="kuroco-standalone/index.js"></script>
+  </head>
+
+  <body>
+        <script>
+            const { Auth, TopicsService } = Kuroco;
+
+            async function getTopicsList() {
+                await Auth.login({
+                    requestBody: { email: 'test', password: 'qwer1234' },
+                })
+                return await TopicsService.getTopicsServiceRcmsApi1Topics1({});
+            }
+
+            getTopicsList()
+                .then(console.log);
+        </script>
+  </body>
+</html>
+```
+
+Please refere other options with `kuroco -h` or `kuroco generate -h`.  
+For finding more examples check out [our concrete code samples](https://github.com/diverta/kuroco_sdk_examples) with Kuroco.
+
 #### Authentication handler
 
 If you need to handle about Authentication configured in Kuroco in advance,  
