@@ -66,5 +66,5 @@ export function writeClient(client: Client, templates: Templates, output: string
     copySupportFile('models/Dictionary.ts', outputPath);
     writeClientModels(client.models, templates, outputPathModels);
 
-    writeClientIndex(client, templates, outputPath);
+    writeClientIndex(client, kurocoConfig, templates, outputPath);
 }

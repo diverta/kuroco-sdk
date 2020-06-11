@@ -152,7 +152,7 @@ Auth.login({ requestBody: { email: 'test@example.com', password: 'PASSWORD' } })
 `Auth.login()` in above executes login -> token in order if the system is applied to use Tokens,  
 on the other hand executes only login if not.
 
-##### apply a handler at unauthorized error occured
+##### Apply a handler at unauthorized error occured
 
 You can regist your own handler for unauthorizations in advance.  
 The Auth module can resolve about auth automatically,  
@@ -171,6 +171,29 @@ Auth.onErrorHandler = result => {
     return result;
 };
 ```
+
+#### Uploader module
+
+We prepared for uploading usage as declarating a util Uploader.  
+Here is a part of example in our component.
+```typescript
+    onChangeInputFile(e: Event) {
+        const newFile = (e.target as any).files[0] as File;
+        this.uploader.upload(newFile)
+            .then((res) => console.log(res.url))
+            .catch(console.error);
+    },
+    async mountUploader() {
+        try {
+            this.uploader = await UploaderFactory.create({})
+        } catch(e) {
+            console.error('could not creat uploader for:', e);
+        }
+    }
+```
+
+Note this Uploader is available only when users are authenticated (if you have applied token or login at Kuroco),  
+And this module is using Firebase Storage, so you need to prepare it in advance with your own account before using.
 
 #### Generates API informations
 
