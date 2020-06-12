@@ -41,7 +41,7 @@ function applyGenerate() {
         .action((cmd, options) => {
             if (OpenAPI) {
 
-                installDependencies(process.cwd(), 'firebase');
+                installDependencies(process.cwd(), 'firebase', '@vimeo/player');
 
                 switch (getSpecifedLanguage(options.language)) {
                     case 'ts':
