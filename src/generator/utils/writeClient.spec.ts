@@ -31,9 +31,11 @@ describe('writeClient', () => {
             service: () => 'dummy',
             settings: () => 'dummy',
             apiInfo: () => 'dummy',
+            auth: () => 'dummy',
+            uploadHelper: () => 'dummy',
         };
 
-        writeClient(client, templates, '/');
+        writeClient(client, templates, '/', true, {} as any);
 
         expect(rimrafSync).toBeCalled();
         expect(mkdirpSync).toBeCalled();

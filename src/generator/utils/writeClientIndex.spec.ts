@@ -25,9 +25,11 @@ describe('writeClientIndex', () => {
             service: () => 'dummy',
             settings: () => 'dummy',
             apiInfo: () => 'dummy',
+            auth: () => 'dummy',
+            uploadHelper: () => 'dummy',
         };
 
-        writeClientIndex(client, templates, '/');
+        writeClientIndex(client, {} as any, templates, '/');
 
         expect(fsWriteFileSync).toBeCalledWith('/index.ts', 'dummy');
     });
