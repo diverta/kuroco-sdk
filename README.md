@@ -1,48 +1,55 @@
 # KurocoSDK
 
-> NodeJS library that generates Typescript or Javascript clients based on the OpenAPI specification.
+> NodeJS library that generates Typescript or Javascript clients based on the OpenAPI specification for Kuroco.
 
-### :heart: Acknowledge
+If are not familiar with Kuroco yet, please take a look here first : [kuroco.app](https://kuroco.app/)
 
-This repo is really influented by [openapi-typescript-codegen](https://github.com/ferdikoomen/openapi-typescript-codegen) thanks to the author [Ferdi Koomen](https://github.com/ferdikoomen) a lot!.
+Kuroco SDK project aims to generate a dynamic frontend sourcecode (henceforth referred to as kuroco lib) (currently in Typescript or Javascript) wrapping the API of your current Kuroco project as a convenient collection of methods, allowing an easy usage of your Kuroco API through data definition objects, removing parts of technical burden and more, thus facilitating the usage of the API to allow you to focus on the business logic of your frontend application.
+
+Please note that the generated code is dynamically assembled using the current Kuroco configuration & API definition. Were this configuration to change (API definitions, topics groups configuration, etc), you are required to regenerate the SDK for it to adjust to your latest configuration.
+
+### :heart: Acknowledgments
+
+This project is powered by an adaptation of [openapi-typescript-codegen](https://github.com/ferdikoomen/openapi-typescript-codegen), many thanks to the author [Ferdi Koomen](https://github.com/ferdikoomen) for his work !
 
 ---
 
 ## Installation
 
--   install into global as a executable bin:  
+-   Install globally :  
     `npm i -g kuroco-sdk && kuroco -v`
 
--   or install into your local project:  
+-   Or install locally in your current project:  
     `npm install -D kuroco-sdk && npx kuroco -v`
 
 ### Pre-requisities
 
-**requires Node 12.13.1 or higher**  
-To install Node, please follow below site.  
+**Node 12.13.1 or higher**  
 http://nodejs.org/
 
-### Configurations
+### Configuration
 
-Before first execution, please make `kuroco.config.json` file onto your project's root.  
-We reccomend to execute `kuroco init` to define it step by step.
+First step is to configure the project.
+We recommend to do so by running `kuroco init`, which will walk you through an interactive prompt to create the configuration file.
+Alternatively, it can be done by manually by adding `kuroco.config.json` file in your project's root folder.
 
+The file will contain a JSON configuration object like below :
 ```
 {
-    "sdk_key": "c9cdfd46b60bb0a34ba5c2c153ffad3f",  // an authorization token to make Kuroco to allow using SDK.
-    "api_url": "https://kuroco-dev.r-cms.jp/"       // your API host URL.
+    "sdk_key": "c9cdfd46b60bb0a34ba5c2c153ffad3f",  // Kuroco authorization token for the SDK
+    "api_url": "https://demo.picol.app/"            // Your Kuroco API host URL
     ... // other configurations
 }
 ```
 
-#### :question: Where the SDK key is exposed?
+#### :Question: Where can I get my SDK key ?
 
-The `sdk_key` is exposed at management screen.  
+The `sdk_key` can be found on the API List page of your Kuroco management interface.
 ![token](./.github/docs/assets/token.png)
 
 ---
 
-## An example to run this app in ease
+## Kuroco SDK quickstart
 
 ```
 kuroco init && \
@@ -56,33 +63,31 @@ kuroco generate
 
 ### Initialization
 
-`kuroco init` can help to form configurations.
+`kuroco init` interactive prompt for easy configuration
 
-### Pull definition from Kuroco
+### Pulling OpenApi definitions from Kuroco
 
-`kuroco pull` can pull (download & write) the latest openapi definition from Kuroco.
+`kuroco pull` can pull (download & write) the latest OpenApi definitions from Kuroco.
 
-### Generates TS/JS sourcecodes
+### Generating TS/JS kuroco library
 
-`kuroco generate` can provides TypeScript/JavaScript sourcecodes refered to the openapi definition in Kuroco also you can use your any apps.  
-you can choose which type you needed with `-l or --language` option (default TypeScript).
+`kuroco generate` builds the TypeScript/JavaScript kuroco lib based on the pulled OpenApi definition that you can integrate to your app to interface with Kuroco API
+Language may be selected using `-l` (or `--language`) option (default being typescript).
 
 ```
 kuroco generate -l javascript
 ```
 
-> Please mention if your project is using TypeScript and you generate where outside of src in your project,  
-> declare that directory path at typeRoots property in `tsconfig.json`.
+> If your project is using Typescript and you want to generate kuroco lib outside of your project's src folder, you may declare your custom directory path using `typeRoots` property in `tsconfig.json` :
 > `"typeRoots": ["./generated"],`
 
-### How to use in your code
+### Integrating the generated kuroco library to your application
 
-If you using npm and it's pre-processing, we recommend to utilize them with ESModule import way.  
-you can use them that just importing them.  
+The recommended way to import kuroco library is through ESModule :
 ```typescript
 import { Auth, TopicsService } from "kuroco";
 
-/** get Topics datas with login */
+/** Fetch Topics data on login */
 async function getTopicsList() {
   await Auth.login({
     requestBody: { email: 'test', password: 'qwer1234' },
@@ -91,20 +96,17 @@ async function getTopicsList() {
 }
 ```
 
-And as well, there are 2 ways how to install generated codes,  
+There are 2 ways to generate and install kuroco lib :
 1. run `kuroco generate --lib -o outputDir` and `install outputDir --save`,  
-   import them by `import Kuroco from 'kuroco'` in your code.
+   import them with `import Kuroco from 'kuroco'` in your code.
 2. run `kuroco generate -o in/your/src/outputDir`  
-   and just import them by `import Kuroco from 'in/your/src/outputDir'` in your code.
-The former is specifying to export it's own `package.json` into the output dir,  
-therefore you can apply local exported codes with npm installing.  
-The latter is just exporting sourcecodes as commonjs modules.
+   and just import them with `import Kuroco from 'in/your/src/outputDir'` in your code.
+The first variant will export its own `package.json` into the output directory, which can be used to bootstrap your application's npm project
+The second variant exports the library as commonjs modules.
 
-Or, if your codes are **NOT** based on NPM and using it's pre-processors (for example using jQuery on CDN and plain JavaScripts),  
-we also prepare an option that have generated codes be executable on browser,  
-it is bundled as `index.js`.  
-The option is `--standalone`, you use `kuroco generate --language javascript --standalone`.  
-After that, just load generated codes in the header section of HTML.  
+Alternatively, if your application is **NOT** an npm project (plain Javascript loaded by the browser), there is an option to generate the library as an executable js dependency bundled as `index.js`.
+The option is `--standalone`, so in this case you can use `kuroco generate --language javascript --standalone`.  
+After that, simply load the generated library using the basic way in your HTML header :
 ```html
 <!DOCTYPE html>
 <html lang="en">
@@ -131,16 +133,14 @@ After that, just load generated codes in the header section of HTML.
 </html>
 ```
 
-Please refere other options with `kuroco -h` or `kuroco generate -h`.  
-For getting more examples check out [our concrete code samples](https://github.com/diverta/kuroco_sdk_examples) with Kuroco.
+You can checkout full list of options with `kuroco -h` or `kuroco generate -h`.  
+For more examples, please check out [official code samples](https://github.com/diverta/kuroco_sdk_examples) supplied with Kuroco.
 
-#### Authentication handler
+#### Authentication handling
 
-If you require to handle about Authentication which is configured in Kuroco in advance,  
-we recommend to utilize `Auth` module instead of using authentication APIs directly.  
-This module can manage any of the cases, what authentication pattern is applied.  
-for example, if you have 2 kuroco APIs each have different authentication process (no-auth and token),  
-you can use `Auth` module in common for both cases.
+Due to multiple authentication patterns supported by Kuroco - mainly that each Kuroco API can be configured to be based either on Authentication header token or cookies, and at the same time be public or private - there is a technical burden of properly calling Auth API. To handle the implementation details for you, we provide an `Auth` module that covers all authentication patterns, even if you have defined multiple APIs having different authentication patterns.
+
+So, if you have properly setup Authentication APIs in your Kuroco management interface, we recommend using the generated `Auth` module instead of manually invoking authentication API
 
 ```typescript
 import { Auth } from 'kuroco';
@@ -148,17 +148,14 @@ Auth.login({ requestBody: { email: 'test@example.com', password: 'PASSWORD' } })
     .then(...)
 ```
 
-`Auth.login()` executes login -> token in order if the system is applied to use Tokens,  
+`Auth.login()` wraps the login logic depending on whether the API uses token (in which case it proceeds to chain login API -> token API calls to fetch your authentified token) or cookies (only login API is called in that case)
 on the other hand executes only login if not.
 
-##### Apply a handler at unauthorized error occured
+##### Handling unauthorized requests and expired sessions (tokens)
 
-You can apply your own error handler for unauthorizations in advance.  
+You should create an error handler for unauthorized requests in order to implement custom processing when the token expires (redirect to login page for example). The default handler ignores these errors, which is not ideal for a real world application.
 
-The Auth module can resolve about auth automatically,  
-if the response is error for expired, the process is intercepted to get new token and then retry.   
-However, that retrying still throw unauthorized error sometimes,  
-You may need your own handler like as to route to login page as routing-guard for this case.
+Please note that in case when your API uses tokens, and your token API has `use_refresh_token` setting set to true, Auth module is able to detect access token expiration error and automatically issue a request for a new token using the stored refresh token. However if refresh token is also expired, the retry call will be unauthorized as well - the handler is required anyways.
 
 ```typescript
 import { Auth } from 'kuroco';
@@ -171,10 +168,13 @@ Auth.onErrorHandler = result => {
 };
 ```
 
-#### Uploader module
+#### File uploading
 
-We make an util to upload files as `Uploader`.
-Here is a part of example in our component.
+Kuroco may be connected to Firebase Storage to enable file uploading. This feature requires you to configure Firebase credentials & app on Kuroco management interface prior to generating kuroco library.
+
+We provide an Uploader (`UploaderFactory`) component to facilitate file uploading.
+
+Here is an example of how we use it in our component :
 ```typescript
 import { UploaderFactory } from 'kuroco';
 ...
@@ -193,13 +193,15 @@ import { UploaderFactory } from 'kuroco';
     }
 ```
 
-Note this Uploader is available but only when users are authenticated (if you have applied token or login at Kuroco),
-And this module is using Firebase Storage, so you need to prepare it in advance with your own account before using.
+> File uploading is only possible for authenticated and logged in users
 
-#### Generates API informations
+#### Generating API information
 
-We provide a way to generate details of each endpoints for investigating all endpoints like e2e testing.  
-This may helps to get any infoemations cross-functionally.
+We provide a way to optionnally generate additional (meta) information about endpoints. This may be useful, for example, for e2e testing.
+
+```
+kuroco generate -exportApiInformations
+```
 
 ```typescript
 const AuthenticationalGetResponseExamples = [];
