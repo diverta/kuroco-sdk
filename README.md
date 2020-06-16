@@ -102,7 +102,7 @@ There are 2 ways to generate and install kuroco lib :
 2. run `kuroco generate -o in/your/src/outputDir`  
    and just import them with `import Kuroco from 'in/your/src/outputDir'` in your code.
 The first variant will export its own `package.json` into the output directory, which can be used to bootstrap your application's npm project
-The second variant exports the library as commonjs modules.
+The second variant exports the library as TypeScript or Javascript(commonjs) modules.
 
 Alternatively, if your application is **NOT** an npm project (plain Javascript loaded by the browser), there is an option to generate the library as an executable js dependency bundled as `index.js`.
 The option is `--standalone`, so in this case you can use `kuroco generate --language javascript --standalone`.  

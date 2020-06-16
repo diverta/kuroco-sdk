@@ -7,6 +7,7 @@ import { getServiceNames } from './getServiceNames';
 import { Templates } from './readHandlebarsTemplates';
 import { KurocoConfig } from '../..';
 
+// TODO: fix to being consistency of arguments order compare to the others
 /**
  * Generate the OpenAPI client index file using the Handlebar template and write it to disk.
  * The index file just contains all the exports you need to use the client as a standalone
