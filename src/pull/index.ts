@@ -27,7 +27,7 @@ export async function writeRcmsFilesWithFetch({ config, output, write = true }: 
 
     const res = await API.requestOpenAPI(config.api_url, config.sdk_key);
     if (!res.ok && res.status === 401) {
-        throw Error('the server responsed as unautorized, please check your SDK key.')
+        throw Error('the server responsed as unautorized, please check your SDK key.');
     }
     const openapi = (await res.json()).openapi_data;
     // hooks validation to openapi.json, this throw an Error whrn occurs invalidations.

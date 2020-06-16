@@ -25,6 +25,6 @@
         "emitDecoratorMetadata": true,
         "forceConsistentCasingInFileNames": true
     },
-    "include": ["./src/index.ts"],
+    "include": ["./src/index.ts", "./src/**/*.hbs"],
     "exclude": ["node_modules"]
 }

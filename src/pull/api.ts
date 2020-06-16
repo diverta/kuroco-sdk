@@ -8,8 +8,7 @@ export function requestOpenAPI(host: string, sdkKey: string) {
 
 export function requestManifest(host: string) {
     const uri = `${trimLastSlash(host)}/direct/rcms_api/manifest/`;
-    return fetch(uri)
-        .then(res => res.json() as Promise<Manifest>);
+    return fetch(uri).then(res => res.json() as Promise<Manifest>);
 }
 
 function trimLastSlash(url: string) {

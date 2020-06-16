@@ -2,7 +2,7 @@
  * this file is a definition which is supposed to be used anywhere.
  */
 
- /** general configuration of this app */
+/** general configuration of this app */
 export interface KurocoConfig {
     sdk_key: string;
     api_url: string;

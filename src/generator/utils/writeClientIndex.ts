@@ -18,7 +18,6 @@ import { KurocoConfig } from '../..';
  * @param outputPath Directory to write the generated files to.
  */
 export function writeClientIndex(client: Client, kurocoConfig: KurocoConfig, templates: Templates, outputPath: string): void {
-
     // TODO: duplicated
     function pickSpecialOperation(type: string): any | null {
         const service = client.services.find(s => s.operations.some(o => o.type === type));

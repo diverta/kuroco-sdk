@@ -14,7 +14,6 @@ import { Operation } from '../client/interfaces/Operation';
  * @param exportApiInformations Generate API informations.
  */
 export function writeApiInfo(services: Service[], templates: Templates, outputPath: string, exportApiInformations = false): void {
-
     if (!exportApiInformations) {
         return;
     }

@@ -169,7 +169,7 @@ export function getModel(openApi: OpenApi, definition: OpenApiSchema, isDefiniti
         const compositionItems = definition.oneOf
             .map(d => {
                 if (d.oneOf) {
-                    return ((d.oneOf.map(a => getModel(openApi, a)).flat() as Model[]).flat() as Model[]);
+                    return (d.oneOf.map(a => getModel(openApi, a)).flat() as Model[]).flat() as Model[];
                 }
                 if (d.anyOf) {
                     return (d.anyOf.map(a => getModel(openApi, a)).flat() as Model[]).flat() as Model[];
@@ -188,8 +188,8 @@ export function getModel(openApi: OpenApi, definition: OpenApiSchema, isDefiniti
                 return t.type;
             })
             .join(' | ');
-        if ((composition) === '') {
-            console.log(compositionItems)
+        if (composition === '') {
+            console.log(compositionItems);
         }
         model.type = composition;
         model.base = composition;

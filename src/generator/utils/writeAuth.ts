@@ -42,7 +42,7 @@ export function writeAuth(services: Service[], templates: Templates, outputPath:
     let importer = Object.values(operations)
         .filter(v => v !== null)
         .map(v => v.class);
-    const uniq = (array: any[]) => ([...new Set(array)]);
+    const uniq = (array: any[]) => [...new Set(array)];
     importer = uniq(importer);
 
     const templateResult = templates.auth({
