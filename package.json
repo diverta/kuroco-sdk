@@ -37,7 +37,7 @@
         "kuroco": "bin/index.js"
     },
     "files": [
-        "bin/index.js",
+        "bin/*.js",
         "dist/index.js",
         "dist/index.d.ts",
         "dist/**/*.js",
