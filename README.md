@@ -17,10 +17,10 @@ This project is powered by an adaptation of [openapi-typescript-codegen](https:/
 ## Installation
 
 -   Install globally :  
-    `npm i -g kuroco-sdk && kuroco -v`
+    `npm i -g kuroco-sdk && kuroco -V`
 
 -   Or install locally in your current project:  
-    `npm install -D kuroco-sdk && npx kuroco -v`
+    `npm install -D kuroco-sdk && npx kuroco -V`
 
 ### Pre-requisities
 
