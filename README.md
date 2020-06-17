@@ -2,7 +2,7 @@
 
 > NodeJS library that generates Typescript or Javascript clients based on the OpenAPI specification for Kuroco.
 
-If are not familiar with Kuroco yet, please take a look here first : [kuroco.app](https://kuroco.app/)
+If you are not familiar with Kuroco yet, please take a look here first : [kuroco.app](https://kuroco.app/)
 
 Kuroco SDK project aims to generate a dynamic frontend sourcecode (henceforth referred to as kuroco lib) (currently in Typescript or Javascript) wrapping the API of your current Kuroco project as a convenient collection of methods, allowing an easy usage of your Kuroco API through data definition objects, removing parts of technical burden and more, thus facilitating the usage of the API to allow you to focus on the business logic of your frontend application.
 
@@ -42,7 +42,7 @@ The file will contain a JSON configuration object like below :
 }
 ```
 
-#### :Question: Where can I get my SDK key ?
+#### Question: Where can I get my SDK key ?
 
 The `sdk_key` can be found on the API List page of your Kuroco management interface.
 ![token](./.github/docs/assets/token.png)
