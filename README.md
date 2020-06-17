@@ -224,7 +224,7 @@ Here is an example of using thier analytics feature in an our implementation:
 
  /** apply analytics */
 import 'firebase/analytics';
-import { firebaseApp } from './kuroco_api'; // instance of firebase already initialized.
+import { firebaseApp } from 'kuroco'; // instance of firebase already initialized.
 try {
   firebaseApp.analytics();
 } catch (e) {
