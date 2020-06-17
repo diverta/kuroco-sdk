@@ -1,15 +1,15 @@
 {
     "name": "kuroco-sdk",
-    "version": "0.1.8",
+    "version": "0.1.9",
     "description": "NodeJS library that generates Typescript or Javascript clients based on the OpenAPI specification.",
     "author": "Yusei Abe",
-    "homepage": "https://github.com/diverta/kuroco-sdk/kuroco-sdk",
+    "homepage": "https://github.com/diverta/kuroco-sdk",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/diverta/kuroco-sdk/kuroco-sdk.git"
+        "url": "git+https://github.com/diverta/kuroco-sdk.git"
     },
     "bugs": {
-        "url": "https://github.com/diverta/kuroco-sdk/kuroco-sdk/issues"
+        "url": "https://github.com/diverta/kuroco-sdk/issues"
     },
     "license": "MIT",
     "keywords": [
