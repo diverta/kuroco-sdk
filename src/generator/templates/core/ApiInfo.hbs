@@ -4,11 +4,11 @@
 /* prettier-ignore */
 
 {{#each services}}
-    import { infos as {{name}}Info } from '../services/{{name}}';
+    import * as {{name}} from '../services/{{name}}';
 {{/each}}
 
 export const ApiInfos = [
 {{#each services}}
-    ...{{name}}Info,
+    ...{{name}}.infos,
 {{/each}}
 ];
