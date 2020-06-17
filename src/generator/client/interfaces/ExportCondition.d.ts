@@ -1,5 +1,5 @@
 export interface ExportCondition {
-    firebase: boolean,
-    uploader: boolean,
-    apiInformations: boolean,
+    firebase: boolean;
+    uploader: boolean;
+    apiInformations: boolean;
 }

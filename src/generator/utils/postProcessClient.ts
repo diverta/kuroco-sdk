@@ -25,6 +25,6 @@ export function postProcessClient(client: Omit<Client, 'etc'>, kurocoConfig: Kur
             specialOperation,
             kurocoConfig,
             exportApiInformations,
-        }
+        },
     };
 }

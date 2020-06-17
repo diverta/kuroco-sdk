@@ -1,4 +1,4 @@
-import { OPERATION_PATTERN } from '../client/interfaces/OperationPattern'
+import { OPERATION_PATTERN } from '../client/interfaces/OperationPattern';
 import { Service } from '../client/interfaces/Service';
 
 /**

@@ -22,6 +22,7 @@ describe('writeClient', () => {
             models: [],
             services: [],
             security: {},
+            etc: {} as any,
         };
 
         const templates: Templates = {
@@ -33,9 +34,10 @@ describe('writeClient', () => {
             apiInfo: () => 'dummy',
             auth: () => 'dummy',
             uploadHelper: () => 'dummy',
+            firebaseUtil: () => 'dummy',
         };
 
-        writeClient(client, templates, '/', true, {} as any);
+        writeClient(client, templates, '/');
 
         expect(rimrafSync).toBeCalled();
         expect(mkdirpSync).toBeCalled();

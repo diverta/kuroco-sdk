@@ -15,6 +15,7 @@ import { writeUploader } from './writeUploader';
 import { writeFirebaseUtil } from './writeFirebaseUtil';
 import { OPERATION_PATTERN } from '../client/interfaces/OperationPattern';
 import { ExportCondition } from '../client/interfaces/ExportCondition';
+import { pickSpecialOperation } from './pickSpecialOperation';
 
 function copySupportFile(filePath: string, outputPath: string): void {
     // TODO: add-hock fixing. to prevent runtime error on running actual index.js & test,
@@ -80,13 +81,13 @@ export function writeClient(client: Client, templates: Templates, output: string
 }
 
 function getCondition(client: Client): ExportCondition {
-    const gcp = client.etc.kurocoConfig.gcp;
+    const gcp = (client.etc.kurocoConfig || {}).gcp;
 
-    const firebaseConfig = ((gcp || {}).firebaseConfig || null);
-    const firebaseTokenApi = client.etc.specialOperation[OPERATION_PATTERN.FIREBASE_TOKEN];
+    const firebaseConfig = (gcp || {}).firebaseConfig || null;
+    const firebaseTokenApi = pickSpecialOperation(client.services, OPERATION_PATTERN.FIREBASE_TOKEN);
     return {
         firebase: firebaseConfig !== null,
         uploader: firebaseConfig !== null && firebaseTokenApi ? true : false,
         apiInformations: client.etc.exportApiInformations || false,
-    }
+    };
 }

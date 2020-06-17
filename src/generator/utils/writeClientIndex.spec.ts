@@ -16,6 +16,7 @@ describe('writeClientIndex', () => {
             models: [],
             services: [],
             security: {},
+            etc: {} as any,
         };
 
         const templates: Templates = {
@@ -27,9 +28,10 @@ describe('writeClientIndex', () => {
             apiInfo: () => 'dummy',
             auth: () => 'dummy',
             uploadHelper: () => 'dummy',
+            firebaseUtil: () => 'dummy',
         };
 
-        writeClientIndex(client, {} as any, templates, '/');
+        writeClientIndex(client, templates, '/', {} as any);
 
         expect(fsWriteFileSync).toBeCalledWith('/index.ts', 'dummy');
     });

@@ -13,12 +13,12 @@ export interface Client {
     security: Dictionary<Security>;
     etc: {
         specialOperation: {
-            [OPERATION_PATTERN.LOGIN]: ReturnType<typeof pickSpecialOperation>,
-            [OPERATION_PATTERN.LOGOUT]: ReturnType<typeof pickSpecialOperation>,
-            [OPERATION_PATTERN.TOKEN]: ReturnType<typeof pickSpecialOperation>,
-            [OPERATION_PATTERN.FIREBASE_TOKEN]: ReturnType<typeof pickSpecialOperation>,
-        },
-        kurocoConfig: KurocoConfig,
-        exportApiInformations: boolean,
-    }
+            [OPERATION_PATTERN.LOGIN]: ReturnType<typeof pickSpecialOperation>;
+            [OPERATION_PATTERN.LOGOUT]: ReturnType<typeof pickSpecialOperation>;
+            [OPERATION_PATTERN.TOKEN]: ReturnType<typeof pickSpecialOperation>;
+            [OPERATION_PATTERN.FIREBASE_TOKEN]: ReturnType<typeof pickSpecialOperation>;
+        };
+        kurocoConfig: KurocoConfig;
+        exportApiInformations: boolean;
+    };
 }
