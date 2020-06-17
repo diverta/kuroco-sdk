@@ -212,3 +212,22 @@ ApiInfos.filter(info => info.className === 'AuthenticationService')
         AuthenticationalGetResponseExamples.push(res);
     });
 ```
+
+#### Using FirebaseApp
+
+The KurocoSDK includes the FirebaseSDK.  
+You can use Firebase application instance as needed.  
+Here is an example of using the Analyze feature in an our implementation:
+
+ ```typescript
+ // main.ts
+
+ /** apply analytics */
+import 'firebase/analytics';
+import { firebaseApp } from './kuroco_api'; // instance of firebase already initialized.
+try {
+  firebaseApp.analytics();
+} catch (e) {
+  console.info(e);
+};
+ ```
