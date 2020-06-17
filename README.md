@@ -217,7 +217,7 @@ ApiInfos.filter(info => info.className === 'AuthenticationService')
 
 The KurocoSDK includes the FirebaseSDK.  
 You can use Firebase application instance as needed.  
-Here is an example of using the Analyze feature in an our implementation:
+Here is an example of using thier analytics feature in an our implementation:
 
  ```typescript
  // main.ts
