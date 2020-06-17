@@ -37,7 +37,7 @@ The file will contain a JSON configuration object like below :
 ```
 {
     "sdk_key": "c9cdfd46b60bb0a34ba5c2c153ffad3f",  // Kuroco authorization token for the SDK
-    "api_url": "https://demo.picol.app"            // Your Kuroco API host URL
+    "api_url": "https://demo.picol.app"             // Your Kuroco API host URL
     ... // other configurations
 }
 ```
