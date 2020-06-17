@@ -11,18 +11,11 @@ import { Operation } from '../client/interfaces/Operation';
  * @param services Array of Services to write.
  * @param templates The loaded handlebar templates.
  * @param outputPath Directory to write the generated files to.
- * @param exportApiInformations Generate API informations.
  */
-export function writeApiInfo(services: Service[], templates: Templates, outputPath: string, exportApiInformations = false): void {
-    if (!exportApiInformations) {
-        return;
-    }
-
+export function writeApiInfo(services: Service[], templates: Templates, outputPath: string): void {
     const file = path.resolve(outputPath, `ApiInfo.ts`);
     const templateResult = templates.apiInfo({
-        exportApiInformations,
         services,
     });
-
     fs.writeFileSync(file, format(templateResult));
 }

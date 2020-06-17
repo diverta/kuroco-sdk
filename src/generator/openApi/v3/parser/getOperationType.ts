@@ -1,13 +1,11 @@
-import { OpenApi } from '../interfaces/OpenApi';
-import { Security } from '../../../client/interfaces/Security';
-import { Dictionary } from '../../../utils/types';
+import { OPERATION_PATTERN } from '../../../client/interfaces/OperationPattern';
 
 /**
  * Get operation type. returns a value to get whether this target operation shuold be special process.
  * @param pathSummary
  * @note here 'pathSummary' is not 'summary' in operation, should be set from path object.
  */
-export function getOperationType(pathSummary: string = ''): 'LOGIN' | 'LOGOUT' | 'TOKEN' | 'FIREBASE_TOKEN' | null {
+export function getOperationType(pathSummary: string = ''): OPERATION_PATTERN | null {
     if (pathSummary === '') {
         return null;
     }
@@ -16,16 +14,16 @@ export function getOperationType(pathSummary: string = ''): 'LOGIN' | 'LOGOUT' |
         return moduleNames.split(':').every(moduleName => pathSummary.includes(moduleName));
     }
     if (isMatchAll('login:1:Login:login_challenge')) {
-        return 'LOGIN';
+        return OPERATION_PATTERN.LOGIN;
     }
     if (isMatchAll('login:1:Login:logout')) {
-        return 'LOGOUT';
+        return OPERATION_PATTERN.LOGOUT;
     }
     if (isMatchAll('login:1:Login:token')) {
-        return 'TOKEN';
+        return OPERATION_PATTERN.TOKEN;
     }
     if (isMatchAll('login:1:Login:firebaseToken')) {
-        return 'FIREBASE_TOKEN';
+        return OPERATION_PATTERN.FIREBASE_TOKEN;
     }
 
     return null;

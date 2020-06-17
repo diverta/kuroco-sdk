@@ -4,15 +4,17 @@ import * as path from 'path';
 import * as rimraf from 'rimraf';
 import { Client } from '../client/interfaces/Client';
 import { Templates } from './readHandlebarsTemplates';
+import { writeApiInfo } from './writeApiInfo';
+import { writeAuth } from './writeAuth';
 import { writeClientIndex } from './writeClientIndex';
 import { writeClientModels } from './writeClientModels';
 import { writeClientSchemas } from './writeClientSchemas';
 import { writeClientServices } from './writeClientServices';
 import { writeClientSettings } from './writeClientSettings';
-import { writeApiInfo } from './writeApiInfo';
-import { writeAuth } from './writeAuth';
 import { writeUploader } from './writeUploader';
-import { KurocoConfig } from '../..';
+import { writeFirebaseUtil } from './writeFirebaseUtil';
+import { OPERATION_PATTERN } from '../client/interfaces/OperationPattern';
+import { ExportCondition } from '../client/interfaces/ExportCondition';
 
 function copySupportFile(filePath: string, outputPath: string): void {
     // TODO: add-hock fixing. to prevent runtime error on running actual index.js & test,
@@ -29,12 +31,13 @@ function copySupportFile(filePath: string, outputPath: string): void {
  * @param templates Templates wrapper with all loaded Handlebars templates.
  * @param output Directory to write the generated files to.
  */
-export function writeClient(client: Client, templates: Templates, output: string, exportApiInformations: boolean = false, kurocoConfig: KurocoConfig): void {
+export function writeClient(client: Client, templates: Templates, output: string): void {
     const outputPath = path.resolve(process.cwd(), output);
     const outputPathCore = path.resolve(outputPath, 'core');
     const outputPathModels = path.resolve(outputPath, 'models');
     const outputPathSchemas = path.resolve(outputPath, 'schemas');
     const outputPathServices = path.resolve(outputPath, 'services');
+    const exportCondition = getCondition(client);
 
     // Clean output directory
     rimraf.sync(outputPath);
@@ -50,14 +53,21 @@ export function writeClient(client: Client, templates: Templates, output: string
     copySupportFile('core/requestUsingFetch.ts', outputPath);
     copySupportFile('core/Result.ts', outputPath);
     copySupportFile('core/LocalStorage.ts', outputPath);
-
-    writeApiInfo(client.services, templates, outputPathCore, exportApiInformations);
-    writeAuth(client.services, templates, outputPathCore);
     writeClientSettings(client, templates, outputPathCore);
-    writeUploader(client, kurocoConfig, templates, outputPathCore);
+    writeAuth(client.services, templates, outputPathCore);
+
+    if (exportCondition.apiInformations) {
+        writeApiInfo(client.services, templates, outputPathCore);
+    }
+    if (exportCondition.firebase) {
+        writeFirebaseUtil(client, templates, outputPathCore);
+    }
+    if (exportCondition.uploader) {
+        writeUploader(client, templates, outputPathCore);
+    }
 
     mkdirp.sync(outputPathServices);
-    writeClientServices(client.services, templates, outputPathServices, exportApiInformations);
+    writeClientServices(client, templates, outputPathServices);
 
     mkdirp.sync(outputPathSchemas);
     writeClientSchemas(client.models, templates, outputPathSchemas);
@@ -66,5 +76,17 @@ export function writeClient(client: Client, templates: Templates, output: string
     copySupportFile('models/Dictionary.ts', outputPath);
     writeClientModels(client.models, templates, outputPathModels);
 
-    writeClientIndex(client, kurocoConfig, templates, outputPath);
+    writeClientIndex(client, templates, outputPath, exportCondition);
+}
+
+function getCondition(client: Client): ExportCondition {
+    const gcp = client.etc.kurocoConfig.gcp;
+
+    const firebaseConfig = ((gcp || {}).firebaseConfig || null);
+    const firebaseTokenApi = client.etc.specialOperation[OPERATION_PATTERN.FIREBASE_TOKEN];
+    return {
+        firebase: firebaseConfig !== null,
+        uploader: firebaseConfig !== null && firebaseTokenApi ? true : false,
+        apiInformations: client.etc.exportApiInformations || false,
+    }
 }

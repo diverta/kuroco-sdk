@@ -1,0 +1,13 @@
+/* istanbul ignore file */
+/* tslint:disable */
+/* eslint-disable */
+/* prettier-ignore */
+
+import * as firebase from 'firebase/app';
+
+const firebaseConfig = {
+    {{#each firebaseConfig}}
+        '{{@key}}': '{{this}}',
+    {{/each}}
+};
+export default firebase.initializeApp(firebaseConfig);

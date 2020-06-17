@@ -23,6 +23,7 @@ export interface Templates {
     apiInfo: Handlebars.TemplateDelegate;
     auth: Handlebars.TemplateDelegate;
     uploadHelper: Handlebars.TemplateDelegate;
+    firebaseUtil: Handlebars.TemplateDelegate;
 }
 
 /**
@@ -41,6 +42,7 @@ export function readHandlebarsTemplates(): Templates {
         apiInfo: readHandlebarsTemplate(resolveTemplate('core/ApiInfo.hbs')),
         auth: readHandlebarsTemplate(resolveTemplate('core/Auth.hbs')),
         uploadHelper: readHandlebarsTemplate(resolveTemplate('core/Uploader.hbs')),
+        firebaseUtil: readHandlebarsTemplate(resolveTemplate('core/FirebaseUtil.hbs')),
     };
 
     const partials = [

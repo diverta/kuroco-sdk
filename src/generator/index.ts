@@ -28,10 +28,10 @@ export function generate({ input, output, write = true, exportApiInformations = 
         const openApi = isString(input) ? getOpenApiSpec(input) : input;
         const templates = readHandlebarsTemplates();
 
-        const client = parseV3(openApi);
-        const clientFinal = postProcessClient(client);
+        const parsed = parseV3(openApi);
+        const client = postProcessClient(parsed, config, exportApiInformations);
         if (write) {
-            writeClient(clientFinal, templates, output, exportApiInformations, config);
+            writeClient(client, templates, output);
         }
     } catch (e) {
         console.error(e);

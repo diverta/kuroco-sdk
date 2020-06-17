@@ -3,14 +3,10 @@
 /* eslint-disable */
 /* prettier-ignore */
 
-import * as firebase from 'firebase';
+import * as firebase from 'firebase/app';
+import 'firebase/storage';
+import { default as firebaseApp } from './FirebaseUtil';
 import { {{firebaseTokenApi.className}} } from '../services/{{firebaseTokenApi.className}}';
-
-const firebaseConfig = {
-    {{#each firebaseConfig}}
-        '{{@key}}': '{{this}}',
-    {{/each}}
-};
 
 /**
  * Create Uploader.
@@ -24,8 +20,7 @@ export class UploaderFactory {
     if (!this.storage) {
       const { token } = await AuthenticationService.postAuthenticationServiceRcmsApi1FirebaseToken(params);
 
-      const app = firebase.initializeApp(firebaseConfig);
-      await app.auth().signInWithCustomToken(token);
+      await firebaseApp.auth().signInWithCustomToken(token);
       this.storage = firebase.storage();
     }
 
