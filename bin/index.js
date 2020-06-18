@@ -44,8 +44,6 @@ function applyGenerate() {
                 installDependencies(process.cwd(), [
                     'firebase',
                     '@vimeo/player',
-                    '@types/jest',
-                    '@types/node',
                 ]);
 
                 switch (getSpecifedLanguage(options.language)) {
