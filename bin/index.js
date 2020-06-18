@@ -19,7 +19,7 @@ const {
 } = require('./utils');
 const {
     installDependencies,
-} = require('./deps');
+} = require('./deps.js');
 
 program.version(pkg.version);
 
@@ -41,7 +41,12 @@ function applyGenerate() {
         .action((cmd, options) => {
             if (OpenAPI) {
 
-                installDependencies(process.cwd(), 'firebase', '@vimeo/player');
+                installDependencies(process.cwd(), [
+                    'firebase',
+                    '@vimeo/player',
+                    '@types/jest',
+                    '@types/node',
+                ]);
 
                 switch (getSpecifedLanguage(options.language)) {
                     case 'ts':

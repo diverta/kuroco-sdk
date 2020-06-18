@@ -1,0 +1,11 @@
+{
+    "name": "dummy_package_json",
+    "dependencies": {
+        "pkg1": "^1.0.0",
+        "pkg2": "^1.0.0"
+    },
+    "devDependencies": {
+        "pkg3": "^1.0.0",
+        "pkg4": "^1.0.0"
+    }
+}
