@@ -9,7 +9,9 @@ function installDependencies(pjPath, moduleNames = []) {
             handlError(e);
         }
         const installModuleNames = pick(pkg, moduleNames);
-        install(installModuleNames);
+        if (installModuleNames.length > 0) {
+            install(installModuleNames);
+        }
     });
 }
 function handleError(e) {

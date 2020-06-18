@@ -1,6 +1,6 @@
 {
     "name": "kuroco-sdk",
-    "version": "0.1.12",
+    "version": "0.1.12-1",
     "description": "NodeJS library that generates Typescript or Javascript clients based on the OpenAPI specification.",
     "author": "Yusei Abe",
     "homepage": "https://github.com/diverta/kuroco-sdk",
@@ -46,7 +46,8 @@
         "dist/**/*.js",
         "dist/**/*.d.ts",
         "src/generator/templates/**/*.hbs",
-        "src/generator/templates/**/*.ts"
+        "src/generator/templates/**/*.ts",
+        "example/openapi.json"
     ],
     "scripts": {
         "prepublish": "npm run build && npm run prettier:fix && npm run test",

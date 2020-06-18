@@ -58,9 +58,9 @@ npx kuroco generate
 ```
 
 If you don't have Kuroco and just want to try codegeneration,  
-Run the following command:  
+Run the following command in this repository:  
 ```
-npx kuroco generate -i example/openapi.json
+npm i kuroco-sdk -D && npx kuroco generate -i node_modules/kuroco-sdk/example/openapi.json
 ```
 
 ---
