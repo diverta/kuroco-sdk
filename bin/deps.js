@@ -27,7 +27,11 @@ function getPackageJsonObj(pjPath) {
     }
 }
 function install(moduleNames) {
-    npm.commands.install(moduleNames, handleError);
+    npm.commands.install(moduleNames, (res) => {
+        if (res && res.err) {
+            handleError(res.err);
+        }
+    });
 }
 function pick(pkg, moduleNames = []) {
     return moduleNames
