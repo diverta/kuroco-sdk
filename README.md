@@ -42,7 +42,7 @@ The file will contain a JSON configuration object like below :
 }
 ```
 
-#### Question: Where can I get my SDK key ?
+#### :question: Where can I get my SDK key ?
 
 The `sdk_key` can be found on the API List page of your Kuroco management interface.
 ![token](./.github/docs/assets/token.png)
@@ -52,9 +52,15 @@ The `sdk_key` can be found on the API List page of your Kuroco management interf
 ## Kuroco SDK quickstart
 
 ```
-kuroco init && \
-kuroco pull && \
-kuroco generate
+npx kuroco init && \
+npx kuroco pull && \
+npx kuroco generate
+```
+
+If you don't have Kuroco and just want to try codegeneration,  
+Run the following command:  
+```
+npx kuroco generate -i example/openapi.json
 ```
 
 ---

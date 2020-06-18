@@ -1,0 +1,1222 @@
+{
+	"openapi": "3.0.0",
+	"info": {
+		"title": "Test",
+		"version": "1",
+		"description": "test"
+	},
+	"servers": [
+		{
+			"url": "https://kuroco-dev.r-cms.jp",
+			"description": "API Backend"
+		}
+	],
+	"paths": {
+		"/rcms-api/1/firebase_token": {
+			"summary": "login:1:Login:firebaseToken",
+			"description": "Operations Desc",
+			"get": {
+				"tags": [
+					"Authentication"
+				],
+				"summary": "",
+				"description": "\n### **Login::firebaseToken (v1)**\n\n",
+				"parameters": [
+					{
+						"name": "_output_format",
+						"schema": {
+							"type": "string",
+							"format": ""
+						},
+						"in": "query",
+						"required": false,
+						"style": "form",
+						"explode": true,
+						"description": "Format (json|xml|csv)"
+					},
+					{
+						"name": "_lang",
+						"schema": {
+							"type": "string",
+							"format": ""
+						},
+						"in": "query",
+						"required": false,
+						"style": "form",
+						"explode": true,
+						"description": "Language"
+					},
+					{
+						"name": "_charset",
+						"schema": {
+							"type": "string",
+							"format": ""
+						},
+						"in": "query",
+						"required": false,
+						"style": "form",
+						"explode": true,
+						"description": "Charset"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": ""
+					}
+				},
+				"security": [
+					{
+						"Token-Auth": []
+					}
+				]
+			}
+		},
+		"/rcms-api/1/auth/login": {
+			"summary": "login:1:Login:login_challenge",
+			"description": "Operations Desc",
+			"post": {
+				"tags": [
+					"Authentication"
+				],
+				"summary": "",
+				"description": "\n### **Login::login_challenge (v1)**\n\n",
+				"parameters": [
+					{
+						"name": "_output_format",
+						"schema": {
+							"type": "string",
+							"format": ""
+						},
+						"in": "query",
+						"required": false,
+						"style": "form",
+						"explode": true,
+						"description": "Format (json|xml|csv)"
+					},
+					{
+						"name": "_lang",
+						"schema": {
+							"type": "string",
+							"format": ""
+						},
+						"in": "query",
+						"required": false,
+						"style": "form",
+						"explode": true,
+						"description": "Language"
+					},
+					{
+						"name": "_charset",
+						"schema": {
+							"type": "string",
+							"format": ""
+						},
+						"in": "query",
+						"required": false,
+						"style": "form",
+						"explode": true,
+						"description": "Charset"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": ""
+					}
+				},
+				"requestBody": {
+					"required": true,
+					"description": "",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"email": {
+										"type": "string",
+										"default": "",
+										"example": "",
+										"description": "Login ID"
+									},
+									"password": {
+										"type": "string",
+										"writeOnly": true,
+										"default": "",
+										"example": "",
+										"description": "Password"
+									},
+									"login_save": {
+										"type": "integer",
+										"format": "int64",
+										"enum": [
+											0,
+											1
+										],
+										"default": 0,
+										"example": 0,
+										"description": "Log in automatically next time"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/rcms-api/1/auth/logout": {
+			"summary": "login:1:Login:logout",
+			"description": "Operations Desc",
+			"post": {
+				"tags": [
+					"Authentication"
+				],
+				"summary": "",
+				"description": "\n### **Login::logout (v1)**\n\n",
+				"parameters": [
+					{
+						"name": "_output_format",
+						"schema": {
+							"type": "string",
+							"format": ""
+						},
+						"in": "query",
+						"required": false,
+						"style": "form",
+						"explode": true,
+						"description": "Format (json|xml|csv)"
+					},
+					{
+						"name": "_lang",
+						"schema": {
+							"type": "string",
+							"format": ""
+						},
+						"in": "query",
+						"required": false,
+						"style": "form",
+						"explode": true,
+						"description": "Language"
+					},
+					{
+						"name": "_charset",
+						"schema": {
+							"type": "string",
+							"format": ""
+						},
+						"in": "query",
+						"required": false,
+						"style": "form",
+						"explode": true,
+						"description": "Charset"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": ""
+					}
+				},
+				"security": [
+					{
+						"Token-Auth": []
+					}
+				]
+			}
+		},
+		"/rcms-api/1/auth/token": {
+			"summary": "login:1:Login:token",
+			"description": "Operations Desc",
+			"post": {
+				"tags": [
+					"Authentication"
+				],
+				"summary": "",
+				"description": "\n### **Login::token (v1)**\n\n\n## Controller parameters\n\n> **use_refresh_token** `true`\n",
+				"parameters": [
+					{
+						"name": "_output_format",
+						"schema": {
+							"type": "string",
+							"format": ""
+						},
+						"in": "query",
+						"required": false,
+						"style": "form",
+						"explode": true,
+						"description": "Format (json|xml|csv)"
+					},
+					{
+						"name": "_lang",
+						"schema": {
+							"type": "string",
+							"format": ""
+						},
+						"in": "query",
+						"required": false,
+						"style": "form",
+						"explode": true,
+						"description": "Language"
+					},
+					{
+						"name": "_charset",
+						"schema": {
+							"type": "string",
+							"format": ""
+						},
+						"in": "query",
+						"required": false,
+						"style": "form",
+						"explode": true,
+						"description": "Charset"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": ""
+					}
+				},
+				"requestBody": {
+					"required": true,
+					"description": "",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"grant_token": {
+										"type": "string",
+										"default": "",
+										"example": "",
+										"description": "Resource grant token"
+									},
+									"refresh_token": {
+										"type": "string",
+										"writeOnly": true,
+										"default": "",
+										"example": "",
+										"description": "Refresh token"
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		},
+		"/rcms-api/1/topics1/{topics_id}": {
+			"summary": "topics:1:Topics:details",
+			"description": "Operations Desc",
+			"get": {
+				"tags": [
+					"Topics"
+				],
+				"summary": "",
+				"description": "\n### **Topics::details (v1)**\n\n\n## Controller parameters\n\n> **topics_group_id** `1`\n",
+				"parameters": [
+					{
+						"name": "topics_id",
+						"schema": {
+							"type": "integer",
+							"format": "int64"
+						},
+						"in": "path",
+						"required": true,
+						"style": "simple"
+					},
+					{
+						"name": "_output_format",
+						"schema": {
+							"type": "string",
+							"format": ""
+						},
+						"in": "query",
+						"required": false,
+						"style": "form",
+						"explode": true,
+						"description": "Format (json|xml|csv)"
+					},
+					{
+						"name": "_lang",
+						"schema": {
+							"type": "string",
+							"format": ""
+						},
+						"in": "query",
+						"required": false,
+						"style": "form",
+						"explode": true,
+						"description": "Language"
+					},
+					{
+						"name": "_charset",
+						"schema": {
+							"type": "string",
+							"format": ""
+						},
+						"in": "query",
+						"required": false,
+						"style": "form",
+						"explode": true,
+						"description": "Charset"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": ""
+					},
+					"404": {
+						"description": ""
+					}
+				},
+				"security": [
+					{
+						"Token-Auth": []
+					}
+				]
+			}
+		},
+		"/rcms-api/1/topics1": {
+			"summary": "topics:1:Topics:list",
+			"description": "Operations Desc",
+			"get": {
+				"tags": [
+					"Topics"
+				],
+				"summary": "",
+				"description": "\n### **Topics::list (v1)**\n\n\n## Controller parameters\n\n> **topics_group_id** `1`\n",
+				"parameters": [
+					{
+						"name": "_output_format",
+						"schema": {
+							"type": "string",
+							"format": ""
+						},
+						"in": "query",
+						"required": false,
+						"style": "form",
+						"explode": true,
+						"description": "Format (json|xml|csv)"
+					},
+					{
+						"name": "_lang",
+						"schema": {
+							"type": "string",
+							"format": ""
+						},
+						"in": "query",
+						"required": false,
+						"style": "form",
+						"explode": true,
+						"description": "Language"
+					},
+					{
+						"name": "_charset",
+						"schema": {
+							"type": "string",
+							"format": ""
+						},
+						"in": "query",
+						"required": false,
+						"style": "form",
+						"explode": true,
+						"description": "Charset"
+					},
+					{
+						"name": "cnt",
+						"schema": {
+							"type": "integer",
+							"format": "int64"
+						},
+						"in": "query",
+						"required": false,
+						"style": "form",
+						"explode": true,
+						"description": "Number of topics per page"
+					},
+					{
+						"name": "pageID",
+						"schema": {
+							"type": "integer",
+							"format": "int64"
+						},
+						"in": "query",
+						"required": false,
+						"style": "form",
+						"explode": true,
+						"description": "Page ID"
+					},
+					{
+						"name": "custom_search_id",
+						"schema": {
+							"type": "string",
+							"format": ""
+						},
+						"in": "query",
+						"required": false,
+						"style": "form",
+						"explode": true,
+						"description": "search contdition"
+					},
+					{
+						"name": "topics_keyword",
+						"schema": {
+							"type": "string",
+							"format": ""
+						},
+						"in": "query",
+						"required": false,
+						"style": "form",
+						"explode": true,
+						"description": "Keyword"
+					},
+					{
+						"name": "topics_keyword_cond",
+						"schema": {
+							"type": "string",
+							"format": ""
+						},
+						"in": "query",
+						"required": false,
+						"style": "form",
+						"explode": true,
+						"description": "Change the way of narrowing down by keyword (Default: AND)"
+					},
+					{
+						"name": "contents_type[]",
+						"schema": {
+							"type": "array",
+							"items": {
+								"type": "integer",
+								"format": "int64"
+							},
+							"minItems": 0
+						},
+						"in": "query",
+						"required": false,
+						"style": "form",
+						"explode": true,
+						"description": "The ID from the displayed category. All data will be displayed when this is not set."
+					},
+					{
+						"name": "contents_type_cond",
+						"schema": {
+							"type": "string",
+							"format": ""
+						},
+						"in": "query",
+						"required": false,
+						"style": "form",
+						"explode": true,
+						"description": "Change the way of narrowing down by category ID (Default: OR)"
+					},
+					{
+						"name": "date",
+						"schema": {
+							"type": "string",
+							"format": ""
+						},
+						"in": "query",
+						"required": false,
+						"style": "form",
+						"explode": true,
+						"description": "Date"
+					},
+					{
+						"name": "using_season",
+						"schema": {
+							"type": "string",
+							"format": ""
+						},
+						"in": "query",
+						"required": false,
+						"style": "form",
+						"explode": true,
+						"description": "Use season (Yes: 1 | No: 0)"
+					},
+					{
+						"name": "season",
+						"schema": {
+							"type": "integer",
+							"format": "int64"
+						},
+						"in": "query",
+						"required": false,
+						"style": "form",
+						"explode": true,
+						"description": "Season"
+					},
+					{
+						"name": "ext_column_cond",
+						"schema": {
+							"type": "string",
+							"format": ""
+						},
+						"in": "query",
+						"required": false,
+						"style": "form",
+						"explode": true,
+						"description": "ext_column condition type (Default:OR)<br> \r\nTo specify an ext_col number set: 'ext_column_{no}_cond'"
+					},
+					{
+						"name": "exclude_topics_id",
+						"schema": {
+							"type": "string",
+							"format": ""
+						},
+						"in": "query",
+						"required": false,
+						"style": "form",
+						"explode": true,
+						"description": "IDs of the excluded topics"
+					},
+					{
+						"name": "tag_category_id",
+						"schema": {
+							"type": "integer",
+							"format": "int64"
+						},
+						"in": "query",
+						"required": false,
+						"style": "form",
+						"explode": true,
+						"description": "ID of the tag category to be displayed. (Default: All)"
+					},
+					{
+						"name": "tag_search",
+						"schema": {
+							"type": "string",
+							"format": ""
+						},
+						"in": "query",
+						"required": false,
+						"style": "form",
+						"explode": true,
+						"description": "narrowed by the value of the tag id.  yes:1 no:0"
+					},
+					{
+						"name": "tag_id[]",
+						"schema": {
+							"type": "array",
+							"items": {
+								"type": "integer",
+								"format": "int64"
+							},
+							"minItems": 0
+						},
+						"in": "query",
+						"required": false,
+						"style": "form",
+						"explode": true,
+						"description": "Tag IDs that you would like to display"
+					},
+					{
+						"name": "tag_cond",
+						"schema": {
+							"type": "string",
+							"format": ""
+						},
+						"in": "query",
+						"required": false,
+						"style": "form",
+						"explode": true,
+						"description": "Change the way to narrow down tags (Default: OR)"
+					},
+					{
+						"name": "exclude_tag_id",
+						"schema": {
+							"type": "string",
+							"format": ""
+						},
+						"in": "query",
+						"required": false,
+						"style": "form",
+						"explode": true,
+						"description": "Tag IDs that you would like to hide"
+					},
+					{
+						"name": "my_favorite_list",
+						"schema": {
+							"type": "integer",
+							"format": "int64"
+						},
+						"in": "query",
+						"required": false,
+						"style": "form",
+						"explode": true,
+						"description": ""
+					},
+					{
+						"name": "my_comment_list",
+						"schema": {
+							"type": "integer",
+							"format": "int64"
+						},
+						"in": "query",
+						"required": false,
+						"style": "form",
+						"explode": true,
+						"description": ""
+					},
+					{
+						"name": "my_own_list",
+						"schema": {
+							"type": "string",
+							"format": ""
+						},
+						"in": "query",
+						"required": false,
+						"style": "form",
+						"explode": true,
+						"description": ""
+					},
+					{
+						"name": "order",
+						"schema": {
+							"type": "string",
+							"format": ""
+						},
+						"in": "query",
+						"required": false,
+						"style": "form",
+						"explode": true,
+						"description": "Set the sort order. Available param {0}"
+					},
+					{
+						"name": "order_by_id",
+						"schema": {
+							"type": "string",
+							"format": ""
+						},
+						"in": "query",
+						"required": false,
+						"style": "form",
+						"explode": true,
+						"description": ""
+					},
+					{
+						"name": "id[]",
+						"schema": {
+							"type": "array",
+							"items": {
+								"type": "integer",
+								"format": "int64"
+							},
+							"minItems": 0
+						},
+						"in": "query",
+						"required": false,
+						"style": "form",
+						"explode": true,
+						"description": "IDs of the displayed topics"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": ""
+					},
+					"404": {
+						"description": ""
+					}
+				},
+				"security": [
+					{
+						"Token-Auth": []
+					}
+				]
+			}
+		},
+		"/rcms-api/1/topics1/insert": {
+			"summary": "topics:1:Topics:insert",
+			"description": "Operations Desc",
+			"post": {
+				"tags": [
+					"Topics"
+				],
+				"summary": "",
+				"description": "\n### **Topics::insert (v1)**\n\n\n## Controller parameters\n\n> **topics_group_id** `1`\n",
+				"parameters": [
+					{
+						"name": "_output_format",
+						"schema": {
+							"type": "string",
+							"format": ""
+						},
+						"in": "query",
+						"required": false,
+						"style": "form",
+						"explode": true,
+						"description": "Format (json|xml|csv)"
+					},
+					{
+						"name": "_lang",
+						"schema": {
+							"type": "string",
+							"format": ""
+						},
+						"in": "query",
+						"required": false,
+						"style": "form",
+						"explode": true,
+						"description": "Language"
+					},
+					{
+						"name": "_charset",
+						"schema": {
+							"type": "string",
+							"format": ""
+						},
+						"in": "query",
+						"required": false,
+						"style": "form",
+						"explode": true,
+						"description": "Charset"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": ""
+					}
+				},
+				"security": [
+					{
+						"Token-Auth": []
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"description": "",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"subject": {
+										"type": "string",
+										"default": "",
+										"example": "Topics Exemple Title",
+										"description": "Topic title"
+									},
+									"contents_type": {
+										"type": "integer",
+										"format": "int64",
+										"default": 0,
+										"example": 0,
+										"description": "Category ID\n* 1 => CategoryForSingle1\n* 4 => CategoryForSingle2",
+										"enum": [
+											1,
+											4
+										]
+									},
+									"ymd": {
+										"type": "string",
+										"format": "date",
+										"description": "Date"
+									},
+									"open_type": {
+										"type": "string",
+										"enum": [
+											"open",
+											"close",
+											"default"
+										],
+										"default": "open",
+										"example": "open",
+										"description": "Published / Not published"
+									},
+									"topics_flg": {
+										"type": "integer",
+										"format": "int64",
+										"enum": [
+											0,
+											1
+										],
+										"default": 1,
+										"example": 1,
+										"description": "Display all topics to logged in members, regardless ther public/hidden status"
+									},
+									"season": {
+										"type": "integer",
+										"format": "int64",
+										"default": 2020,
+										"example": 2020,
+										"description": "Season"
+									},
+									"contents": {
+										"type": "string",
+										"default": "",
+										"example": "",
+										"description": "Contents"
+									},
+									"regular_flg": {
+										"type": "integer",
+										"format": "int64",
+										"default": 0,
+										"example": 0,
+										"description": "display up"
+									},
+									"link_flg": {
+										"type": "integer",
+										"format": "int64",
+										"default": 0,
+										"example": 0,
+										"description": "Display method"
+									},
+									"link_url": {
+										"type": "string",
+										"default": "",
+										"example": "",
+										"description": "Link"
+									},
+									"ext_col_01": {
+										"description": "Text",
+										"type": "string",
+										"default": ""
+									},
+									"ext_col_03": {
+										"description": "Select\n* 1 => Option1\n* 2 => Option2\n* 3 => Option3",
+										"anyOf": [
+											{
+												"type": "object",
+												"properties": {
+													"key": {
+														"type": "string",
+														"format": "",
+														"enum": [
+															"1",
+															"2",
+															"3"
+														]
+													},
+													"label": {
+														"type": "string",
+														"format": "",
+														"enum": [
+															"Option1",
+															"Option2",
+															"Option3"
+														]
+													}
+												},
+												"additionalProperties": false
+											},
+											{
+												"type": "string",
+												"enum": [
+													"",
+													"1",
+													"2",
+													"3"
+												]
+											}
+										],
+										"example": {},
+										"default": ""
+									},
+									"validate_only": {
+										"type": "boolean",
+										"format": "",
+										"example": false,
+										"default": false,
+										"description": "Validate"
+									}
+								},
+								"additionalProperties": false,
+								"required": [
+									"subject"
+								]
+							}
+						}
+					}
+				}
+			}
+		},
+		"/rcms-api/1/topics1/update/{topics_id}": {
+			"summary": "topics:1:Topics:update",
+			"description": "Operations Desc",
+			"post": {
+				"tags": [
+					"Topics"
+				],
+				"summary": "",
+				"description": "\n### **Topics::update (v1)**\n\n\n## Controller parameters\n\n> **topics_group_id** `1`\n",
+				"parameters": [
+					{
+						"name": "topics_id",
+						"schema": {
+							"type": "integer",
+							"format": "int64"
+						},
+						"in": "path",
+						"required": true,
+						"style": "simple"
+					},
+					{
+						"name": "_output_format",
+						"schema": {
+							"type": "string",
+							"format": ""
+						},
+						"in": "query",
+						"required": false,
+						"style": "form",
+						"explode": true,
+						"description": "Format (json|xml|csv)"
+					},
+					{
+						"name": "_lang",
+						"schema": {
+							"type": "string",
+							"format": ""
+						},
+						"in": "query",
+						"required": false,
+						"style": "form",
+						"explode": true,
+						"description": "Language"
+					},
+					{
+						"name": "_charset",
+						"schema": {
+							"type": "string",
+							"format": ""
+						},
+						"in": "query",
+						"required": false,
+						"style": "form",
+						"explode": true,
+						"description": "Charset"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": ""
+					}
+				},
+				"security": [
+					{
+						"Token-Auth": []
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"description": "",
+					"content": {
+						"application/json": {
+							"schema": {
+								"type": "object",
+								"properties": {
+									"subject": {
+										"type": "string",
+										"default": "",
+										"example": "Topics Exemple Title",
+										"description": "Topic title"
+									},
+									"contents_type": {
+										"type": "integer",
+										"format": "int64",
+										"default": 0,
+										"example": 0,
+										"description": "Category ID\n* 1 => CategoryForSingle1\n* 4 => CategoryForSingle2",
+										"enum": [
+											1,
+											4
+										]
+									},
+									"ymd": {
+										"type": "string",
+										"format": "date",
+										"description": "Date"
+									},
+									"open_type": {
+										"type": "string",
+										"enum": [
+											"open",
+											"close",
+											"default"
+										],
+										"default": "open",
+										"example": "open",
+										"description": "Published / Not published"
+									},
+									"topics_flg": {
+										"type": "integer",
+										"format": "int64",
+										"enum": [
+											0,
+											1
+										],
+										"default": 1,
+										"example": 1,
+										"description": "Display all topics to logged in members, regardless ther public/hidden status"
+									},
+									"season": {
+										"type": "integer",
+										"format": "int64",
+										"default": 2020,
+										"example": 2020,
+										"description": "Season"
+									},
+									"contents": {
+										"type": "string",
+										"default": "",
+										"example": "",
+										"description": "Contents"
+									},
+									"regular_flg": {
+										"type": "integer",
+										"format": "int64",
+										"default": 0,
+										"example": 0,
+										"description": "display up"
+									},
+									"link_flg": {
+										"type": "integer",
+										"format": "int64",
+										"default": 0,
+										"example": 0,
+										"description": "Display method"
+									},
+									"link_url": {
+										"type": "string",
+										"default": "",
+										"example": "",
+										"description": "Link"
+									},
+									"ext_col_01": {
+										"description": "Text",
+										"type": "string",
+										"default": ""
+									},
+									"ext_col_03": {
+										"description": "Select\n* 1 => Option1\n* 2 => Option2\n* 3 => Option3",
+										"anyOf": [
+											{
+												"type": "object",
+												"properties": {
+													"key": {
+														"type": "string",
+														"format": "",
+														"enum": [
+															"1",
+															"2",
+															"3"
+														]
+													},
+													"label": {
+														"type": "string",
+														"format": "",
+														"enum": [
+															"Option1",
+															"Option2",
+															"Option3"
+														]
+													}
+												},
+												"additionalProperties": false
+											},
+											{
+												"type": "string",
+												"enum": [
+													"",
+													"1",
+													"2",
+													"3"
+												]
+											}
+										],
+										"example": {},
+										"default": ""
+									},
+									"validate_only": {
+										"type": "boolean",
+										"format": "",
+										"example": false,
+										"default": false,
+										"description": "Validate"
+									}
+								},
+								"additionalProperties": false
+							}
+						}
+					}
+				}
+			}
+		},
+		"/rcms-api/1/topics1/delete/{topics_id}": {
+			"summary": "topics:1:Topics:delete",
+			"description": "Operations Desc",
+			"post": {
+				"tags": [
+					"Topics"
+				],
+				"summary": "",
+				"description": "\n### **Topics::delete (v1)**\n\n",
+				"parameters": [
+					{
+						"name": "topics_id",
+						"schema": {
+							"type": "integer",
+							"format": "int64"
+						},
+						"in": "path",
+						"required": true,
+						"style": "simple"
+					},
+					{
+						"name": "_output_format",
+						"schema": {
+							"type": "string",
+							"format": ""
+						},
+						"in": "query",
+						"required": false,
+						"style": "form",
+						"explode": true,
+						"description": "Format (json|xml|csv)"
+					},
+					{
+						"name": "_lang",
+						"schema": {
+							"type": "string",
+							"format": ""
+						},
+						"in": "query",
+						"required": false,
+						"style": "form",
+						"explode": true,
+						"description": "Language"
+					},
+					{
+						"name": "_charset",
+						"schema": {
+							"type": "string",
+							"format": ""
+						},
+						"in": "query",
+						"required": false,
+						"style": "form",
+						"explode": true,
+						"description": "Charset"
+					}
+				],
+				"responses": {
+					"200": {
+						"description": ""
+					}
+				},
+				"security": [
+					{
+						"Token-Auth": []
+					}
+				]
+			}
+		}
+	},
+	"components": {
+		"securitySchemes": {
+			"Token-Auth": {
+				"type": "apiKey",
+				"in": "header",
+				"name": "X-RCMS-API-ACCESS-TOKEN"
+			}
+		}
+	}
+}
