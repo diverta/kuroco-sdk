@@ -2,6 +2,7 @@ import inquirer from 'inquirer';
 import { prompts } from './prompts';
 import fs from 'fs-extra';
 import path from 'path';
+import { handleSuccess, handleError } from '..';
 
 export interface Options {
     write: boolean;
@@ -9,10 +10,10 @@ export interface Options {
 
 export async function init(options: Options) {
     try {
-        await inquiry(options);
+        const { answers, outputPath } = await inquiry(options);
+        handleSuccess(`The configuration file was exported at: ${outputPath}`, JSON.stringify(answers, null, '\t'));
     } catch (e) {
-        console.error(e);
-        process.exit(1);
+        handleError(e);
     }
 }
 
@@ -25,10 +26,8 @@ export async function inquiry({ write = true }: Options) {
             spaces: '\t',
         });
     }
-
-    console.log('');
-    console.log(`exported the file to: ${outputPath},`);
-    console.log('the values in exported files is:');
-    console.log(JSON.stringify(answers, null, '\t'));
-    console.log('');
+    return {
+        answers,
+        outputPath,
+    };
 }

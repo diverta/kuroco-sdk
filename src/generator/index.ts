@@ -4,7 +4,7 @@ import { isString } from './utils/isString';
 import { postProcessClient } from './utils/postProcessClient';
 import { readHandlebarsTemplates } from './utils/readHandlebarsTemplates';
 import { writeClient } from './utils/writeClient';
-import { KurocoConfig } from '..';
+import { KurocoConfig, handleSuccess, handleError } from '..';
 
 export interface Options {
     input: string | Record<string, any>;
@@ -33,8 +33,8 @@ export function generate({ input, output, write = true, exportApiInformations = 
         if (write) {
             writeClient(client, templates, output);
         }
+        handleSuccess(`generated at: ${output}`);
     } catch (e) {
-        console.error(e);
-        process.exit(1);
+        handleError(e);
     }
 }

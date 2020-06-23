@@ -16,3 +16,4 @@ generated
 
 test*.json
 kuroco.*.json
+/openapi.json
