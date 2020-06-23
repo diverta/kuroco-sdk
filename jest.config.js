@@ -6,5 +6,8 @@ module.exports = {
         '!src/**/*.d.ts',
         '!src/templates/**',
         '!**/node_modules/**',
+    ],
+    setupFiles: [
+        "<rootDir>/__test__/setup.ts",
     ]
 };

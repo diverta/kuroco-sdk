@@ -2,7 +2,7 @@ import path from 'path';
 import * as fs from 'fs-extra';
 import { default as SwaggerParser } from 'swagger-parser';
 import * as API from './api';
-import { KurocoConfig, handleSuccess, handleError } from '..';
+import { KurocoConfig, handleSuccess, handleError } from '../__base';
 
 export interface Options {
     config: KurocoConfig;

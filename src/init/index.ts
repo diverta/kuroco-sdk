@@ -2,7 +2,7 @@ import inquirer from 'inquirer';
 import { prompts } from './prompts';
 import fs from 'fs-extra';
 import path from 'path';
-import { handleSuccess, handleError } from '..';
+import { handleSuccess, handleError } from '../__base';
 
 export interface Options {
     write: boolean;

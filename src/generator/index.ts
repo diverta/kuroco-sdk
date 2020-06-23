@@ -4,7 +4,7 @@ import { isString } from './utils/isString';
 import { postProcessClient } from './utils/postProcessClient';
 import { readHandlebarsTemplates } from './utils/readHandlebarsTemplates';
 import { writeClient } from './utils/writeClient';
-import { KurocoConfig, handleSuccess, handleError } from '..';
+import { KurocoConfig, handleSuccess, handleError } from '../__base';
 
 export interface Options {
     input: string | Record<string, any>;
