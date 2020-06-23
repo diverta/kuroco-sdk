@@ -14,7 +14,7 @@ module.exports = {
             return JSON.parse(file);
         } catch (e) {
             console.error(`a configuration file '${p}' you specified is not found or broken.`);
-            console.error(`please run '${commandName} init' first, or define the file by yourself instead.`);
+            console.error(`please run 'kuroco init' first, or define the file by yourself instead.`);
             process.exit(1);
         }
     },
