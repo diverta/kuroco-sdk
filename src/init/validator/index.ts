@@ -1,3 +1,3 @@
 export * from './_base';
-export * from './apiUrl';
+export * from './managementHost';
 export * from './sdkKey';

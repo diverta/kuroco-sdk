@@ -20,12 +20,12 @@ export async function pull(options: Options) {
     }
 }
 
-export async function writeRcmsFilesWithFetch({ config, output, write = true }: Options) {
-    if (!fs.existsSync(path.dirname(output))) {
-        throw Error(`Could not find directory : ${output}`);
+export async function writeRcmsFilesWithFetch(options: Options) {
+    if (!fs.existsSync(path.dirname(options.output))) {
+        throw Error(`Could not find directory : ${options.output}`);
     }
 
-    const res = await API.requestOpenAPI(config.api_url, config.sdk_key);
+    const res = await API.requestOpenAPI(options);
     if (!res.ok && res.status === 401) {
         throw Error('the server responsed as unautorized, please check your SDK key.');
     }
@@ -33,8 +33,8 @@ export async function writeRcmsFilesWithFetch({ config, output, write = true }: 
     // hooks validation to openapi.json, this throw an Error whrn occurs invalidations.
     new SwaggerParser().bundle(openapi);
 
-    if (write) {
-        fs.writeJSONSync(output, openapi, {
+    if (options.write) {
+        fs.writeJSONSync(options.output, openapi, {
             spaces: '\t',
             encoding: 'UTF-8',
             flag: 'w',
@@ -42,10 +42,10 @@ export async function writeRcmsFilesWithFetch({ config, output, write = true }: 
     }
 }
 
-export async function overwriteConfigurationFile({ config, write = true }: Options) {
-    const manifest = await API.requestManifest(config.api_url);
+export async function overwriteConfigurationFile(options: Options) {
+    const manifest = await API.requestManifest(options);
     const configuration = {
-        ...config,
+        ...options.config,
         ...manifest,
     };
     const output = path.resolve(process.cwd(), 'kuroco.config.json');

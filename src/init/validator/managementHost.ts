@@ -1,8 +1,8 @@
 import { ValidatorBase, ValidatorType, ValidatorKey } from '.';
 
-export class ApiUrl extends ValidatorBase {
-    public name = ValidatorKey.ApiUrl;
-    public message = `Enter your RCMS server's URL`;
+export class ManagementUrl extends ValidatorBase {
+    public name = ValidatorKey.ManagementUrl;
+    public message = `Enter your Kuroco management site URL`;
     public validate(host: any): boolean | string {
         this.validatorTypes = [ValidatorType.exists, ValidatorType.stringType, ValidatorType.URL];
         return super.validate(host);

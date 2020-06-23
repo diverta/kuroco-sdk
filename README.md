@@ -36,8 +36,8 @@ Alternatively, it can be done by manually by adding `kuroco.config.json` file in
 The file will contain a JSON configuration object like below :
 ```
 {
-    "sdk_key": "c9cdfd46b60bb0a34ba5c2c153ffad3f",  // Kuroco authorization token for the SDK
-    "api_url": "https://demo.picol.app"             // Your Kuroco API host URL
+    "sdk_key": "c9cdfd46b60bb0a34ba5c2c153ffad3f",          // Kuroco authorization token for the SDK
+    "management_url": "https://kuroco-dev-mng.r-cms.jp"     // Your Kuroco management site's url
     ... // other configurations
 }
 ```

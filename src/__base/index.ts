@@ -5,7 +5,7 @@
 /** general configuration of this app */
 export interface KurocoConfig {
     sdk_key: string;
-    api_url: string;
+    management_url: string;
     gcp?: {
         firebaseConfig: FirebaseConfig;
     };

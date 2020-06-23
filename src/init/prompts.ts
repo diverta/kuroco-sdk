@@ -1,4 +1,4 @@
-import { ApiUrl, SdkKey, Validator } from './validator';
+import { ManagementUrl, SdkKey, Validator } from './validator';
 
 const extract2promptOpt = (validator: Validator) => ({
     name: validator.name,
@@ -8,4 +8,4 @@ const extract2promptOpt = (validator: Validator) => ({
     default: validator.default,
 });
 
-export const prompts = [SdkKey, ApiUrl].map(ValidatorClazz => extract2promptOpt(new ValidatorClazz()));
+export const prompts = [SdkKey, ManagementUrl].map(ValidatorClazz => extract2promptOpt(new ValidatorClazz()));

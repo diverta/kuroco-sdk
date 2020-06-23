@@ -1,13 +1,13 @@
 import fetch from 'node-fetch';
+import { Options } from '.';
 
-export function requestOpenAPI(host: string, sdkKey: string) {
-    const param = { api_id: 1, _lang: 'en', sdk_key: sdkKey };
-    const uri = `${trimLastSlash(host)}/direct/rcms_api/openapi/?${getQuery(param)}`;
+export function requestOpenAPI({ config }: Options) {
+    const uri = `${trimLastSlash(config.management_url)}/direct/rcms_api/openapi/?${getQuery(config.sdk_key)}`;
     return fetch(uri);
 }
 
-export function requestManifest(host: string) {
-    const uri = `${trimLastSlash(host)}/direct/rcms_api/manifest/`;
+export function requestManifest({ config }: Options) {
+    const uri = `${trimLastSlash(config.management_url)}/direct/rcms_api/manifest/?${getQuery(config.sdk_key)}`;
     return fetch(uri).then(res => res.json() as Promise<Manifest>);
 }
 
@@ -16,7 +16,8 @@ function trimLastSlash(url: string) {
     return h[h.length - 1] === '/' ? h.substr(0, h.length - 1) : h;
 }
 
-function getQuery(params: object): string {
+function getQuery(sdkKey: string): string {
+    const params = { api_id: 1, _lang: 'en', sdk_key: sdkKey };
     return Object.entries(params)
         .map(([k, v]) => encodeURIComponent(k) + '=' + encodeURIComponent(v))
         .join('&');

@@ -60,7 +60,7 @@ export enum ValidatorType {
 
 export enum ValidatorKey {
     SdkKey = 'sdk_key',
-    ApiUrl = 'api_url',
+    ManagementUrl = 'management_url',
 }
 
 export type Validator = ValidatorBase & {
