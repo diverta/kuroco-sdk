@@ -16,7 +16,7 @@ function installDependencies(pjPath, moduleNames = []) {
 }
 function handleError(e) {
     console.error(e);
-    process.exit(1);
+    process.exitCode = 1;
 }
 function getPackageJsonObj(pjPath) {
     try {
