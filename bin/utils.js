@@ -13,9 +13,8 @@ module.exports = {
             const file = fs.readFileSync(p, { encoding: 'utf8' });
             return JSON.parse(file);
         } catch (e) {
-            console.error(`a configuration file '${p}' you specified is not found or broken.`);
-            console.error(`please run 'kuroco init' first, or define the file by yourself instead.`);
-            process.exit(1);
+            console.error(`a configuration file '${p}' is not found or broken.`);
+            process.exitCode = 1;
         }
     },
 
