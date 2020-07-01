@@ -103,28 +103,7 @@ function applyPull() {
         });
 }
 
-function applyInit() {
-    program
-        .command('init [options]')
-        .option('--write <value>', 'Export files (for developper option)', true)
-        .description('initializes meta informations.')
-        .action((cmd, options) => {
-            if (OpenAPI) {
-                OpenAPI.init({
-                    ...options,
-                });
-            }
-        })
-        .on('--help', () => {
-            console.log('');
-            console.log('Examples:');
-            console.log('');
-            console.log(`  $ ${commandName} init`);
-        });
-}
-
 applyGenerate();
 applyPull();
-applyInit();
 
 program.parse(process.argv);
