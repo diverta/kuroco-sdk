@@ -15,7 +15,6 @@ const {
     getSpecifedLanguage,
     generateJsFiles,
     providePackageJson,
-    loadFirebaseConfigurations,
 } = require('./utils');
 const {
     installDependencies,
@@ -23,13 +22,13 @@ const {
 
 program.version(pkg.version);
 
-// TODO: should export 'finished message' in each functions done, like 'the process xxx was succeeded!'
-
 function applyGenerate() {
+    const defaultConfigurationFilePath = path.resolve(process.cwd(), 'kuroco.config.json');
     const defaultInputPath = path.resolve(process.cwd(), 'openapi.json');
     const defaultOutputPath = path.resolve(process.cwd(), 'generated');
     program
         .command('generate [options]')
+        .option('-c, --config <value>', 'Path to kuroco configuration', defaultConfigurationFilePath)
         .option('-i, --input <value>', 'Path to swagger specification', defaultInputPath)
         .option('-o, --output <value>', 'Output directory', defaultOutputPath)
         .option('-l, --language <value>', 'Language either TypeScript or JavaScript', 'TypeScript')
@@ -50,7 +49,7 @@ function applyGenerate() {
                     case 'ts':
                         OpenAPI.generate({
                             ...options,
-                            config: loadKurocoConfig(),
+                            config: loadKurocoConfig(options.config),
                         });
                         break;
                     case 'js':
@@ -59,7 +58,7 @@ function applyGenerate() {
                         // executes toward tmpDir tentatively.
                         OpenAPI.generate({
                             ...options,
-                            config: loadKurocoConfig(),
+                            config: loadKurocoConfig(options.config),
                             output: tmpDir,
                         });
                         // executes tsc to generate JS from TS, then remake output dir.
@@ -81,17 +80,19 @@ function applyGenerate() {
 }
 
 function applyPull() {
+    const defaultConfigurationFilePath = path.resolve(process.cwd(), 'kuroco.config.json');
     const defaultOutputPath = path.resolve(process.cwd(), 'openapi.json');
     program
         .command('pull [options]')
         .description('pulls openapi.json from the server.')
+        .option('-c, --config <value>', 'Path to kuroco configuration', defaultConfigurationFilePath)
         .option('-o, --output <value>', 'Output path', defaultOutputPath)
         .option('--write <value>', 'Export files (for developper option)', true)
         .action((cmd, options) => {
             if (OpenAPI) {
                 OpenAPI.pull({
                     ...options,
-                    config: loadKurocoConfig(),
+                    config: loadKurocoConfig(options.config),
                 });
             }
         })

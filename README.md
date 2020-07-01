@@ -29,30 +29,24 @@ http://nodejs.org/
 
 ### Configuration
 
-First step is to configure the project.
-We recommend to do so by running `kuroco init`, which will walk you through an interactive prompt to create the configuration file.
-Alternatively, it can be done by manually by adding `kuroco.config.json` file in your project's root folder.
+SDK requires configuration file named `kuroco.config.json`.  
+Please download it at management screen.  
+![config_file](./.github/docs/assets/config_file.png)
 
-The file will contain a JSON configuration object like below :
-```
-{
-    "sdk_key": "c9cdfd46b60bb0a34ba5c2c153ffad3f",          // Kuroco authorization token for the SDK
-    "management_url": "https://kuroco-dev-mng.r-cms.jp"     // Your Kuroco management site's url
-    ... // other configurations
-}
-```
-
-#### :question: Where can I get my SDK key ?
-
-The `sdk_key` can be found on the API List page of your Kuroco management interface.
-![token](./.github/docs/assets/token.png)
-
+> **Multiple APIs**
+>
+> If you have multiple APIs,  
+> Please download those configurations and rename, use `-c` option.
+> 
+> ```sh
+> kuroco pull -c a.kuroco.config.json && kuroco generate -c a.kuroco.config.json -o a_generated
+> kuroco pull -c b.kuroco.config.json && kuroco generate -c b.kuroco.config.json -o b_generated
+> ```
 ---
 
 ## Kuroco SDK quickstart
 
 ```
-npx kuroco init && \
 npx kuroco pull && \
 npx kuroco generate
 ```
