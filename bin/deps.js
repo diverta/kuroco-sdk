@@ -14,22 +14,18 @@ function installDependencies(pjPath, moduleNames = []) {
         }
     });
 }
-function handleError(e) {
-    console.error(e);
-    process.exitCode = 1;
-}
 function getPackageJsonObj(pjPath) {
     try {
         const packageJsonPath = path.resolve(pjPath, 'package.json');
         return fs.readJSONSync(packageJsonPath);
     } catch (e) {
-        handleError(new Error('current directry does not have "package.json", please retry at the root directry of your PJ.'));
+        throw new Error('current directry does not have "package.json", please retry at the root directry of your PJ.');
     }
 }
 function install(moduleNames) {
     npm.commands.install(moduleNames, (res) => {
         if (res && res.err) {
-            handleError(res.err);
+            throw new Error(`${res.err}`);
         }
     });
 }
@@ -49,7 +45,6 @@ function pick(pkg, moduleNames = []) {
 /** install required dependencies to target project. */
 module.exports = {
     installDependencies,
-    handleError,
     getPackageJsonObj,
     install,
     pick,

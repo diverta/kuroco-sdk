@@ -6,6 +6,7 @@ const path = require('path');
 const program = require('commander');
 const mkdirp = require('mkdirp');
 const pkg = require('../package.json');
+const { handleError } = require('../dist/__base');
 
 const OpenAPI = require(path.resolve(__dirname, '../dist/index.js')).default;
 const commandName = Object.keys(pkg.bin)[0];
@@ -38,37 +39,39 @@ function applyGenerate() {
         .option('--write', 'Export files (for developper option)', true)
         .description('generates javascript/typescript sourcecodes.')
         .action((cmd, options) => {
-            if (OpenAPI) {
+            try {
+                if (OpenAPI) {
 
-                installDependencies(process.cwd(), [
-                    'firebase',
-                    '@vimeo/player',
-                ]);
+                    installDependencies(process.cwd(), [
+                        'firebase',
+                        '@vimeo/player',
+                    ]);
 
-                switch (getSpecifedLanguage(options.language)) {
-                    case 'ts':
-                        OpenAPI.generate({
-                            ...options,
-                            config: loadKurocoConfig(options.config),
-                        });
-                        break;
-                    case 'js':
-                        const tmpDir = path.resolve(__dirname, '..', '.tmp');
-                        mkdirp.sync(tmpDir);
-                        // executes toward tmpDir tentatively.
-                        OpenAPI.generate({
-                            ...options,
-                            config: loadKurocoConfig(options.config),
-                            output: tmpDir,
-                        });
-                        // executes tsc to generate JS from TS, then remake output dir.
-                        generateJsFiles(options, tmpDir);
-                        break;
+                    switch (getSpecifedLanguage(options.language)) {
+                        case 'ts':
+                            OpenAPI.generate({
+                                ...options,
+                                config: loadKurocoConfig(options.config),
+                            });
+                            break;
+                        case 'js':
+                            const tmpDir = path.resolve(__dirname, '..', '.tmp');
+                            mkdirp.sync(tmpDir);
+                            // executes toward tmpDir tentatively.
+                            OpenAPI.generate({
+                                ...options,
+                                config: loadKurocoConfig(options.config),
+                                output: tmpDir,
+                            });
+                            // executes tsc to generate JS from TS, then remake output dir.
+                            generateJsFiles(options, tmpDir);
+                            break;
+                    }
+                    if (options.lib) {
+                        providePackageJson(options.output)
+                    }
                 }
-                if (options.lib) {
-                    providePackageJson(options.output)
-                }
-            }
+            } catch(e) { handleError(e); }
         })
         .on('--help', () => {
             console.log('');
@@ -89,12 +92,14 @@ function applyPull() {
         .option('-o, --output <value>', 'Output path', defaultOutputPath)
         .option('--write <value>', 'Export files (for developper option)', true)
         .action((cmd, options) => {
-            if (OpenAPI) {
-                OpenAPI.pull({
-                    ...options,
-                    config: loadKurocoConfig(options.config),
-                });
-            }
+            try {
+                if (OpenAPI) {
+                    OpenAPI.pull({
+                        ...options,
+                        config: loadKurocoConfig(options.config),
+                    });
+                }
+            } catch(e) { handleError(e); }
         })
         .on('--help', () => {
             console.log('');

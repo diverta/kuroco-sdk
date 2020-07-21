@@ -32,7 +32,8 @@ export function handleSuccess(...msgs: string[]) {
 export function handleError(e: any) {
     log([Font.FgRed, Font.Bright], `Process was failed.`);
     log([Font.FgRed], `${e}`);
-    process.exitCode = 1;
+    process.exit(1);
+    // process.exitCode = 1;
 }
 
 function log(fonts: Font[], ...msgs: string[]) {

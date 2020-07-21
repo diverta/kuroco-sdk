@@ -9,17 +9,12 @@ const configurationFilePath = path.resolve(process.cwd(), 'kuroco.config.json');
 module.exports = {
     /** load general configuration of KurocoSDK. */
     loadKurocoConfig: (p = configurationFilePath) => {
-        try {
-            const file = fs.readFileSync(p, { encoding: 'utf8' });
-            const json = JSON.parse(file);
-            if (json === undefined) {
-                throw Error();
-            }
-            return json;
-        } catch (e) {
-            console.error(`a configuration file '${p}' is not found or broken.`);
-            process.exitCode = 1;
+        const file = fs.readFileSync(p, { encoding: 'utf8' });
+        const json = JSON.parse(file);
+        if (json === undefined) {
+            throw Error(`a configuration file '${p}' is broken.`);
         }
+        return json;
     },
 
     /** retrieve which one of JS/TS should be exported. */
