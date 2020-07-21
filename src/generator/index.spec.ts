@@ -1,6 +1,6 @@
 import * as OpenAPI from '.';
 
-describe.only('index', () => {
+describe('index', () => {
     it('parses v3 without issues', () => {
         OpenAPI.generate({
             input: './test/generator/mock/v3/spec.json',

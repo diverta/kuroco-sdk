@@ -1,7 +1,7 @@
 const npm = require('global-npm');
 const deps = require('../../bin/deps');
 
-describe.only('deps', () => {
+describe('deps', () => {
     it('pick(): should pick only unused pkg', () => {
         expect(deps.pick({}, ['pkg'])).toEqual(['pkg']);
         expect(
