@@ -9,7 +9,6 @@ junit.xml
 *.iml
 dist
 archive
-coverage
 test/result
 
 generated
