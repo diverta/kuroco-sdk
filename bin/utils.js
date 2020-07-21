@@ -30,30 +30,29 @@ module.exports = {
             { lang: 'js', token: 'javascript' },
             { lang: 'js', token: 'js' },
         ];
-        const matched = possiblyLanguagePattern.find(({ lang, token }) => languageArg.toUpperCase() === token.toUpperCase());
+        const matched = possiblyLanguagePattern.find(({ token }) => languageArg.toUpperCase() === token.toUpperCase());
         return matched ? matched.lang : 'ts';
     },
 
     /** generate JS file. */
     generateJsFiles: (option, tsDir) => {
         function write({ output, standalone }, tsDir) {
-            const outputDir = path.resolve(process.cwd(), output);
-            const outputFile = path.resolve(outputDir, 'index.js');
-            const entry = path.resolve(tsDir, 'index.ts');
-            const webpackconfig = path.resolve(__dirname, 'webpack.config.forjs.js');
-            const tsconfig = path.resolve(__dirname, 'tsconfig.forjs.json');
+            const { webpack, tsconfig } = require('./etc');
             
+            const outputDir = path.resolve(process.cwd(), output);
             rimraf.sync(outputDir);
             mkdirp.sync(outputDir);
 
-            const tscCmd = `npx -p typescript tsc -p ${tsconfig} --outDir ${outputDir}`;
+            const tscCmd = `npx -p typescript tsc \
+                -p ${tsconfig} \
+                --outDir ${path.resolve(process.cwd(), output)}`;
             const webpackCmd = `npx webpack-cli \
-                --config ${webpackconfig} \
-                --entry ${entry} \
-                --output ${outputFile} \
+                --config ${webpack} \
+                --entry ${path.resolve(tsDir, 'index.ts')} \
+                --output ${path.resolve(outputDir, 'index.js')} \
                 --silent`;
             const cmd = standalone ? webpackCmd : tscCmd;
-            
+
             childProcess.spawnSync(cmd, { cwd: path.resolve(__dirname), shell: true, stdio: 'inherit' });
         }
 
@@ -63,18 +62,7 @@ module.exports = {
 
     /** provide package.json for lib use. */
     providePackageJson: (output) => {
-        fs.copyFileSync(path.resolve(__dirname, 'package.lib.json'), path.resolve(output, 'package.json'));
-    },
-
-    /** load firebase configuration inside of kuroco config. */
-    loadFirebaseConfigurations: () => {
-        path.resolve(process.cwd(), 'kuroco.config.json');
-        fs.writeFileSync(
-            paths.tsconfigJsWithIncludes,
-            JSON.stringify({
-                include: [`${tsDir}/**/*.ts`],
-            }),
-            { overwrite: true }
-        );
+        const { packageJSON } = require('./etc');
+        fs.copyFileSync(packageJSON, path.resolve(output, 'package.json'));
     },
 };

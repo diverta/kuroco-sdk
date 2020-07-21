@@ -38,10 +38,8 @@
     },
     "files": [
         "tsconfig.json",
-        "bin/*.js",
-        "bin/*.json",
-        "dist/index.js",
-        "dist/index.d.ts",
+        "bin/**/*.js",
+        "bin/**/*.json",
         "dist/**/*.json",
         "dist/**/*.js",
         "dist/**/*.d.ts",
