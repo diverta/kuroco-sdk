@@ -1,0 +1,1066 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1595322398007" clover="3.2.0">
+  <project timestamp="1595322398007" name="All files">
+    <metrics statements="802" coveredstatements="660" conditionals="404" coveredconditionals="287" methods="167" coveredmethods="115" elements="1373" coveredelements="1062" complexity="0" loc="802" ncloc="802" packages="9" files="77" classes="77"/>
+    <package name="src">
+      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="index.ts" path="/home/runner/work/kuroco-sdk/kuroco-sdk/src/index.ts">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+    </package>
+    <package name="src.__base">
+      <metrics statements="6" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="0"/>
+      <file name="index.ts" path="/home/runner/work/kuroco-sdk/kuroco-sdk/src/__base/index.ts">
+        <metrics statements="6" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="0"/>
+        <line num="28" count="0" type="stmt"/>
+        <line num="29" count="0" type="stmt"/>
+        <line num="33" count="0" type="stmt"/>
+        <line num="34" count="0" type="stmt"/>
+        <line num="35" count="0" type="stmt"/>
+        <line num="39" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.generator">
+      <metrics statements="9" coveredstatements="7" conditionals="6" coveredconditionals="2" methods="1" coveredmethods="1"/>
+      <file name="index.ts" path="/home/runner/work/kuroco-sdk/kuroco-sdk/src/generator/index.ts">
+        <metrics statements="9" coveredstatements="7" conditionals="6" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <line num="26" count="1" type="stmt"/>
+        <line num="28" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="29" count="1" type="stmt"/>
+        <line num="31" count="1" type="stmt"/>
+        <line num="32" count="1" type="stmt"/>
+        <line num="33" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="34" count="0" type="stmt"/>
+        <line num="36" count="1" type="stmt"/>
+        <line num="38" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.generator.client.interfaces">
+      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="OperationPattern.ts" path="/home/runner/work/kuroco-sdk/kuroco-sdk/src/generator/client/interfaces/OperationPattern.ts">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+    </package>
+    <package name="src.generator.openApi.v3">
+      <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="index.ts" path="/home/runner/work/kuroco-sdk/kuroco-sdk/src/generator/openApi/v3/index.ts">
+        <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="20" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.generator.openApi.v3.interfaces.Extensions">
+      <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="WithEnumExtension.ts" path="/home/runner/work/kuroco-sdk/kuroco-sdk/src/generator/openApi/v3/interfaces/Extensions/WithEnumExtension.ts">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+    </package>
+    <package name="src.generator.openApi.v3.parser">
+      <metrics statements="577" coveredstatements="530" conditionals="325" coveredconditionals="257" methods="86" coveredmethods="69"/>
+      <file name="constants.ts" path="/home/runner/work/kuroco-sdk/kuroco-sdk/src/generator/openApi/v3/parser/constants.ts">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="12" count="4" type="stmt"/>
+      </file>
+      <file name="extendEnum.ts" path="/home/runner/work/kuroco-sdk/kuroco-sdk/src/generator/openApi/v3/parser/extendEnum.ts">
+        <metrics statements="5" coveredstatements="5" conditionals="6" coveredconditionals="6" methods="2" coveredmethods="2"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="14" count="9" type="stmt"/>
+        <line num="15" count="9" type="stmt"/>
+        <line num="17" count="27" type="stmt"/>
+      </file>
+      <file name="getComment.ts" path="/home/runner/work/kuroco-sdk/kuroco-sdk/src/generator/openApi/v3/parser/getComment.ts">
+        <metrics statements="3" coveredstatements="3" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
+        <line num="9" count="354" type="cond" truecount="2" falsecount="0"/>
+        <line num="10" count="116" type="stmt"/>
+        <line num="12" count="238" type="stmt"/>
+      </file>
+      <file name="getContent.ts" path="/home/runner/work/kuroco-sdk/kuroco-sdk/src/generator/openApi/v3/parser/getContent.ts">
+        <metrics statements="1" coveredstatements="1" conditionals="15" coveredconditionals="8" methods="1" coveredmethods="1"/>
+        <line num="9" count="26" type="cond" truecount="8" falsecount="7"/>
+      </file>
+      <file name="getEnum.ts" path="/home/runner/work/kuroco-sdk/kuroco-sdk/src/generator/openApi/v3/parser/getEnum.ts">
+        <metrics statements="7" coveredstatements="6" conditionals="4" coveredconditionals="3" methods="3" coveredmethods="3"/>
+        <line num="5" count="9" type="cond" truecount="1" falsecount="1"/>
+        <line num="6" count="9" type="stmt"/>
+        <line num="8" count="27" type="stmt"/>
+        <line num="11" count="27" type="cond" truecount="2" falsecount="0"/>
+        <line num="12" count="6" type="stmt"/>
+        <line num="19" count="21" type="stmt"/>
+        <line num="27" count="0" type="stmt"/>
+      </file>
+      <file name="getEnumFromDescription.ts" path="/home/runner/work/kuroco-sdk/kuroco-sdk/src/generator/openApi/v3/parser/getEnumFromDescription.ts">
+        <metrics statements="12" coveredstatements="12" conditionals="8" coveredconditionals="6" methods="4" coveredmethods="4"/>
+        <line num="7" count="7" type="cond" truecount="2" falsecount="0"/>
+        <line num="8" count="4" type="stmt"/>
+        <line num="9" count="4" type="cond" truecount="1" falsecount="1"/>
+        <line num="11" count="4" type="stmt"/>
+        <line num="12" count="4" type="stmt"/>
+        <line num="13" count="12" type="stmt"/>
+        <line num="14" count="12" type="stmt"/>
+        <line num="15" count="12" type="cond" truecount="3" falsecount="1"/>
+        <line num="16" count="12" type="stmt"/>
+        <line num="26" count="4" type="stmt"/>
+        <line num="27" count="36" type="stmt"/>
+        <line num="32" count="3" type="stmt"/>
+      </file>
+      <file name="getEnumValues.ts" path="/home/runner/work/kuroco-sdk/kuroco-sdk/src/generator/openApi/v3/parser/getEnumValues.ts">
+        <metrics statements="3" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="0"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="8" count="0" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
+      </file>
+      <file name="getMappedType.ts" path="/home/runner/work/kuroco-sdk/kuroco-sdk/src/generator/openApi/v3/parser/getMappedType.ts">
+        <metrics statements="5" coveredstatements="5" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
+        <line num="7" count="98" type="stmt"/>
+        <line num="8" count="98" type="cond" truecount="2" falsecount="0"/>
+        <line num="9" count="96" type="stmt"/>
+        <line num="11" count="2" type="stmt"/>
+        <line num="15" count="186" type="stmt"/>
+      </file>
+      <file name="getModel.ts" path="/home/runner/work/kuroco-sdk/kuroco-sdk/src/generator/openApi/v3/parser/getModel.ts">
+        <metrics statements="155" coveredstatements="144" conditionals="96" coveredconditionals="80" methods="20" coveredmethods="10"/>
+        <line num="14" count="169" type="stmt"/>
+        <line num="33" count="169" type="cond" truecount="2" falsecount="0"/>
+        <line num="34" count="13" type="stmt"/>
+        <line num="35" count="13" type="stmt"/>
+        <line num="36" count="13" type="stmt"/>
+        <line num="37" count="13" type="stmt"/>
+        <line num="38" count="13" type="stmt"/>
+        <line num="39" count="13" type="stmt"/>
+        <line num="40" count="13" type="stmt"/>
+        <line num="41" count="13" type="stmt"/>
+        <line num="44" count="156" type="cond" truecount="2" falsecount="0"/>
+        <line num="45" count="9" type="stmt"/>
+        <line num="46" count="9" type="stmt"/>
+        <line num="47" count="9" type="cond" truecount="1" falsecount="1"/>
+        <line num="48" count="9" type="stmt"/>
+        <line num="49" count="9" type="stmt"/>
+        <line num="50" count="9" type="stmt"/>
+        <line num="51" count="9" type="stmt"/>
+        <line num="52" count="9" type="stmt"/>
+        <line num="53" count="9" type="stmt"/>
+        <line num="57" count="147" type="cond" truecount="5" falsecount="0"/>
+        <line num="58" count="7" type="stmt"/>
+        <line num="59" count="7" type="cond" truecount="2" falsecount="0"/>
+        <line num="60" count="4" type="stmt"/>
+        <line num="61" count="4" type="stmt"/>
+        <line num="62" count="4" type="stmt"/>
+        <line num="63" count="4" type="stmt"/>
+        <line num="64" count="4" type="stmt"/>
+        <line num="65" count="4" type="stmt"/>
+        <line num="69" count="143" type="cond" truecount="4" falsecount="0"/>
+        <line num="70" count="17" type="cond" truecount="2" falsecount="0"/>
+        <line num="71" count="6" type="stmt"/>
+        <line num="72" count="6" type="stmt"/>
+        <line num="73" count="6" type="stmt"/>
+        <line num="74" count="6" type="stmt"/>
+        <line num="75" count="6" type="stmt"/>
+        <line num="76" count="6" type="stmt"/>
+        <line num="77" count="6" type="stmt"/>
+        <line num="78" count="6" type="stmt"/>
+        <line num="80" count="11" type="stmt"/>
+        <line num="81" count="11" type="stmt"/>
+        <line num="82" count="11" type="stmt"/>
+        <line num="83" count="11" type="stmt"/>
+        <line num="84" count="11" type="stmt"/>
+        <line num="85" count="11" type="stmt"/>
+        <line num="86" count="11" type="stmt"/>
+        <line num="87" count="11" type="stmt"/>
+        <line num="88" count="11" type="stmt"/>
+        <line num="92" count="126" type="cond" truecount="5" falsecount="0"/>
+        <line num="93" count="9" type="cond" truecount="2" falsecount="0"/>
+        <line num="94" count="1" type="stmt"/>
+        <line num="95" count="1" type="stmt"/>
+        <line num="96" count="1" type="stmt"/>
+        <line num="97" count="1" type="stmt"/>
+        <line num="98" count="1" type="stmt"/>
+        <line num="99" count="1" type="stmt"/>
+        <line num="100" count="1" type="stmt"/>
+        <line num="101" count="1" type="stmt"/>
+        <line num="102" count="1" type="stmt"/>
+        <line num="104" count="8" type="stmt"/>
+        <line num="105" count="8" type="stmt"/>
+        <line num="106" count="8" type="stmt"/>
+        <line num="107" count="8" type="stmt"/>
+        <line num="108" count="8" type="stmt"/>
+        <line num="109" count="8" type="stmt"/>
+        <line num="110" count="8" type="stmt"/>
+        <line num="111" count="8" type="stmt"/>
+        <line num="112" count="8" type="stmt"/>
+        <line num="113" count="8" type="stmt"/>
+        <line num="120" count="117" type="cond" truecount="4" falsecount="0"/>
+        <line num="121" count="1" type="stmt"/>
+        <line num="122" count="1" type="stmt"/>
+        <line num="124" count="4" type="cond" truecount="1" falsecount="1"/>
+        <line num="125" count="0" type="stmt"/>
+        <line num="127" count="4" type="cond" truecount="1" falsecount="1"/>
+        <line num="128" count="0" type="stmt"/>
+        <line num="130" count="4" type="stmt"/>
+        <line num="133" count="1" type="stmt"/>
+        <line num="135" count="4" type="cond" truecount="1" falsecount="1"/>
+        <line num="136" count="0" type="stmt"/>
+        <line num="138" count="4" type="cond" truecount="1" falsecount="1"/>
+        <line num="139" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="141" count="4" type="stmt"/>
+        <line num="144" count="1" type="stmt"/>
+        <line num="145" count="1" type="stmt"/>
+        <line num="146" count="1" type="stmt"/>
+        <line num="147" count="4" type="stmt"/>
+        <line num="155" count="1" type="stmt"/>
+        <line num="156" count="1" type="stmt"/>
+        <line num="157" count="1" type="stmt"/>
+        <line num="158" count="1" type="stmt"/>
+        <line num="159" count="1" type="stmt"/>
+        <line num="161" count="1" type="stmt"/>
+        <line num="167" count="116" type="cond" truecount="4" falsecount="0"/>
+        <line num="168" count="2" type="stmt"/>
+        <line num="169" count="2" type="stmt"/>
+        <line num="171" count="8" type="cond" truecount="1" falsecount="1"/>
+        <line num="172" count="0" type="stmt"/>
+        <line num="174" count="8" type="cond" truecount="1" falsecount="1"/>
+        <line num="175" count="0" type="stmt"/>
+        <line num="177" count="8" type="stmt"/>
+        <line num="180" count="2" type="stmt"/>
+        <line num="182" count="8" type="cond" truecount="1" falsecount="1"/>
+        <line num="183" count="0" type="stmt"/>
+        <line num="185" count="8" type="cond" truecount="1" falsecount="1"/>
+        <line num="186" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="188" count="8" type="stmt"/>
+        <line num="191" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="192" count="0" type="stmt"/>
+        <line num="194" count="2" type="stmt"/>
+        <line num="195" count="2" type="stmt"/>
+        <line num="196" count="2" type="stmt"/>
+        <line num="197" count="8" type="stmt"/>
+        <line num="205" count="2" type="stmt"/>
+        <line num="206" count="2" type="stmt"/>
+        <line num="207" count="2" type="stmt"/>
+        <line num="208" count="2" type="stmt"/>
+        <line num="209" count="2" type="stmt"/>
+        <line num="211" count="2" type="stmt"/>
+        <line num="214" count="114" type="cond" truecount="2" falsecount="0"/>
+        <line num="215" count="36" type="stmt"/>
+        <line num="216" count="36" type="stmt"/>
+        <line num="217" count="36" type="stmt"/>
+        <line num="218" count="36" type="stmt"/>
+        <line num="220" count="36" type="cond" truecount="2" falsecount="0"/>
+        <line num="221" count="2" type="stmt"/>
+        <line num="222" count="5" type="cond" truecount="2" falsecount="0"/>
+        <line num="223" count="3" type="stmt"/>
+        <line num="224" count="3" type="stmt"/>
+        <line num="225" count="3" type="stmt"/>
+        <line num="227" count="5" type="cond" truecount="4" falsecount="0"/>
+        <line num="228" count="2" type="stmt"/>
+        <line num="229" count="2" type="stmt"/>
+        <line num="230" count="4" type="stmt"/>
+        <line num="231" count="4" type="stmt"/>
+        <line num="232" count="4" type="cond" truecount="1" falsecount="1"/>
+        <line num="233" count="0" type="stmt"/>
+        <line num="240" count="36" type="cond" truecount="2" falsecount="0"/>
+        <line num="241" count="31" type="stmt"/>
+        <line num="242" count="31" type="stmt"/>
+        <line num="243" count="61" type="stmt"/>
+        <line num="244" count="61" type="stmt"/>
+        <line num="245" count="61" type="cond" truecount="2" falsecount="0"/>
+        <line num="246" count="3" type="stmt"/>
+        <line num="251" count="36" type="stmt"/>
+        <line num="255" count="78" type="cond" truecount="1" falsecount="1"/>
+        <line num="256" count="78" type="stmt"/>
+        <line num="257" count="78" type="stmt"/>
+        <line num="258" count="78" type="stmt"/>
+        <line num="259" count="78" type="stmt"/>
+        <line num="260" count="78" type="stmt"/>
+        <line num="261" count="78" type="stmt"/>
+        <line num="262" count="78" type="stmt"/>
+        <line num="263" count="78" type="stmt"/>
+        <line num="266" count="0" type="stmt"/>
+      </file>
+      <file name="getModelDefault.ts" path="/home/runner/work/kuroco-sdk/kuroco-sdk/src/generator/openApi/v3/parser/getModelDefault.ts">
+        <metrics statements="11" coveredstatements="11" conditionals="12" coveredconditionals="12" methods="1" coveredmethods="1"/>
+        <line num="5" count="168" type="cond" truecount="2" falsecount="0"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="9" count="167" type="cond" truecount="4" falsecount="0"/>
+        <line num="11" count="3" type="cond" truecount="6" falsecount="0"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="14" count="2" type="stmt"/>
+        <line num="17" count="3" type="stmt"/>
+        <line num="20" count="2" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
+        <line num="30" count="158" type="stmt"/>
+      </file>
+      <file name="getModelProperties.ts" path="/home/runner/work/kuroco-sdk/kuroco-sdk/src/generator/openApi/v3/parser/getModelProperties.ts">
+        <metrics statements="11" coveredstatements="11" conditionals="6" coveredconditionals="5" methods="1" coveredmethods="1"/>
+        <line num="9" count="33" type="stmt"/>
+        <line num="10" count="33" type="stmt"/>
+        <line num="11" count="65" type="cond" truecount="1" falsecount="1"/>
+        <line num="12" count="65" type="stmt"/>
+        <line num="13" count="65" type="cond" truecount="2" falsecount="0"/>
+        <line num="14" count="65" type="cond" truecount="2" falsecount="0"/>
+        <line num="15" count="10" type="stmt"/>
+        <line num="16" count="10" type="stmt"/>
+        <line num="49" count="55" type="stmt"/>
+        <line num="50" count="55" type="stmt"/>
+        <line num="86" count="33" type="stmt"/>
+      </file>
+      <file name="getModelTemplate.ts" path="/home/runner/work/kuroco-sdk/kuroco-sdk/src/generator/openApi/v3/parser/getModelTemplate.ts">
+        <metrics statements="1" coveredstatements="1" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <line num="10" count="2" type="cond" truecount="2" falsecount="0"/>
+      </file>
+      <file name="getModels.ts" path="/home/runner/work/kuroco-sdk/kuroco-sdk/src/generator/openApi/v3/parser/getModels.ts">
+        <metrics statements="9" coveredstatements="9" conditionals="4" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="43" type="cond" truecount="1" falsecount="1"/>
+        <line num="11" count="43" type="stmt"/>
+        <line num="12" count="43" type="stmt"/>
+        <line num="13" count="43" type="stmt"/>
+        <line num="14" count="43" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+      </file>
+      <file name="getOperation.ts" path="/home/runner/work/kuroco-sdk/kuroco-sdk/src/generator/openApi/v3/parser/getOperation.ts">
+        <metrics statements="31" coveredstatements="31" conditionals="11" coveredconditionals="9" methods="2" coveredmethods="2"/>
+        <line num="20" count="25" type="cond" truecount="2" falsecount="1"/>
+        <line num="21" count="25" type="stmt"/>
+        <line num="22" count="25" type="stmt"/>
+        <line num="23" count="25" type="cond" truecount="1" falsecount="1"/>
+        <line num="24" count="25" type="stmt"/>
+        <line num="27" count="25" type="stmt"/>
+        <line num="51" count="25" type="cond" truecount="2" falsecount="0"/>
+        <line num="52" count="9" type="stmt"/>
+        <line num="53" count="9" type="stmt"/>
+        <line num="54" count="9" type="stmt"/>
+        <line num="55" count="9" type="stmt"/>
+        <line num="56" count="9" type="stmt"/>
+        <line num="57" count="9" type="stmt"/>
+        <line num="58" count="9" type="stmt"/>
+        <line num="59" count="9" type="stmt"/>
+        <line num="60" count="9" type="stmt"/>
+        <line num="63" count="25" type="cond" truecount="2" falsecount="0"/>
+        <line num="64" count="5" type="stmt"/>
+        <line num="65" count="5" type="stmt"/>
+        <line num="66" count="5" type="stmt"/>
+        <line num="67" count="5" type="stmt"/>
+        <line num="68" count="5" type="stmt"/>
+        <line num="72" count="25" type="cond" truecount="2" falsecount="0"/>
+        <line num="73" count="9" type="stmt"/>
+        <line num="74" count="9" type="stmt"/>
+        <line num="75" count="9" type="stmt"/>
+        <line num="76" count="9" type="stmt"/>
+        <line num="78" count="9" type="stmt"/>
+        <line num="79" count="14" type="stmt"/>
+        <line num="80" count="14" type="stmt"/>
+        <line num="84" count="25" type="stmt"/>
+      </file>
+      <file name="getOperationErrors.ts" path="/home/runner/work/kuroco-sdk/kuroco-sdk/src/generator/openApi/v3/parser/getOperationErrors.ts">
+        <metrics statements="3" coveredstatements="3" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="3"/>
+        <line num="5" count="9" type="stmt"/>
+        <line num="7" count="26" type="cond" truecount="2" falsecount="0"/>
+        <line num="9" count="10" type="stmt"/>
+      </file>
+      <file name="getOperationName.ts" path="/home/runner/work/kuroco-sdk/kuroco-sdk/src/generator/openApi/v3/parser/getOperationName.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="9" count="32" type="stmt"/>
+        <line num="10" count="32" type="stmt"/>
+      </file>
+      <file name="getOperationNameFallback.ts" path="/home/runner/work/kuroco-sdk/kuroco-sdk/src/generator/openApi/v3/parser/getOperationNameFallback.ts">
+        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
+        <line num="6" count="39" type="stmt"/>
+        <line num="8" count="98" type="stmt"/>
+        <line num="9" count="31" type="stmt"/>
+        <line num="11" count="223" type="stmt"/>
+        <line num="16" count="39" type="stmt"/>
+      </file>
+      <file name="getOperationParameter.ts" path="/home/runner/work/kuroco-sdk/kuroco-sdk/src/generator/openApi/v3/parser/getOperationParameter.ts">
+        <metrics statements="51" coveredstatements="43" conditionals="13" coveredconditionals="11" methods="1" coveredmethods="1"/>
+        <line num="12" count="34" type="stmt"/>
+        <line num="33" count="34" type="cond" truecount="1" falsecount="1"/>
+        <line num="34" count="0" type="stmt"/>
+        <line num="35" count="0" type="stmt"/>
+        <line num="36" count="0" type="stmt"/>
+        <line num="37" count="0" type="stmt"/>
+        <line num="38" count="0" type="stmt"/>
+        <line num="39" count="0" type="stmt"/>
+        <line num="40" count="0" type="stmt"/>
+        <line num="43" count="34" type="cond" truecount="1" falsecount="1"/>
+        <line num="44" count="34" type="cond" truecount="2" falsecount="0"/>
+        <line num="45" count="2" type="stmt"/>
+        <line num="46" count="2" type="stmt"/>
+        <line num="47" count="2" type="stmt"/>
+        <line num="48" count="2" type="stmt"/>
+        <line num="49" count="2" type="stmt"/>
+        <line num="50" count="2" type="stmt"/>
+        <line num="51" count="2" type="stmt"/>
+        <line num="52" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="53" count="2" type="stmt"/>
+        <line num="55" count="32" type="stmt"/>
+        <line num="56" count="32" type="stmt"/>
+        <line num="57" count="32" type="stmt"/>
+        <line num="58" count="32" type="stmt"/>
+        <line num="59" count="32" type="stmt"/>
+        <line num="60" count="32" type="stmt"/>
+        <line num="61" count="32" type="stmt"/>
+        <line num="62" count="32" type="cond" truecount="3" falsecount="0"/>
+        <line num="63" count="32" type="cond" truecount="2" falsecount="0"/>
+        <line num="64" count="32" type="stmt"/>
+        <line num="65" count="32" type="stmt"/>
+        <line num="66" count="32" type="stmt"/>
+        <line num="67" count="32" type="stmt"/>
+        <line num="68" count="32" type="stmt"/>
+        <line num="69" count="32" type="stmt"/>
+        <line num="70" count="32" type="stmt"/>
+        <line num="71" count="32" type="stmt"/>
+        <line num="72" count="32" type="stmt"/>
+        <line num="73" count="32" type="stmt"/>
+        <line num="74" count="32" type="stmt"/>
+        <line num="75" count="32" type="stmt"/>
+        <line num="76" count="32" type="stmt"/>
+        <line num="77" count="32" type="stmt"/>
+        <line num="78" count="32" type="stmt"/>
+        <line num="79" count="32" type="stmt"/>
+        <line num="80" count="32" type="stmt"/>
+        <line num="81" count="32" type="stmt"/>
+        <line num="82" count="32" type="stmt"/>
+        <line num="83" count="32" type="stmt"/>
+        <line num="84" count="32" type="stmt"/>
+        <line num="88" count="0" type="stmt"/>
+      </file>
+      <file name="getOperationParameterName.ts" path="/home/runner/work/kuroco-sdk/kuroco-sdk/src/generator/openApi/v3/parser/getOperationParameterName.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="8" count="84" type="stmt"/>
+        <line num="9" count="84" type="stmt"/>
+      </file>
+      <file name="getOperationParameters.ts" path="/home/runner/work/kuroco-sdk/kuroco-sdk/src/generator/openApi/v3/parser/getOperationParameters.ts">
+        <metrics statements="33" coveredstatements="33" conditionals="7" coveredconditionals="7" methods="2" coveredmethods="2"/>
+        <line num="9" count="9" type="stmt"/>
+        <line num="21" count="9" type="stmt"/>
+        <line num="22" count="34" type="stmt"/>
+        <line num="23" count="34" type="stmt"/>
+        <line num="27" count="34" type="cond" truecount="2" falsecount="0"/>
+        <line num="28" count="30" type="cond" truecount="5" falsecount="0"/>
+        <line num="30" count="5" type="stmt"/>
+        <line num="31" count="5" type="stmt"/>
+        <line num="32" count="5" type="stmt"/>
+        <line num="33" count="5" type="stmt"/>
+        <line num="36" count="18" type="stmt"/>
+        <line num="37" count="18" type="stmt"/>
+        <line num="38" count="18" type="stmt"/>
+        <line num="39" count="18" type="stmt"/>
+        <line num="42" count="3" type="stmt"/>
+        <line num="43" count="3" type="stmt"/>
+        <line num="44" count="3" type="stmt"/>
+        <line num="45" count="3" type="stmt"/>
+        <line num="48" count="2" type="stmt"/>
+        <line num="49" count="2" type="stmt"/>
+        <line num="50" count="2" type="stmt"/>
+        <line num="51" count="2" type="stmt"/>
+        <line num="54" count="2" type="stmt"/>
+        <line num="55" count="2" type="stmt"/>
+        <line num="56" count="2" type="stmt"/>
+        <line num="57" count="2" type="stmt"/>
+        <line num="62" count="9" type="stmt"/>
+        <line num="63" count="9" type="stmt"/>
+        <line num="64" count="9" type="stmt"/>
+        <line num="65" count="9" type="stmt"/>
+        <line num="66" count="9" type="stmt"/>
+        <line num="67" count="9" type="stmt"/>
+        <line num="68" count="9" type="stmt"/>
+      </file>
+      <file name="getOperationPath.ts" path="/home/runner/work/kuroco-sdk/kuroco-sdk/src/generator/openApi/v3/parser/getOperationPath.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="11" count="35" type="stmt"/>
+        <line num="13" count="42" type="stmt"/>
+      </file>
+      <file name="getOperationRequestBody.ts" path="/home/runner/work/kuroco-sdk/kuroco-sdk/src/generator/openApi/v3/parser/getOperationRequestBody.ts">
+        <metrics statements="42" coveredstatements="41" conditionals="12" coveredconditionals="10" methods="1" coveredmethods="1"/>
+        <line num="11" count="5" type="stmt"/>
+        <line num="33" count="5" type="cond" truecount="1" falsecount="1"/>
+        <line num="34" count="5" type="stmt"/>
+        <line num="35" count="5" type="cond" truecount="1" falsecount="1"/>
+        <line num="36" count="5" type="cond" truecount="4" falsecount="0"/>
+        <line num="37" count="4" type="stmt"/>
+        <line num="38" count="4" type="stmt"/>
+        <line num="39" count="4" type="stmt"/>
+        <line num="40" count="4" type="stmt"/>
+        <line num="41" count="4" type="stmt"/>
+        <line num="42" count="4" type="stmt"/>
+        <line num="43" count="4" type="stmt"/>
+        <line num="45" count="1" type="stmt"/>
+        <line num="46" count="1" type="stmt"/>
+        <line num="47" count="1" type="stmt"/>
+        <line num="48" count="1" type="stmt"/>
+        <line num="49" count="1" type="stmt"/>
+        <line num="50" count="1" type="stmt"/>
+        <line num="51" count="1" type="stmt"/>
+        <line num="52" count="1" type="cond" truecount="2" falsecount="0"/>
+        <line num="53" count="1" type="cond" truecount="2" falsecount="0"/>
+        <line num="54" count="1" type="stmt"/>
+        <line num="55" count="1" type="stmt"/>
+        <line num="56" count="1" type="stmt"/>
+        <line num="57" count="1" type="stmt"/>
+        <line num="58" count="1" type="stmt"/>
+        <line num="59" count="1" type="stmt"/>
+        <line num="60" count="1" type="stmt"/>
+        <line num="61" count="1" type="stmt"/>
+        <line num="62" count="1" type="stmt"/>
+        <line num="63" count="1" type="stmt"/>
+        <line num="64" count="1" type="stmt"/>
+        <line num="65" count="1" type="stmt"/>
+        <line num="66" count="1" type="stmt"/>
+        <line num="67" count="1" type="stmt"/>
+        <line num="68" count="1" type="stmt"/>
+        <line num="69" count="1" type="stmt"/>
+        <line num="70" count="1" type="stmt"/>
+        <line num="71" count="1" type="stmt"/>
+        <line num="72" count="1" type="stmt"/>
+        <line num="73" count="1" type="stmt"/>
+        <line num="78" count="0" type="stmt"/>
+      </file>
+      <file name="getOperationResponse.ts" path="/home/runner/work/kuroco-sdk/kuroco-sdk/src/generator/openApi/v3/parser/getOperationResponse.ts">
+        <metrics statements="50" coveredstatements="50" conditionals="12" coveredconditionals="10" methods="1" coveredmethods="1"/>
+        <line num="11" count="26" type="stmt"/>
+        <line num="34" count="26" type="cond" truecount="2" falsecount="0"/>
+        <line num="35" count="1" type="stmt"/>
+        <line num="36" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="37" count="1" type="stmt"/>
+        <line num="38" count="1" type="stmt"/>
+        <line num="39" count="1" type="stmt"/>
+        <line num="40" count="1" type="stmt"/>
+        <line num="41" count="1" type="stmt"/>
+        <line num="46" count="25" type="cond" truecount="2" falsecount="0"/>
+        <line num="47" count="21" type="stmt"/>
+        <line num="48" count="21" type="cond" truecount="1" falsecount="1"/>
+        <line num="49" count="21" type="cond" truecount="4" falsecount="0"/>
+        <line num="50" count="14" type="stmt"/>
+        <line num="51" count="14" type="stmt"/>
+        <line num="52" count="14" type="stmt"/>
+        <line num="53" count="14" type="stmt"/>
+        <line num="54" count="14" type="stmt"/>
+        <line num="55" count="14" type="stmt"/>
+        <line num="56" count="14" type="stmt"/>
+        <line num="58" count="7" type="stmt"/>
+        <line num="59" count="7" type="stmt"/>
+        <line num="60" count="7" type="stmt"/>
+        <line num="61" count="7" type="stmt"/>
+        <line num="62" count="7" type="stmt"/>
+        <line num="63" count="7" type="stmt"/>
+        <line num="64" count="7" type="stmt"/>
+        <line num="65" count="7" type="stmt"/>
+        <line num="66" count="7" type="stmt"/>
+        <line num="67" count="7" type="stmt"/>
+        <line num="68" count="7" type="stmt"/>
+        <line num="69" count="7" type="stmt"/>
+        <line num="70" count="7" type="stmt"/>
+        <line num="71" count="7" type="stmt"/>
+        <line num="72" count="7" type="stmt"/>
+        <line num="73" count="7" type="stmt"/>
+        <line num="74" count="7" type="stmt"/>
+        <line num="75" count="7" type="stmt"/>
+        <line num="76" count="7" type="stmt"/>
+        <line num="77" count="7" type="stmt"/>
+        <line num="78" count="7" type="stmt"/>
+        <line num="79" count="7" type="stmt"/>
+        <line num="80" count="7" type="stmt"/>
+        <line num="81" count="7" type="stmt"/>
+        <line num="82" count="7" type="stmt"/>
+        <line num="83" count="7" type="stmt"/>
+        <line num="84" count="7" type="stmt"/>
+        <line num="85" count="7" type="stmt"/>
+        <line num="86" count="7" type="stmt"/>
+        <line num="91" count="4" type="stmt"/>
+      </file>
+      <file name="getOperationResponseCode.ts" path="/home/runner/work/kuroco-sdk/kuroco-sdk/src/generator/openApi/v3/parser/getOperationResponseCode.ts">
+        <metrics statements="7" coveredstatements="7" conditionals="6" coveredconditionals="5" methods="1" coveredmethods="1"/>
+        <line num="3" count="33" type="cond" truecount="2" falsecount="0"/>
+        <line num="4" count="4" type="stmt"/>
+        <line num="8" count="29" type="cond" truecount="2" falsecount="0"/>
+        <line num="9" count="27" type="stmt"/>
+        <line num="10" count="27" type="cond" truecount="1" falsecount="1"/>
+        <line num="11" count="27" type="stmt"/>
+        <line num="15" count="2" type="stmt"/>
+      </file>
+      <file name="getOperationResponseHeader.ts" path="/home/runner/work/kuroco-sdk/kuroco-sdk/src/generator/openApi/v3/parser/getOperationResponseHeader.ts">
+        <metrics statements="5" coveredstatements="5" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
+        <line num="4" count="9" type="stmt"/>
+        <line num="5" count="14" type="stmt"/>
+        <line num="7" count="9" type="cond" truecount="2" falsecount="0"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="10" count="8" type="stmt"/>
+      </file>
+      <file name="getOperationResponses.ts" path="/home/runner/work/kuroco-sdk/kuroco-sdk/src/generator/openApi/v3/parser/getOperationResponses.ts">
+        <metrics statements="10" coveredstatements="10" conditionals="8" coveredconditionals="5" methods="2" coveredmethods="2"/>
+        <line num="10" count="9" type="stmt"/>
+        <line num="14" count="9" type="stmt"/>
+        <line num="15" count="26" type="cond" truecount="1" falsecount="1"/>
+        <line num="16" count="26" type="stmt"/>
+        <line num="17" count="26" type="stmt"/>
+        <line num="18" count="26" type="stmt"/>
+        <line num="20" count="26" type="cond" truecount="1" falsecount="1"/>
+        <line num="21" count="26" type="stmt"/>
+        <line num="27" count="9" type="stmt"/>
+        <line num="28" count="23" type="cond" truecount="3" falsecount="1"/>
+      </file>
+      <file name="getOperationResults.ts" path="/home/runner/work/kuroco-sdk/kuroco-sdk/src/generator/openApi/v3/parser/getOperationResults.ts">
+        <metrics statements="13" coveredstatements="11" conditionals="15" coveredconditionals="12" methods="5" coveredmethods="5"/>
+        <line num="6" count="25" type="cond" truecount="3" falsecount="0"/>
+        <line num="7" count="25" type="cond" truecount="3" falsecount="2"/>
+        <line num="8" count="0" type="stmt"/>
+        <line num="10" count="25" type="stmt"/>
+        <line num="14" count="9" type="stmt"/>
+        <line num="16" count="9" type="stmt"/>
+        <line num="17" count="26" type="cond" truecount="5" falsecount="0"/>
+        <line num="18" count="16" type="stmt"/>
+        <line num="22" count="9" type="cond" truecount="1" falsecount="1"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="45" count="9" type="stmt"/>
+        <line num="46" count="16" type="stmt"/>
+        <line num="48" count="25" type="stmt"/>
+      </file>
+      <file name="getOperationType.ts" path="/home/runner/work/kuroco-sdk/kuroco-sdk/src/generator/openApi/v3/parser/getOperationType.ts">
+        <metrics statements="12" coveredstatements="2" conditionals="11" coveredconditionals="2" methods="3" coveredmethods="1"/>
+        <line num="9" count="25" type="cond" truecount="1" falsecount="1"/>
+        <line num="10" count="25" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="16" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="19" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="22" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="25" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="26" count="0" type="stmt"/>
+        <line num="29" count="0" type="stmt"/>
+      </file>
+      <file name="getRef.ts" path="/home/runner/work/kuroco-sdk/kuroco-sdk/src/generator/openApi/v3/parser/getRef.ts">
+        <metrics statements="10" coveredstatements="2" conditionals="4" coveredconditionals="1" methods="3" coveredmethods="1"/>
+        <line num="5" count="60" type="cond" truecount="1" falsecount="1"/>
+        <line num="8" count="0" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="17" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="25" count="60" type="stmt"/>
+      </file>
+      <file name="getSecurity.ts" path="/home/runner/work/kuroco-sdk/kuroco-sdk/src/generator/openApi/v3/parser/getSecurity.ts">
+        <metrics statements="6" coveredstatements="6" conditionals="4" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <line num="10" count="2" type="stmt"/>
+        <line num="11" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="12" count="2" type="stmt"/>
+        <line num="13" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="14" count="2" type="stmt"/>
+        <line num="21" count="2" type="stmt"/>
+      </file>
+      <file name="getServer.ts" path="/home/runner/work/kuroco-sdk/kuroco-sdk/src/generator/openApi/v3/parser/getServer.ts">
+        <metrics statements="7" coveredstatements="7" conditionals="10" coveredconditionals="8" methods="1" coveredmethods="1"/>
+        <line num="4" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="5" count="3" type="cond" truecount="3" falsecount="0"/>
+        <line num="6" count="3" type="cond" truecount="2" falsecount="1"/>
+        <line num="7" count="3" type="stmt"/>
+        <line num="8" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="9" count="2" type="stmt"/>
+        <line num="12" count="3" type="stmt"/>
+      </file>
+      <file name="getServiceClassName.ts" path="/home/runner/work/kuroco-sdk/kuroco-sdk/src/generator/openApi/v3/parser/getServiceClassName.ts">
+        <metrics statements="5" coveredstatements="5" conditionals="4" coveredconditionals="4" methods="1" coveredmethods="1"/>
+        <line num="8" count="32" type="stmt"/>
+        <line num="9" count="32" type="stmt"/>
+        <line num="10" count="32" type="cond" truecount="4" falsecount="0"/>
+        <line num="11" count="28" type="stmt"/>
+        <line num="13" count="4" type="stmt"/>
+      </file>
+      <file name="getServiceVersion.ts" path="/home/runner/work/kuroco-sdk/kuroco-sdk/src/generator/openApi/v3/parser/getServiceVersion.ts">
+        <metrics statements="1" coveredstatements="1" conditionals="1" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="7" count="4" type="stmt"/>
+      </file>
+      <file name="getServices.ts" path="/home/runner/work/kuroco-sdk/kuroco-sdk/src/generator/openApi/v3/parser/getServices.ts">
+        <metrics statements="15" coveredstatements="15" conditionals="13" coveredconditionals="11" methods="1" coveredmethods="1"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="13" type="cond" truecount="1" falsecount="1"/>
+        <line num="13" count="13" type="stmt"/>
+        <line num="14" count="13" type="stmt"/>
+        <line num="15" count="25" type="cond" truecount="1" falsecount="1"/>
+        <line num="16" count="25" type="cond" truecount="7" falsecount="0"/>
+        <line num="25" count="25" type="stmt"/>
+        <line num="26" count="25" type="stmt"/>
+        <line num="31" count="25" type="cond" truecount="2" falsecount="0"/>
+        <line num="39" count="25" type="stmt"/>
+        <line num="40" count="25" type="stmt"/>
+        <line num="41" count="25" type="stmt"/>
+        <line num="42" count="25" type="stmt"/>
+        <line num="48" count="1" type="stmt"/>
+      </file>
+      <file name="getType.ts" path="/home/runner/work/kuroco-sdk/kuroco-sdk/src/generator/openApi/v3/parser/getType.ts">
+        <metrics statements="33" coveredstatements="30" conditionals="18" coveredconditionals="14" methods="1" coveredmethods="1"/>
+        <line num="12" count="191" type="stmt"/>
+        <line num="19" count="191" type="cond" truecount="1" falsecount="1"/>
+        <line num="21" count="191" type="cond" truecount="2" falsecount="0"/>
+        <line num="22" count="5" type="stmt"/>
+        <line num="23" count="5" type="cond" truecount="3" falsecount="1"/>
+        <line num="24" count="5" type="stmt"/>
+        <line num="25" count="5" type="stmt"/>
+        <line num="27" count="5" type="cond" truecount="2" falsecount="0"/>
+        <line num="28" count="1" type="stmt"/>
+        <line num="29" count="1" type="stmt"/>
+        <line num="30" count="1" type="stmt"/>
+        <line num="31" count="4" type="cond" truecount="1" falsecount="1"/>
+        <line num="32" count="4" type="stmt"/>
+        <line num="33" count="4" type="stmt"/>
+        <line num="34" count="4" type="stmt"/>
+        <line num="36" count="0" type="stmt"/>
+        <line num="37" count="0" type="stmt"/>
+        <line num="38" count="0" type="stmt"/>
+        <line num="41" count="5" type="stmt"/>
+        <line num="42" count="5" type="stmt"/>
+        <line num="44" count="186" type="cond" truecount="2" falsecount="0"/>
+        <line num="45" count="83" type="stmt"/>
+        <line num="46" count="83" type="stmt"/>
+        <line num="47" count="83" type="stmt"/>
+        <line num="48" count="103" type="cond" truecount="1" falsecount="1"/>
+        <line num="49" count="103" type="stmt"/>
+        <line num="50" count="103" type="stmt"/>
+        <line num="51" count="103" type="stmt"/>
+        <line num="56" count="191" type="cond" truecount="2" falsecount="0"/>
+        <line num="57" count="1" type="stmt"/>
+        <line num="58" count="1" type="stmt"/>
+        <line num="59" count="1" type="stmt"/>
+        <line num="62" count="191" type="stmt"/>
+      </file>
+      <file name="isPrimaryType.ts" path="/home/runner/work/kuroco-sdk/kuroco-sdk/src/generator/openApi/v3/parser/isPrimaryType.ts">
+        <metrics statements="3" coveredstatements="3" conditionals="7" coveredconditionals="6" methods="1" coveredmethods="1"/>
+        <line num="8" count="8" type="cond" truecount="6" falsecount="1"/>
+        <line num="16" count="6" type="stmt"/>
+        <line num="18" count="2" type="stmt"/>
+      </file>
+      <file name="sortByRequired.ts" path="/home/runner/work/kuroco-sdk/kuroco-sdk/src/generator/openApi/v3/parser/sortByRequired.ts">
+        <metrics statements="1" coveredstatements="1" conditionals="8" coveredconditionals="8" methods="1" coveredmethods="1"/>
+        <line num="4" count="58" type="cond" truecount="8" falsecount="0"/>
+      </file>
+      <file name="stripNamespace.ts" path="/home/runner/work/kuroco-sdk/kuroco-sdk/src/generator/openApi/v3/parser/stripNamespace.ts">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+        <line num="6" count="204" type="stmt"/>
+        <line num="22" count="8" type="stmt"/>
+        <line num="23" count="8" type="stmt"/>
+        <line num="29" count="204" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.generator.utils">
+      <metrics statements="177" coveredstatements="117" conditionals="63" coveredconditionals="28" methods="66" coveredmethods="44"/>
+      <file name="flatMap.ts" path="/home/runner/work/kuroco-sdk/kuroco-sdk/src/generator/utils/flatMap.ts">
+        <metrics statements="4" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="8" count="0" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
+      </file>
+      <file name="format.ts" path="/home/runner/work/kuroco-sdk/kuroco-sdk/src/generator/utils/format.ts">
+        <metrics statements="15" coveredstatements="11" conditionals="13" coveredconditionals="9" methods="2" coveredmethods="2"/>
+        <line num="4" count="4" type="stmt"/>
+        <line num="5" count="4" type="stmt"/>
+        <line num="6" count="4" type="stmt"/>
+        <line num="7" count="4" type="stmt"/>
+        <line num="8" count="4" type="stmt"/>
+        <line num="9" count="4" type="cond" truecount="4" falsecount="1"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="12" count="4" type="cond" truecount="4" falsecount="2"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="16" count="4" type="stmt"/>
+        <line num="17" count="4" type="cond" truecount="1" falsecount="1"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="20" count="4" type="stmt"/>
+        <line num="22" count="4" type="stmt"/>
+      </file>
+      <file name="getModelNames.ts" path="/home/runner/work/kuroco-sdk/kuroco-sdk/src/generator/utils/getModelNames.ts">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="5" count="4" type="stmt"/>
+      </file>
+      <file name="getOpenApiSpec.ts" path="/home/runner/work/kuroco-sdk/kuroco-sdk/src/generator/utils/getOpenApiSpec.ts">
+        <metrics statements="10" coveredstatements="7" conditionals="2" coveredconditionals="1" methods="2" coveredmethods="2"/>
+        <line num="9" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="10" count="2" type="stmt"/>
+        <line num="11" count="2" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="24" count="2" type="stmt"/>
+        <line num="25" count="2" type="stmt"/>
+        <line num="27" count="2" type="stmt"/>
+        <line num="28" count="2" type="stmt"/>
+        <line num="30" count="0" type="stmt"/>
+      </file>
+      <file name="getServiceNames.ts" path="/home/runner/work/kuroco-sdk/kuroco-sdk/src/generator/utils/getServiceNames.ts">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="5" count="4" type="stmt"/>
+      </file>
+      <file name="isExists.ts" path="/home/runner/work/kuroco-sdk/kuroco-sdk/src/generator/utils/isExists.ts">
+        <metrics statements="4" coveredstatements="0" conditionals="7" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="2" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="4" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="5" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="8" count="0" type="stmt"/>
+      </file>
+      <file name="isString.ts" path="/home/runner/work/kuroco-sdk/kuroco-sdk/src/generator/utils/isString.ts">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="2" count="1" type="stmt"/>
+      </file>
+      <file name="pickSpecialOperation.ts" path="/home/runner/work/kuroco-sdk/kuroco-sdk/src/generator/utils/pickSpecialOperation.ts">
+        <metrics statements="7" coveredstatements="3" conditionals="5" coveredconditionals="1" methods="4" coveredmethods="3"/>
+        <line num="9" count="100" type="stmt"/>
+        <line num="10" count="5" type="cond" truecount="1" falsecount="1"/>
+        <line num="11" count="5" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="15" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+      </file>
+      <file name="postProcessClient.ts" path="/home/runner/work/kuroco-sdk/kuroco-sdk/src/generator/utils/postProcessClient.ts">
+        <metrics statements="3" coveredstatements="3" conditionals="1" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="23" count="43" type="stmt"/>
+      </file>
+      <file name="postProcessModel.ts" path="/home/runner/work/kuroco-sdk/kuroco-sdk/src/generator/utils/postProcessModel.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="12" count="43" type="stmt"/>
+        <line num="13" count="43" type="stmt"/>
+      </file>
+      <file name="postProcessModelEnum.ts" path="/home/runner/work/kuroco-sdk/kuroco-sdk/src/generator/utils/postProcessModelEnum.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+        <line num="9" count="43" type="stmt"/>
+        <line num="10" count="24" type="stmt"/>
+      </file>
+      <file name="postProcessModelEnums.ts" path="/home/runner/work/kuroco-sdk/kuroco-sdk/src/generator/utils/postProcessModelEnums.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+        <line num="8" count="43" type="stmt"/>
+        <line num="9" count="2" type="stmt"/>
+      </file>
+      <file name="postProcessModelImports.ts" path="/home/runner/work/kuroco-sdk/kuroco-sdk/src/generator/utils/postProcessModelImports.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="10" count="43" type="stmt"/>
+        <line num="13" count="31" type="stmt"/>
+      </file>
+      <file name="postProcessService.ts" path="/home/runner/work/kuroco-sdk/kuroco-sdk/src/generator/utils/postProcessService.ts">
+        <metrics statements="6" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="8" count="0" type="stmt"/>
+        <line num="9" count="0" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+      </file>
+      <file name="postProcessServiceImports.ts" path="/home/runner/work/kuroco-sdk/kuroco-sdk/src/generator/utils/postProcessServiceImports.ts">
+        <metrics statements="2" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="0"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+      </file>
+      <file name="postProcessServiceOperations.ts" path="/home/runner/work/kuroco-sdk/kuroco-sdk/src/generator/utils/postProcessServiceOperations.ts">
+        <metrics statements="11" coveredstatements="0" conditionals="4" coveredconditionals="0" methods="4" coveredmethods="0"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="9" count="0" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="19" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="20" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="25" count="0" type="stmt"/>
+      </file>
+      <file name="readHandlebarsTemplate.ts" path="/home/runner/work/kuroco-sdk/kuroco-sdk/src/generator/utils/readHandlebarsTemplate.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="9" count="63" type="stmt"/>
+        <line num="11" count="63" type="stmt"/>
+      </file>
+      <file name="readHandlebarsTemplates.ts" path="/home/runner/work/kuroco-sdk/kuroco-sdk/src/generator/utils/readHandlebarsTemplates.ts">
+        <metrics statements="13" coveredstatements="13" conditionals="2" coveredconditionals="1" methods="3" coveredmethods="3"/>
+        <line num="11" count="62" type="stmt"/>
+        <line num="12" count="62" type="stmt"/>
+        <line num="13" count="62" type="cond" truecount="1" falsecount="1"/>
+        <line num="14" count="62" type="stmt"/>
+        <line num="34" count="2" type="stmt"/>
+        <line num="36" count="2" type="stmt"/>
+        <line num="48" count="2" type="stmt"/>
+        <line num="73" count="2" type="stmt"/>
+        <line num="74" count="44" type="stmt"/>
+        <line num="75" count="44" type="stmt"/>
+        <line num="76" count="44" type="stmt"/>
+        <line num="77" count="44" type="stmt"/>
+        <line num="80" count="2" type="stmt"/>
+      </file>
+      <file name="registerHandlebarHelpers.ts" path="/home/runner/work/kuroco-sdk/kuroco-sdk/src/generator/utils/registerHandlebarHelpers.ts">
+        <metrics statements="4" coveredstatements="2" conditionals="4" coveredconditionals="0" methods="3" coveredmethods="1"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="6" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="10" count="0" type="cond" truecount="0" falsecount="2"/>
+      </file>
+      <file name="sort.ts" path="/home/runner/work/kuroco-sdk/kuroco-sdk/src/generator/utils/sort.ts">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="2" count="18" type="stmt"/>
+        <line num="3" count="18" type="stmt"/>
+        <line num="4" count="18" type="stmt"/>
+      </file>
+      <file name="unique.ts" path="/home/runner/work/kuroco-sdk/kuroco-sdk/src/generator/utils/unique.ts">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="2" count="37" type="stmt"/>
+      </file>
+      <file name="writeApiInfo.ts" path="/home/runner/work/kuroco-sdk/kuroco-sdk/src/generator/utils/writeApiInfo.ts">
+        <metrics statements="3" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="20" count="0" type="stmt"/>
+      </file>
+      <file name="writeAuth.ts" path="/home/runner/work/kuroco-sdk/kuroco-sdk/src/generator/utils/writeAuth.ts">
+        <metrics statements="16" coveredstatements="11" conditionals="4" coveredconditionals="1" methods="8" coveredmethods="4"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="17" count="3" type="stmt"/>
+        <line num="18" count="3" type="cond" truecount="1" falsecount="1"/>
+        <line num="19" count="3" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="23" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="24" count="0" type="stmt"/>
+        <line num="27" count="0" type="stmt"/>
+        <line num="36" count="1" type="stmt"/>
+        <line num="42" count="1" type="stmt"/>
+        <line num="43" count="3" type="stmt"/>
+        <line num="44" count="0" type="stmt"/>
+        <line num="45" count="1" type="stmt"/>
+        <line num="46" count="1" type="stmt"/>
+        <line num="48" count="1" type="stmt"/>
+        <line num="52" count="1" type="stmt"/>
+      </file>
+      <file name="writeClient.ts" path="/home/runner/work/kuroco-sdk/kuroco-sdk/src/generator/utils/writeClient.ts">
+        <metrics statements="42" coveredstatements="39" conditionals="20" coveredconditionals="14" methods="3" coveredmethods="3"/>
+        <line num="23" count="10" type="stmt"/>
+        <line num="24" count="10" type="stmt"/>
+        <line num="25" count="10" type="cond" truecount="1" falsecount="1"/>
+        <line num="26" count="10" type="stmt"/>
+        <line num="36" count="1" type="stmt"/>
+        <line num="37" count="1" type="stmt"/>
+        <line num="38" count="1" type="stmt"/>
+        <line num="39" count="1" type="stmt"/>
+        <line num="40" count="1" type="stmt"/>
+        <line num="41" count="1" type="stmt"/>
+        <line num="44" count="1" type="stmt"/>
+        <line num="45" count="1" type="stmt"/>
+        <line num="47" count="1" type="stmt"/>
+        <line num="48" count="1" type="stmt"/>
+        <line num="49" count="1" type="stmt"/>
+        <line num="50" count="1" type="stmt"/>
+        <line num="51" count="1" type="stmt"/>
+        <line num="52" count="1" type="stmt"/>
+        <line num="53" count="1" type="stmt"/>
+        <line num="54" count="1" type="stmt"/>
+        <line num="55" count="1" type="stmt"/>
+        <line num="56" count="1" type="stmt"/>
+        <line num="57" count="1" type="stmt"/>
+        <line num="58" count="1" type="stmt"/>
+        <line num="60" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="61" count="0" type="stmt"/>
+        <line num="63" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="64" count="0" type="stmt"/>
+        <line num="66" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="67" count="0" type="stmt"/>
+        <line num="70" count="1" type="stmt"/>
+        <line num="71" count="1" type="stmt"/>
+        <line num="73" count="1" type="stmt"/>
+        <line num="74" count="1" type="stmt"/>
+        <line num="76" count="1" type="stmt"/>
+        <line num="77" count="1" type="stmt"/>
+        <line num="78" count="1" type="stmt"/>
+        <line num="80" count="1" type="stmt"/>
+        <line num="84" count="1" type="cond" truecount="2" falsecount="0"/>
+        <line num="86" count="1" type="cond" truecount="4" falsecount="0"/>
+        <line num="87" count="1" type="stmt"/>
+        <line num="88" count="1" type="stmt"/>
+      </file>
+      <file name="writeClientIndex.ts" path="/home/runner/work/kuroco-sdk/kuroco-sdk/src/generator/utils/writeClientIndex.ts">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="19" count="2" type="stmt"/>
+      </file>
+      <file name="writeClientModels.ts" path="/home/runner/work/kuroco-sdk/kuroco-sdk/src/generator/utils/writeClientModels.ts">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="15" count="3" type="stmt"/>
+        <line num="16" count="2" type="stmt"/>
+        <line num="17" count="2" type="stmt"/>
+        <line num="18" count="2" type="stmt"/>
+      </file>
+      <file name="writeClientSchemas.ts" path="/home/runner/work/kuroco-sdk/kuroco-sdk/src/generator/utils/writeClientSchemas.ts">
+        <metrics statements="4" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+      </file>
+      <file name="writeClientServices.ts" path="/home/runner/work/kuroco-sdk/kuroco-sdk/src/generator/utils/writeClientServices.ts">
+        <metrics statements="4" coveredstatements="4" conditionals="1" coveredconditionals="1" methods="2" coveredmethods="2"/>
+        <line num="16" count="2" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+      </file>
+      <file name="writeClientSettings.ts" path="/home/runner/work/kuroco-sdk/kuroco-sdk/src/generator/utils/writeClientSettings.ts">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="14" count="1" type="stmt"/>
+      </file>
+      <file name="writeFirebaseUtil.ts" path="/home/runner/work/kuroco-sdk/kuroco-sdk/src/generator/utils/writeFirebaseUtil.ts">
+        <metrics statements="3" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+      </file>
+      <file name="writeUploader.ts" path="/home/runner/work/kuroco-sdk/kuroco-sdk/src/generator/utils/writeUploader.ts">
+        <metrics statements="3" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="0"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="20" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.pull">
+      <metrics statements="27" coveredstatements="0" conditionals="10" coveredconditionals="0" methods="9" coveredmethods="0"/>
+      <file name="api.ts" path="/home/runner/work/kuroco-sdk/kuroco-sdk/src/pull/api.ts">
+        <metrics statements="9" coveredstatements="0" conditionals="2" coveredconditionals="0" methods="6" coveredmethods="0"/>
+        <line num="5" count="0" type="stmt"/>
+        <line num="6" count="0" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="16" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+      </file>
+      <file name="index.ts" path="/home/runner/work/kuroco-sdk/kuroco-sdk/src/pull/index.ts">
+        <metrics statements="18" coveredstatements="0" conditionals="8" coveredconditionals="0" methods="3" coveredmethods="0"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="24" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="25" count="0" type="stmt"/>
+        <line num="28" count="0" type="stmt"/>
+        <line num="29" count="0" type="cond" truecount="0" falsecount="4"/>
+        <line num="30" count="0" type="stmt"/>
+        <line num="32" count="0" type="stmt"/>
+        <line num="34" count="0" type="stmt"/>
+        <line num="36" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="37" count="0" type="stmt"/>
+        <line num="46" count="0" type="stmt"/>
+        <line num="47" count="0" type="stmt"/>
+        <line num="51" count="0" type="stmt"/>
+        <line num="52" count="0" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>
