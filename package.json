@@ -59,8 +59,7 @@
         "eslint": "eslint \"./src/**/*.ts\"",
         "eslint:fix": "eslint \"./src/**/*.ts\" --fix",
         "prettier": "prettier \"./src/**/*.ts\" --check",
-        "prettier:fix": "prettier \"./src/**/*.ts\" --write",
-        "deploy:coverage": "gh-pages -d coverage/lcov-report"
+        "prettier:fix": "prettier \"./src/**/*.ts\" --write"
     },
     "dependencies": {
         "camelcase": "5.3.1",

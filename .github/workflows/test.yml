@@ -22,5 +22,11 @@ jobs:
       - name: Install dependencies
         run: npm i
       
-      - name: Test && Output Coverage
-        run: npm run test:coverage && npm run deploy:coverage
+      - name: Test (with outputting covarage report)
+        run: npm run test:coverage
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+          publish_dir: ./coverage
