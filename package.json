@@ -1,6 +1,6 @@
 {
     "name": "kuroco-sdk",
-    "version": "0.1.18",
+    "version": "0.1.19",
     "description": "NodeJS library that generates Typescript or Javascript clients based on the OpenAPI specification.",
     "author": "Yusei Abe",
     "homepage": "https://github.com/diverta/kuroco-sdk",
