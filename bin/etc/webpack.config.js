@@ -1,3 +1,5 @@
+const path = require('path')
+
 module.exports = {
     mode: 'development',
     output: {
@@ -7,7 +9,10 @@ module.exports = {
         rules: [
             {
                 test: /\.ts$/,
-                loader: 'ts-loader'
+                loader: 'ts-loader',
+                options: {
+                    configFile: path.resolve(__dirname, 'tsconfig.json'),
+                }
             }
         ]
     },
