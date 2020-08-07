@@ -5,7 +5,9 @@
         "types": []
     },
     "include": [
-        "../../.tmp/**/*.ts"
+        "../../.tmp/**/*.ts",
+        "../../node_modules/firebse",
+        "../../node_modules/@vimeo/player"
     ],
     "declaration": true
 }

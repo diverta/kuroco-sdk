@@ -25,6 +25,6 @@
         "emitDecoratorMetadata": true,
         "forceConsistentCasingInFileNames": true
     },
-    "include": ["./src/index.ts", "./src/**/*.hbs"],
+    "include": ["./src/index.ts", "./src/**/*.hbs", "node_modules/firebse", "node_modules/@vimeo/player"],
     "exclude": ["node_modules"]
 }
