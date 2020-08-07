@@ -1,4 +1,5 @@
-const path = require('path')
+const path = require('path');
+const DeclarationBundlerPlugin = require('@jmurp7385/declaration-bundler-webpack-plugin');
 
 module.exports = {
     mode: 'development',
@@ -18,5 +19,11 @@ module.exports = {
     },
     resolve: {
         extensions: ['.ts', '.js']
-    }
+    },
+    plugins: [
+        new DeclarationBundlerPlugin({
+            moduleName: 'Kuroco',
+            out: 'index.d.ts',
+        })
+    ]
 }

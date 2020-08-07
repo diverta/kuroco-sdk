@@ -6,5 +6,6 @@
     },
     "include": [
         "../../.tmp/**/*.ts"
-    ]
+    ],
+    "declaration": true
 }
