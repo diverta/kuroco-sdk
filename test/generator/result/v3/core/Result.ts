@@ -4,6 +4,7 @@
 /* prettier-ignore */
 
 export interface Result {
+    headers?: Headers;
     url: string;
     ok: boolean;
     status: number;

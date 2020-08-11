@@ -65,6 +65,7 @@ export async function requestUsingFetch(url: string, request: Readonly<RequestIn
 
     // Create result object.
     return {
+        headers: response.headers,
         url,
         ok: response.ok,
         status: response.status,

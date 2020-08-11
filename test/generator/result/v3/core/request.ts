@@ -69,6 +69,7 @@ export async function request(options: Readonly<RequestOptions>): Promise<Result
     try {
         return await requestUsingFetch(url, request, options.responseHeader);
     } catch (error) {
+        console.log(error);
         return {
             url,
             ok: false,
