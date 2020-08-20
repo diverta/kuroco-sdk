@@ -12,6 +12,7 @@ import { ApiError, catchGenericError } from '../core/ApiError';
 import { request as __request } from '../core/request';
 import { OpenAPI } from '../core/OpenAPI';
 import { LocalStorage } from '../core/LocalStorage';
+import { Result } from '../core/Result';
 
 export class {{{name}}} {
 {{#each operations}}
@@ -35,7 +36,7 @@ export class {{{name}}} {
     {{/each}}
     * @throws ApiError
     */
-    public static async {{{name}}}(requestParam: {{../name}}.{{name}}Request): Promise<{{>result}}> {
+    public static async {{{name}}}(requestParam: {{../name}}.{{name}}Request): Promise<Result<{{>result}}>> {
 
         const shouldHookToken =
             Object.keys({
@@ -47,7 +48,7 @@ export class {{{name}}} {
             }).length > 0;
 
         const request = async () =>
-            await __request({
+            await __request<{{>result}}>({
                 headers: shouldHookToken ? {[(OpenAPI.SECURITY['Token-Auth'] as any).name]: `${LocalStorage.getAccessToken()}`} : {},
                 method: '{{{method}}}',
                 path: `{{{path}}}`,
@@ -103,7 +104,7 @@ export class {{{name}}} {
             }
 
             catchGenericError(result);
-            return result.body;
+            return result;
         }
 {{/each}}
 }

@@ -18,7 +18,7 @@ import { Result } from './Result';
  * @param options Request method options.
  * @returns Result object (see above)
  */
-export async function request(options: Readonly<RequestOptions>): Promise<Result> {
+export async function request<T>(options: Readonly<RequestOptions>): Promise<Result<T>> {
     // Escape path (RFC3986) and create the request URL
     let path = options.path.replace(/[:]/g, '_');
     let url = `${OpenAPI.BASE}${path}`;
