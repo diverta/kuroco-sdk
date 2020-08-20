@@ -16,6 +16,7 @@ const {
     getSpecifedLanguage,
     generateJsFiles,
     providePackageJson,
+    extructApiTitle,
 } = require('./utils');
 const {
     installDependencies,
@@ -57,12 +58,16 @@ function applyGenerate() {
                         case 'js':
                             const tmpDir = path.resolve(__dirname, '..', '.tmp');
                             mkdirp.sync(tmpDir);
+
+                            const config = loadKurocoConfig(options.config);
+
                             // executes toward tmpDir tentatively.
                             OpenAPI.generate({
                                 ...options,
-                                config: loadKurocoConfig(options.config),
+                                config,
                                 output: tmpDir,
                             });
+
                             // executes tsc to generate JS from TS, then remake output dir.
                             generateJsFiles(options, tmpDir);
                             break;

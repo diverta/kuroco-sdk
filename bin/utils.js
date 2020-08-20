@@ -31,7 +31,14 @@ module.exports = {
 
     /** generate JS file. */
     generateJsFiles: (option, tsDir) => {
-        function write({ output, standalone }, tsDir) {
+
+        function extructApiTitle(input) {
+            const p = path.resolve(input);
+            const def = fs.readJSONSync(p);
+            return def.info.title;
+        }
+
+        function write({ input, output, standalone }, tsDir) {
             const { webpack, tsconfig } = require('./etc');
             
             const outputDir = path.resolve(process.cwd(), output);
@@ -45,6 +52,7 @@ module.exports = {
                 --config ${webpack} \
                 --entry ${path.resolve(tsDir, 'index.ts')} \
                 --output ${path.resolve(outputDir, 'index.js')} \
+                --env.API_NAME ${extructApiTitle(input)}
                 --silent`;
             const cmd = standalone ? webpackCmd : tscCmd;
 
