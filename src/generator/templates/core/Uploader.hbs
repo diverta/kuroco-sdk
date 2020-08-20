@@ -19,7 +19,7 @@ export class UploaderFactory {
     params: AuthenticationService.postAuthenticationServiceRcmsApi1FirebaseTokenRequest,
   ): Promise<Uploader> {
     if (!this.storage) {
-      const { token } = await AuthenticationService.postAuthenticationServiceRcmsApi1FirebaseToken(params);
+      const { token } = (await AuthenticationService.postAuthenticationServiceRcmsApi1FirebaseToken(params)).body;
 
       await firebaseApp.auth().signInWithCustomToken(token);
       this.storage = firebase.storage();
