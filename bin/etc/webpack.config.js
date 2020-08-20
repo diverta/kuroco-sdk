@@ -5,7 +5,7 @@ module.exports = function(env) {
     return {
         mode: 'development',
         output: {
-            library: ['Kuroco', env && env.API_NAME ? env.API_NAME : ''],
+            library: env && env.API_NAME ? ['Kuroco', env.API_NAME] : 'Kuroco',
             libraryTarget: 'umd',
         },
         module: {
@@ -24,7 +24,7 @@ module.exports = function(env) {
         },
         plugins: [
             new DeclarationBundlerPlugin({
-                moduleName: `Kuroco${ env && env.API_NAME ? '.' + env.API_NAME : ''}`,
+                moduleName: env && env.API_NAME ? `Kuroco.${env.API_NAME}` : `Kuroco`,
                 out: 'index.d.ts',
             }),
         ],
