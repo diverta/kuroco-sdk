@@ -200,7 +200,7 @@ import { UploaderFactory } from 'kuroco';
 We provide a way to optionnally generate additional (meta) information about endpoints. This may be useful, for example, for e2e testing.
 
 ```
-kuroco generate -exportApiInformations
+kuroco generate --exportApiInformations
 ```
 
 ```typescript
