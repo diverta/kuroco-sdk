@@ -39,8 +39,10 @@ Please download it at management screen.
 > Please download those configurations and rename, use `-c` option.
 > 
 > ```sh
-> kuroco pull -c a.kuroco.config.json && kuroco generate -c a.kuroco.config.json -o a_generated
-> kuroco pull -c b.kuroco.config.json && kuroco generate -c b.kuroco.config.json -o b_generated
+> # generate first API codes
+> kuroco pull -c a.kuroco.config.json -i 1 -o a.openapi.json && kuroco generate -i a.openapi.json -c a.kuroco.config.json -o a_generated
+> # generate second API codes
+> kuroco pull -c b.kuroco.config.json -i 2 -o b.openapi.json && kuroco generate -i b.openapi.json -c b.kuroco.config.json -o b_generated
 > ```
 ---
 

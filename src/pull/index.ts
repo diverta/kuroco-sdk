@@ -6,6 +6,7 @@ import { KurocoConfig, handleSuccess, handleError } from '../__base';
 
 export interface Options {
     config: KurocoConfig;
+    apiId: number;
     output: string;
     write: boolean;
 }

@@ -94,6 +94,7 @@ function applyPull() {
         .command('pull [options]')
         .description('pulls openapi.json from the server.')
         .option('-c, --config <value>', 'Path to kuroco configuration', defaultConfigurationFilePath)
+        .option('-i, --apiId <value>', 'Specific id of target API', 1)
         .option('-o, --output <value>', 'Output path', defaultOutputPath)
         .option('--write <value>', 'Export files (for developper option)', true)
         .action((cmd, options) => {
@@ -111,6 +112,9 @@ function applyPull() {
             console.log('Examples:');
             console.log('');
             console.log(`  $ ${commandName} pull`);
+            console.log('');
+            console.log(`# If you want to pull a difinition from a specific API which is not default one,`);
+            console.log(`  $ ${commandName} pull -c secondapi.kuroco.config.json -i 2`);
         });
 }
 
