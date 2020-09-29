@@ -33,9 +33,13 @@ module.exports = {
     generateJsFiles: (option, tsDir) => {
 
         function extructApiTitle(input) {
+            function replaceInvalidChar(str) {
+                return str.replace(/[^\x00-\x7F]/g, '').replace(/\s+|\(|\)/g, '');
+            }
+
             const p = path.resolve(input);
             const def = fs.readJSONSync(p);
-            return def.info.title;
+            return replaceInvalidChar(def.info.title);
         }
 
         function write({ input, output, standalone }, tsDir) {
