@@ -170,6 +170,13 @@ Auth.onErrorHandler = result => {
 };
 ```
 
+##### To use Static Token
+
+Kuroco has an security option called `static token` for public APIs.  
+If you applied that option to the API, you don't need to use Auth module.  
+Just copy and mamorize on LocalStorage.  
+Please refer [here](https://github.com/diverta/kuroco_sdk_examples/tree/master/examples/__jquery-standalone-statictoken-ex/public).
+
 #### File uploading
 
 Kuroco may be connected to Firebase Storage to enable file uploading. This feature requires you to configure Firebase credentials & app on Kuroco management interface prior to generating kuroco library.
