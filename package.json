@@ -69,7 +69,7 @@
         "firebase": "^7.17.2",
         "fs-extra": "^9.0.1",
         "global-npm": "^0.4.1",
-        "handlebars": "4.7.6",
+        "handlebars": "^4.7.7",
         "mkdirp": "1.0.4",
         "node-fetch": "^2.6.0",
         "path": "0.12.7",
