@@ -64,6 +64,7 @@
     "dependencies": {
         "@jmurp7385/declaration-bundler-webpack-plugin": "^1.0.1",
         "@vimeo/player": "^2.12.2",
+        "base64url": "^3.0.1",
         "camelcase": "5.3.1",
         "chokidar": "^3.5.1",
         "commander": "5.1.0",
@@ -74,6 +75,7 @@
         "handlebars": "^4.7.7",
         "mkdirp": "1.0.4",
         "node-fetch": "^2.6.0",
+        "node-notifier": "^10.0.0",
         "path": "0.12.7",
         "rimraf": "3.0.2",
         "swagger-parser": "^9.0.1",
