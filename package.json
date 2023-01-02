@@ -80,7 +80,7 @@
         "rimraf": "3.0.2",
         "set-value": "^4.1.0",
         "swagger-parser": "^9.0.1",
-        "ts-loader": "^7.0.5",
+        "ts-loader": "^9.4.2",
         "typescript": "3.8.3",
         "watchpack": "^2.2.0",
         "webpack": "^5.62.1",
